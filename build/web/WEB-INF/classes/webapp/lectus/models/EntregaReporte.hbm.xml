@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="webapp.lectus.models.EntregaReporte" table="entregareporte" catalog="lectus" optimistic-lock="version">
+        <id name="idEntregaReporte" type="java.lang.Integer">
+            <column name="idEntregaReporte" />
+            <generator class="identity" />
+        </id>
+        <property name="idAlumno" type="java.lang.Integer">
+            <column name="idAlumno" length="45" not-null="false"/>
+        </property>
+        <property name="idParcial" type="java.lang.Integer">
+            <column name="idParcial" length="45" not-null="false"/>
+        </property>
+        <property name="calificacion" type="java.lang.String">
+            <column name="calificacion" length="45" not-null="false"/>
+        </property>
+        <property name="comentario" type="java.lang.String">
+            <column name="comentario" length="10000" not-null="false"/>
+        </property>
+        <property name="reportePDF" type="java.lang.String">
+            <column name="reportePDF" length="45" not-null="false"/>
+        </property>
+        <property name="idAlumnoLibro" type="java.lang.Integer">
+            <column name="idAlumnoLibro" length="45" not-null="false" />
+        </property>  
+    </class>      
+</hibernate-mapping>

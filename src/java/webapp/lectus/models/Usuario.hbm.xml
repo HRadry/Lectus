@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="lectus" name="webapp.lectus.models.Usuario" optimistic-lock="version" table="usuario">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column length="45" name="idUsuario"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="45" name="nombre"/>
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column length="45" name="apellidoPaterno"/>
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column length="45" name="apellidoMaterno"/>
+        </property>
+        <property name="matricula" type="java.lang.Integer">
+            <column length="45" name="matricula" unique="true"/>
+        </property>
+        <property name="correo" type="string">
+            <column length="45" name="correo"/>
+        </property>
+        <property name="carrera" type="string">
+            <column length="45" name="carrera"/>
+        </property>
+        <property name="semestre" type="string">
+            <column length="45" name="semestre"/>
+        </property>
+        <property name="grupo" type="string">
+            <column length="45" name="grupo"/>
+        </property>
+        <property name="password" type="string">
+            <column length="45" name="password"/>
+        </property>
+        <property name="tipoUsuario" type="string">
+            <column length="45" name="tipoUsuario"/>
+        </property>
+        <filter name="filtroUsuario" condition=":usuarioParam = tipoUsuario"></filter>
+    </class>
+    <filter-def name="filtroUsuario">
+        <filter-param name="usuarioParam" type="java.lang.String"/>
+    </filter-def>
+</hibernate-mapping>

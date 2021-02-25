@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="webapp.lectus.models.Grupo" table="grupo" catalog="lectus" optimistic-lock="version">
+        <id name="idGrupo" type="java.lang.Integer">
+            <column name="idGrupo"/>
+            <generator class="identity"/>
+        </id>
+        <property name="idCarrera" type="java.lang.Integer">
+            <column name="idCarrera" length="45" not-null="true"/>
+        </property>
+        <property name="grupo" type="java.lang.String">
+            <column name="grupo" length="45" not-null="true"/>
+        </property>
+        <property name="semestre" type="java.lang.String">
+            <column name="semestre" length="45" not-null="true"/>
+        </property>
+    </class>    
+</hibernate-mapping>

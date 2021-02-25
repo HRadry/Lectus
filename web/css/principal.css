@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    
+    --primary-color: hsl(160, 100%, 21%);/*verde*/
+    --secondary-color:hsl(12, 100%, 46%);/*naranja*/
+    --tertiary-color:hsl(204, 94%, 47%, .25);/*azul*/
+    --quaternary-color:hsl(17, 56%, 42%);/*cafe*/
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-black: hsl(0, 0%, 0%);
+    --gray-color: hsl(208, 14%, 46%);
+    
+    /*--primary-color-alt: hsl(3, 76%, 60%);*/
+    --primary-color-acent: hsl(0, 100%, 24%);  
+    /*--primary-color-transparency: hsl(357, 72%, 40%, .25);*/
+}
+
+
+.border-line{
+    border: 1px;
+    border-style: solid;
+    border-color: var(--primary-color);
+}
+
+.color-text{
+    color: var(--primary-color);
+}
+
+
+body{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.container {
+    max-width: 960px;
+}
+
+/*Animación de botón*/
+.button svg{
+    margin-left: .4rem;
+    transition: transform .2s;
+    width: 1.2rem;
+}
+.button:hover{
+    cursor: pointer;
+}
+.button:hover svg{
+    transform: translateX(.4rem);
+}
+
+
+/* --------------------- Nav ------------------------ */
+
+.background-nav {
+    background-color: var(--primary-color);
+}
+
+
+/* --------------------- Botón Normal ------------------------ */
+
+.btn-color {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--color-white);
+}
+
+.btn-color:hover {
+    background-color: var(--color-white);
+    color: var(--primary-color);
+}
+
+/* --------------------- Botón Collapse ------------------------ */
+.btn-collapse.focus, .btn:focus {
+    outline: 0;
+    box-shadow: var(--primary-color);
+}
+
+
+/* --------------------- Botón Color Out ------------------------ */
+
+.btn-color-out {
+    background-color: var(--color-white);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-color-out:hover {
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+/* --------------------- Botón Color Gray ------------------------ */
+
+.btn-color-gray {
+    background-color: var(--gray-color);
+    border-color: var(--gray-color);
+    color: var(--color-white);
+}
+
+.btn-color-gray:hover {
+    background-color: var(--color-white);
+    color: var(--gray-color);
+    border-color: var(--gray-color);
+}
+
+
+/* --------------------- Botón White Background ------------------------ */
+
+.btn-wb {
+    background-color: var(--primary-color);
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+.btn-wb:hover {
+    background-color: var(--color-white);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+
+/* --------------------- Botones Focus ------------------------ */
+
+.btn.focus,
+.btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+}
+
+
+/* --------------------- Formularios ------------------------ */
+
+.form-control:focus {
+    color: #495057;
+    background-color: var(--color-white);
+    border-color: var(--secondary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+}
+
+.form-control {
+    border-radius: .3rem;
+    border-color: var(--tertiary-colot);
+}
+
+.bg-custom-1 {
+    background-color: #85144b;
+}
+
+.bg-custom-2 {
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
+
+/* --------------------- Dropdown ------------------------ */
+
+.dropdown-item:hover {
+    background-color: var(--primary-color);
+    color: var(--color-white);
+}
+
+
+/* --------------------- Forms ------------------------ */
+
+textarea {
+    resize: none;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: var(--color-white);
+    border-color: var(--secondary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+}
+
+.form-control-lg {
+    height: calc(1.5em + 1rem + 2px);
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    border-color: var(--tertiary-colot);
+}
+
+.custom-file-input~.custom-file-label::after {
+    content: "Buscar";
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    border-color: var(--primary-color);
+}
+
+.custom-file-control.selected::after {
+    content: "" !important;
+}
+
+.custom-file-label {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4a4957;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid var(--tertiary-colot);
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control-file:focus {
+    color: #495057;
+    background-color: var(--color-white);
+    border-color: var(--secondary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+}
+
+.jumbotron {
+    background-color: var(--secondary-color);
+}
+
+
+/* --------------------- Footer ------------------------ */
+
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: var(--primary-color);
+    border-top: .05rem solid #e5e5e5;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: var(--primary-color);
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--tertiary-colot);
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: var(--primary-color);
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #f2e4e5;
+    opacity: 1;
+}
+
+.btn-alert {
+    color: var(--primary-color);
+    border-color: #ffc107;
+    background-color: #ffc107;
+}
+
+.btn-alert:hover {
+    color: var(--primary-color);
+    border-color: #ffc107;
+    background-color: white;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #E7F0E7;
+    opacity: .5;
+}

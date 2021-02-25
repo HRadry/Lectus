@@ -1,0 +1,12 @@
+package webapp.lectus.actions;
+
+import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class PreguntasFrecuentes extends ActionSupport {   
+    
+    @Override
+    public String execute() throws Exception {               
+        return SUCCESS;
+    }          
+}

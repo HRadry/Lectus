@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="webapp.lectus.models.Revisor" table="revisor" catalog="lectus" optimistic-lock="version">
+        <id name="idRevisor" type="java.lang.Integer">
+            <column name="idRevisor" />
+            <generator class="identity" />
+        </id>
+        <property name="idUsuario" type="java.lang.Integer">
+            <column name="idUsuario" length="45" not-null="true" />
+        </property>
+        <property name="idLibro" type="java.lang.Integer">
+            <column name="idLibro" length="45" not-null="true" />
+        </property>   
+    </class>    
+</hibernate-mapping>

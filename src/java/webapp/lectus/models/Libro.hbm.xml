@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="webapp.lectus.models.Libro" table="libro" catalog="lectus" optimistic-lock="version">
+        <id name="idLibro" type="java.lang.Integer">
+            <column name="idLibro"/>
+            <generator class="identity"/>
+        </id>
+        <property name="titulo" type="string">
+            <column length="80" name="titulo" not-null="true"/>
+        </property>
+        <property name="autor" type="string">
+            <column length="80" name="autor" not-null="true"/>
+        </property>
+        <property name="genero" type="string">
+            <column length="80" name="genero" not-null="true"/>
+        </property>
+        <property name="numeroPagina" type="java.lang.Integer">
+            <column length="80" name="numeroPagina" not-null="true"/>
+        </property>
+        <property name="sinopsis" type="string">
+            <column length="999" name="sinopsis" not-null="true"/>
+        </property>
+        <property name="anoPublicacion" type="java.lang.Integer">
+            <column length="80" name="anoPublicacion" not-null="true"/>
+        </property>
+        <property name="edicion" type="string">
+            <column length="45" name="edicion" not-null="true"/>
+        </property>   
+        <property name="portada" type="string">
+            <column length="999" name="portada" not-null="true"/>
+        </property> 
+        <property name="archivoPDF" type="string">
+            <column length="999" name="archivoPDF" not-null="true"/>
+        </property>  
+    </class>
+</hibernate-mapping>
