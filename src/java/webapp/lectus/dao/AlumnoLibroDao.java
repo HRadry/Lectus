@@ -44,24 +44,30 @@ public class AlumnoLibroDao {
         return false;
     }
     public List<Libro> all() throws HibernateException {
+        List<Libro> lista = null;
         List<Libro> listaLibros = null;
-        try {
-            iniciaOperacion();
-            listaLibros = session.createQuery("from Libro").list();
-            Iterator<Libro> ite = listaLibros.iterator();
-            Libro emp = null;
-
-            while (ite.hasNext()) {
-                emp = ite.next();
-
+        Libro libro ;
+        int c=0;
+        try { 
+            iniciaOperacion(); 
+           
+            lista = session.createQuery("from Libro").list(); 
+            System.out.println("lista" + lista);
+            while(!lista.isEmpty())
+            {
+                libro = lista.get(c);
+                 System.out.println("objeto obtenido de lista" + libro);
+                if(libro.getNumeroMaximoAlumnos() > 0){
+                    System.out.println("objeto obtenido de lista" + libro.getNumeroMaximoAlumnos());
+                    listaLibros.add(libro);
+                } 
+                c++;
             }
-        } catch (Exception e) {
-            System.out.println("errorALumnoLibroDao" + e);
-        }
-         finally {
-            session.close();
-        }
-        return listaLibros;
+           
+        } finally { 
+            session.close(); 
+        }  
+        return listaLibros; 
     }
     
     public int seleccion(AlumnoLibro alumnoLibro) throws HibernateException {

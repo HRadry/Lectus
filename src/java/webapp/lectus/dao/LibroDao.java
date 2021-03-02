@@ -1,11 +1,14 @@
 package webapp.lectus.dao;
 
+import java.util.Iterator;
 import webapp.lectus.connection.HibernateUtil;
 import java.util.List;
+import org.hibernate.Filter;
 import webapp.lectus.models.Libro;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import webapp.lectus.models.Usuario;
 
 public class LibroDao {
     private Session session;
@@ -71,30 +74,24 @@ public class LibroDao {
     
     public List<Libro> all() throws HibernateException 
     { 
-        List<Libro> lista = null;
-        List<Libro> listaLibros = null;
-        Libro libro ;
-        int c=0;
-        try { 
-            iniciaOperacion(); 
-           
-            lista = session.createQuery("from Libro").list(); 
-            System.out.println("lista" + lista);
-            while(!lista.isEmpty())
-            {
-                libro = lista.get(c);
-                 System.out.println("objeto obtenido de lista" + libro);
-                if(libro.getNumeroMaximoAlumnos() > 0){
-                    System.out.println("objeto obtenido de lista" + libro.getNumeroMaximoAlumnos());
-                    listaLibros.add(libro);
-                } 
-                c++;
+       List<Libro> listaLibros = null;
+        try {
+            iniciaOperacion();
+            listaLibros = session.createQuery("from Libro").list();
+            Iterator<Libro> ite = listaLibros.iterator();
+            Libro emp = null;
+
+            while (ite.hasNext()) {
+                emp = ite.next();
             }
-           
-        } finally { 
-            session.close(); 
-        }  
-        return listaLibros; 
+                
+        } catch (Exception e) {
+            System.out.println("errorALumnoLibroDao" + e);
+        }
+         finally {
+            session.close();
+        }
+        return listaLibros;
     }
     
     private void iniciaOperacion() throws HibernateException 
