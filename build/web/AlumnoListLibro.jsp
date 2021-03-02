@@ -157,6 +157,8 @@
                     </div>
                 </div>
             </div>
+                                        
+                                        
             <div class="modal fade" id="modalElegir" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -178,7 +180,7 @@
                         </div>
                         <div class="modal-footer" style="justify-content: center;">
                             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><b>Cancelar</b></button>
-                            <button type="button" class="btn btn-danger" id="btnDelete"><b>Aceptar</b></button>
+                            <button type="button" class="btn btn-danger" id="btnAceptar"><b>Aceptar</b></button>
                         </div>
                     </div>
                 </div>
@@ -201,14 +203,18 @@
         <!-- ================================================== -->
         <script>
             $(document).ready(function () {
-                $("#btnElegir").click(function () { // 3 Das clic en el botón Aceptar del modal
-                    elegirLibro(idLibro); //4 Se ejecuta la función eliminarCono y le pasas el idCono
+                $("#btnElegir").click(function () { 
+                  $("#modalElegir").modal("show");
+                });
+                
+                $("#btnAceptar").click(function () { 
+                    window.location.href = "/lectus/alumnoLibro/select?idLibro=" + idLibro;
                 });
             });
             function elegirLibro(id) { //5 se ejecuta el controlador pasandole el idCono
                 idLibro = id;
                 $("#modalElegir").modal("show");
-                //window.location.href = "/lectus/alumnoLibro/select?idLibro=" + idLibro;
+                window.location.href = "/lectus/alumnoLibro/select?idLibro=" + idLibro;
             }
 
             function asignarId(id) { // 1 se recibe tu idCono

@@ -2,16 +2,12 @@ package webapp.lectus.dao;
 
 import java.util.Iterator;
 import java.util.List;
-import org.hibernate.Filter;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import webapp.lectus.connection.HibernateUtil;
-import webapp.lectus.models.Alumno;
 import webapp.lectus.models.AlumnoLibro;
-import webapp.lectus.models.Carrera;
-import webapp.lectus.models.Grupo;
 import webapp.lectus.models.Libro;
 import webapp.lectus.models.Usuario;
 
@@ -49,7 +45,6 @@ public class AlumnoLibroDao {
     }
     public List<Libro> all() throws HibernateException {
         List<Libro> listaLibros = null;
-
         try {
             iniciaOperacion();
             listaLibros = session.createQuery("from Libro").list();
@@ -60,7 +55,10 @@ public class AlumnoLibroDao {
                 emp = ite.next();
 
             }
-        } finally {
+        } catch (Exception e) {
+            System.out.println("errorALumnoLibroDao" + e);
+        }
+         finally {
             session.close();
         }
         return listaLibros;

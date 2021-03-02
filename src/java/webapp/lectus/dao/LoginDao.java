@@ -13,11 +13,11 @@ public class LoginDao {
     private Session session;
     private Transaction transaction;
 
-    public Usuario find(int matricula, String password) {
-        System.out.println("credenciales" + matricula + password);
+    public Usuario find(String correo, String password) {
+        System.out.println("credenciales" + correo+ password);
         Usuario hecho = null;
         Usuario user = new Usuario();
-        String sentencia = "from Usuario where matricula='" + matricula
+        String sentencia = "from Usuario where correo='" + correo
                 + "' and password='" + password + "'";
         try {
             iniciaOperacion();
@@ -30,7 +30,7 @@ public class LoginDao {
             }
 
         } catch (Exception e) {
-            System.out.println("error");
+            System.out.println("error" + e);
         }
         return hecho;
     }

@@ -6,9 +6,6 @@
             <column name="idEntregaReporte" />
             <generator class="identity" />
         </id>
-        <property name="idAlumno" type="java.lang.Integer">
-            <column name="idAlumno" length="45" not-null="false"/>
-        </property>
         <property name="idParcial" type="java.lang.Integer">
             <column name="idParcial" length="45" not-null="false"/>
         </property>

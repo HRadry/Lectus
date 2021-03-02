@@ -10,48 +10,82 @@ package webapp.lectus.models;
  * @author herna
  */
 public class Revisor implements java.io.Serializable{
-    private int idRevisor;
-    private int idUsuario;
-    private int idLibro;
+    private Integer idRevisor;
+    private Integer idUsuario;
+    private Integer idLibro;
+    private Integer idArea;
+    private Integer numeroEmpleado;
+    private Integer numeroCubo;
+    private String cargo;
+            
 
     public Revisor() {
     }
 
-    public Revisor(int idRevisor, int idUsuario, int idLibro) {
+    public Revisor(Integer idRevisor, Integer idUsuario, Integer idLibro, Integer idArea, Integer numeroEmpleado, Integer numeroCubo, String cargo) {
         this.idRevisor = idRevisor;
         this.idUsuario = idUsuario;
         this.idLibro = idLibro;
+        this.idArea = idArea;
+        this.numeroEmpleado = numeroEmpleado;
+        this.numeroCubo = numeroCubo;
+        this.cargo = cargo;
     }
+    
 
-    public int getIdRevisor() {
+    public Integer getIdRevisor() {
         return idRevisor;
     }
 
-    public void setIdRevisor(int idRevisor) {
+    public void setIdRevisor(Integer idRevisor) {
         this.idRevisor = idRevisor;
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public int getIdLibro() {
+    public Integer getIdLibro() {
         return idLibro;
     }
 
-    public void setIdLibro(int idLibro) {
+    public void setIdLibro(Integer idLibro) {
         this.idLibro = idLibro;
     }
 
-    @Override
-    public String toString() {
-        return "Revisor{" + "idRevisor=" + idRevisor + ", idUsuario=" + idUsuario + ", idLibro=" + idLibro + '}';
+    public Integer getIdArea() {
+        return idArea;
     }
-    
-    
-    
+
+    public void setIdArea(Integer idArea) {
+        this.idArea = idArea;
+    }
+
+    public Integer getNumeroEmpleado() {
+        return numeroEmpleado;
+    }
+
+    public void setNumeroEmpleado(Integer numeroEmpleado) {
+        this.numeroEmpleado = numeroEmpleado;
+    }
+
+    public Integer getNumeroCubo() {
+        return numeroCubo;
+    }
+
+    public void setNumeroCubo(Integer numeroCubo) {
+        this.numeroCubo = numeroCubo;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    } 
 }

@@ -5,9 +5,13 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.struts2.ServletActionContext;
 import webapp.lectus.dao.AlumnoLibroDao;
 import webapp.lectus.models.AlumnoLibro;
 import webapp.lectus.models.Libro;
+import webapp.lectus.models.Usuario;
 
 public class AlumnoLibroAction extends ActionSupport {
 
@@ -41,15 +45,14 @@ public class AlumnoLibroAction extends ActionSupport {
     }
 
     public String select() throws Exception {
-        AlumnoLibroDao LibroDao = new AlumnoLibroDao();
-        if (LibroDao.findRegistro(160)) {
-            this.addActionError("Ya has elegido un libro");
-
-            return INPUT;
-        } else {
-            alumnoLibro.setIdLibro(idLibro);
-            LibroDao.seleccion(alumnoLibro);
-        }
+        AlumnoLibroDao AlumnoLibroDao = new AlumnoLibroDao();
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        Usuario idLogged = (Usuario) session.getAttribute("userLogged");
+        alumnoLibro.setIdUsuario(idLogged.getIdUsuario());
+        alumnoLibro.setIdLibro(idLibro);
+        alumnoLibro.setIdRevisor(33);
+        AlumnoLibroDao.seleccion(alumnoLibro);
         return SUCCESS;
     }
 

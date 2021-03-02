@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Parcial implements java.io.Serializable{
     
-    private int idParcial;
+    private Integer idParcial;
     private String nombre;
     private Date fechaInicio;
     private Date fechaFin;
@@ -15,7 +15,7 @@ public class Parcial implements java.io.Serializable{
     public Parcial() {
     }
 
-    public Parcial(int idParcial, String nombre, Date fechaInicio, Date fechaFin, Date fechaLimiteEntregaAlumno, Date fechaLimiteEntregaRevisor, Date fechaEntregaCorreccion) {
+    public Parcial(Integer idParcial, String nombre, Date fechaInicio, Date fechaFin, Date fechaLimiteEntregaAlumno, Date fechaLimiteEntregaRevisor, Date fechaEntregaCorreccion) {
         this.idParcial = idParcial;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
@@ -24,7 +24,15 @@ public class Parcial implements java.io.Serializable{
         this.fechaLimiteEntregaRevisor = fechaLimiteEntregaRevisor;
         this.fechaEntregaCorreccion = fechaEntregaCorreccion;
     }
-        
+
+    public Integer getIdParcial() {
+        return idParcial;
+    }
+
+    public void setIdParcial(Integer idParcial) {
+        this.idParcial = idParcial;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -32,14 +40,6 @@ public class Parcial implements java.io.Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-              
-    public int getIdParcial() {
-        return idParcial;
-    }
-
-    public void setIdParcial(int idParcial) {
-        this.idParcial = idParcial;
-    }       
 
     public Date getFechaInicio() {
         return fechaInicio;
@@ -71,7 +71,7 @@ public class Parcial implements java.io.Serializable{
 
     public void setFechaLimiteEntregaRevisor(Date fechaLimiteEntregaRevisor) {
         this.fechaLimiteEntregaRevisor = fechaLimiteEntregaRevisor;
-    }    
+    }
 
     public Date getFechaEntregaCorreccion() {
         return fechaEntregaCorreccion;
@@ -79,6 +79,8 @@ public class Parcial implements java.io.Serializable{
 
     public void setFechaEntregaCorreccion(Date fechaEntregaCorreccion) {
         this.fechaEntregaCorreccion = fechaEntregaCorreccion;
-    }        
+    }
+    
+    
 }
 

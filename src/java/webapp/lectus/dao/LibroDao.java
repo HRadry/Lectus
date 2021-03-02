@@ -71,11 +71,26 @@ public class LibroDao {
     
     public List<Libro> all() throws HibernateException 
     { 
-        List<Libro> listaLibros = null;  
-
+        List<Libro> lista = null;
+        List<Libro> listaLibros = null;
+        Libro libro ;
+        int c=0;
         try { 
             iniciaOperacion(); 
-            listaLibros = session.createQuery("from Libro").list(); 
+           
+            lista = session.createQuery("from Libro").list(); 
+            System.out.println("lista" + lista);
+            while(!lista.isEmpty())
+            {
+                libro = lista.get(c);
+                 System.out.println("objeto obtenido de lista" + libro);
+                if(libro.getNumeroMaximoAlumnos() > 0){
+                    System.out.println("objeto obtenido de lista" + libro.getNumeroMaximoAlumnos());
+                    listaLibros.add(libro);
+                } 
+                c++;
+            }
+           
         } finally { 
             session.close(); 
         }  

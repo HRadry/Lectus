@@ -2,35 +2,25 @@ package webapp.lectus.models;
 
 public class Grupo implements java.io.Serializable {
 
-    private int idGrupo;
-    private int idCarrera;
+    private Integer idGrupo;
     private String grupo;
     private String semestre;
 
     public Grupo() {
     }
 
-    public Grupo(int idGrupo, int idCarrera, String grupo, String semestre) {
+    public Grupo(Integer idGrupo, String grupo, String semestre) {
         this.idGrupo = idGrupo;
-        this.idCarrera = idCarrera;
         this.grupo = grupo;
         this.semestre = semestre;
     }
 
-    public int getIdGrupo() {
+    public Integer getIdGrupo() {
         return idGrupo;
     }
 
-    public void setIdGrupo(int idGrupo) {
+    public void setIdGrupo(Integer idGrupo) {
         this.idGrupo = idGrupo;
-    }
-
-    public int getIdCarrera() {
-        return idCarrera;
-    }
-
-    public void setIdCarrera(int idCarrera) {
-        this.idCarrera = idCarrera;
     }
 
     public String getGrupo() {
@@ -47,7 +37,8 @@ public class Grupo implements java.io.Serializable {
 
     public void setSemestre(String semestre) {
         this.semestre = semestre;
-    }       
+    }
+   
 }
 
 

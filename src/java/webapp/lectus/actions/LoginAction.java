@@ -21,7 +21,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
     LoginDao loginDao = new LoginDao();
     Usuario userLogged = new Usuario();
 
-    private int matricula;
+    private String correo;
     private String password;
     
     Usuario userField;
@@ -31,12 +31,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
     String revisor = "revisor";
     String administrador = "administrador";
 
-    public int getMatricula() {
-        return matricula;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getPassword() {
@@ -66,10 +66,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
     }*/
     
      public String loginRegister() throws Exception {
-        userLogged = loginDao.find(this.getMatricula(), this.getPassword());
+        userLogged = loginDao.find(this.getCorreo(), this.getPassword());
         if (userLogged != null) {
             sessionMap.put("userLogged", userLogged);//userLogged
-            System.out.println("prueba session in: " + sessionMap.get("userName"));
+            System.out.println("prueba session in: " + sessionMap.get("userLogged"));
             if ("Alumno".equals(userLogged.getTipoUsuario())) {
                 return alumno;
             } else if ("Revisor".equals(userLogged.getTipoUsuario())) {

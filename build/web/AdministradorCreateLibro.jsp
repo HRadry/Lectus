@@ -62,6 +62,7 @@
         <main role="main" class="inner cover container mt-4 mb-2">                     
             <section class="form-container d-flex w-100 h-100 pt-md-2 p-3 mx-auto flex-column">
                 <form class="needs-validation" novalidate action="libro/store" method="POST">
+                    <input type="hidden" name="libro.estatus" value="Disponible">
                     <div class="row">
                         <div class="col-md-6">
                             <legend class="font-weight-normal">1.- Datos generales del libro</legend>

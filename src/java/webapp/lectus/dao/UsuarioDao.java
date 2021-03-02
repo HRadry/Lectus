@@ -66,20 +66,6 @@ public class UsuarioDao {
         }
         return usuario;
     }
-
-    public Carrera findCarrera(int idUsuario) throws HibernateException {
-        
-        Carrera carrera = null;
-        try {
-            System.out.println("usuarioDao" + idUsuario);
-            iniciaOperacion();
-            carrera = (Carrera) session.load(Carrera.class, idUsuario);
-        
-        } finally {
-            session.close();
-        }
-        return carrera;
-    }
     
     public List<Usuario> all(String tipoUsuario) throws HibernateException {
         List<Usuario> listaUsuarios = null;
@@ -94,8 +80,7 @@ public class UsuarioDao {
             Usuario emp = null;
 
             while (ite.hasNext()) {
-                emp = ite.next();
-                
+                emp = ite.next();                
             }
         } finally {
             session.close();
@@ -103,17 +88,6 @@ public class UsuarioDao {
         return listaUsuarios;
     }
 
-    public List<Carrera> carreras() throws HibernateException {
-        List<Carrera> listaCarreras = null;
-
-        try {
-            iniciaOperacion();
-            listaCarreras = session.createQuery("from Carrera").list();
-        } finally {
-            session.close();
-        }
-        return listaCarreras;
-    }
     private void iniciaOperacion() throws HibernateException {
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();

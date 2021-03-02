@@ -3,14 +3,20 @@
 <hibernate-mapping>
     <class name="webapp.lectus.models.Alumno" table="alumno" catalog="lectus" optimistic-lock="version">
         <id name="idAlumno" type="java.lang.Integer">
-            <column name="idAlumno" />
-            <generator class="identity" />
+            <column name="idAlumno"/>
+            <generator class="identity"/>
         </id>
         <property name="idUsuario" type="java.lang.Integer">
-            <column name="idUsuario" length="45" not-null="true" />
+            <column name="idUsuario" length="45" not-null="true"/>
         </property>
         <property name="idGrupo" type="java.lang.Integer">
-            <column name="idGrupo" length="45" not-null="true" />
+            <column name="idGrupo" length="45" not-null="true"/>
+        </property>  
+        <property name="matricula" type="java.lang.Integer">
+            <column name="matricula" length="45" not-null="true"/>
+        </property>  
+        <property name="telefono" type="java.lang.Double">
+            <column name="telefono" length="45" not-null="true"/>
         </property>   
     </class>    
 </hibernate-mapping>

@@ -6,32 +6,47 @@
             <column name="idLibro"/>
             <generator class="identity"/>
         </id>
-        <property name="titulo" type="string">
+        <property name="titulo" type="java.lang.String">
             <column length="80" name="titulo" not-null="true"/>
         </property>
-        <property name="autor" type="string">
+        <property name="autor" type="java.lang.String">
             <column length="80" name="autor" not-null="true"/>
         </property>
-        <property name="genero" type="string">
+        <property name="genero" type="java.lang.String">
             <column length="80" name="genero" not-null="true"/>
         </property>
         <property name="numeroPagina" type="java.lang.Integer">
             <column length="80" name="numeroPagina" not-null="true"/>
         </property>
-        <property name="sinopsis" type="string">
-            <column length="999" name="sinopsis" not-null="true"/>
+        <property name="sinopsis" type="java.lang.String">
+            <column length="999" name="sinopsis" not-null="false"/>
         </property>
         <property name="anoPublicacion" type="java.lang.Integer">
-            <column length="80" name="anoPublicacion" not-null="true"/>
+            <column length="80" name="anoPublicacion" not-null="false"/>
         </property>
-        <property name="edicion" type="string">
-            <column length="45" name="edicion" not-null="true"/>
+        <property name="edicion" type="java.lang.String">
+            <column length="45" name="edicion" not-null="false"/>
         </property>   
-        <property name="portada" type="string">
-            <column length="999" name="portada" not-null="true"/>
+        <property name="portada" type="java.lang.String">
+            <column length="999" name="portada" not-null="false"/>
         </property> 
-        <property name="archivoPDF" type="string">
+        <property name="archivoPDF" type="java.lang.String">
             <column length="999" name="archivoPDF" not-null="true"/>
         </property>  
+        <property name="numeroMaximoRevisores" type="java.lang.Integer">
+            <column length="80" name="numeroMaximoRevisores" not-null="false"/>
+        </property>  
+        <property name="numeroMaximoAlumnos" type="java.lang.Integer">
+            <column length="80" name="numeroMaximoAlumnos" not-null="false"/>
+        </property>
+        <property name="fechaCreacion" type="date">
+            <column length="10" name="fechaCreacion" not-null="false"/>
+        </property>
+        <property name="fechaActualizacion" type="date">
+            <column length="10" name="fechaActualizacion" not-null="false"/>
+        </property>
+        <property name="estatus" type="java.lang.String">
+            <column length="45" name="estatus" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

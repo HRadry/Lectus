@@ -8,7 +8,7 @@
     
     <!-- index-->    
     <package name="index" extends="struts-default" namespace="/index">  
-        <action name="home" class="webapp.lectus.actions.AlumnoLibroAction" method="list">  
+        <action name="home" class="webapp.lectus.actions.LibroAction" method="list">  
             <result name="success">/Home.jsp</result>            
         </action> 
         <action name="lineamiento" class="webapp.lectus.actions.LineamientoAction" method="execute">
@@ -171,7 +171,7 @@
             <result name="success">/panelAlumno.jsp</result>
         </action>     
         
-        <action name="libros" class="webapp.lectus.actions.AlumnoLibroAction" method="list">
+        <action name="libros" class="webapp.lectus.actions.LibroAction" method="list">
             <result name="success">/AlumnoListLibro.jsp</result>
         </action>
         <action name="entregaReporte" class="webapp.lectus.actions.EntregaReporteAction" method="execute">
@@ -259,11 +259,11 @@
         <!-- ******************************************************** -->
     </package>
         
-    <!-- Sugerencia --> 
+    <!-- Sugerencia  
     <package name="sugerencia" extends="struts-default" namespace="/sugerencia">
         <action name="send" class="webapp.lectus.actions.SugerenciaAction" method="execute">
             <result name="success">/AlumnoCreateSugerencia.jsp</result>
-            <!--<result name="success">/home.jsp</result>-->
+            <result name="success">/home.jsp</result>
         </action>
         
         <action name="store" class="webapp.lectus.actions.SugerenciaAction" method="store">
@@ -283,7 +283,7 @@
             <result name="success" type="redirect">/sugerencia/list</result>
         </action>                                
     </package>   
-    
+    -->
     <!-- Parcial --> 
     <package name="parcial" extends="struts-default" namespace="/parcial">
         <action name="list" class="webapp.lectus.actions.ParcialAction" method="list">

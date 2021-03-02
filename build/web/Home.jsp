@@ -48,7 +48,7 @@
 
         <div class="container text-center mt-4">
             <div class="mt-5 mb-5">
-                <p class="display-4 mt-5">Bienvenido al sistema de <br> reportes de lecturas</p>
+                <p class="display-4 mt-5">Bienvenido al sistemaadriana<br> reportes de lecturas</p>
                 <p class="mb-5 lead">Para poder hacer uso de Lectus inicie sesión con tu cuenta de alumno o revisor.</p>                
             </div>
 

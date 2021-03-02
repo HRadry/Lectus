@@ -2,50 +2,52 @@ package webapp.lectus.models;
 
 public class AlumnoLibro implements java.io.Serializable {
 
-    private int idAlumnoLibro;
-    private int idUsuario;
-    private int idLibro;
-    private int idRevisor;
+    private Integer idAlumnoLibro;
+    private Integer idUsuario;
+    private Integer idLibro;
+    private Integer idRevisor;
 
     public AlumnoLibro() {
     }
 
-    public AlumnoLibro(int idAlumnoLibro, int idUsuario, int idLibro, int idRevisor) {
+    public AlumnoLibro(Integer idAlumnoLibro, Integer idUsuario, Integer idLibro, Integer idRevisor) {
         this.idAlumnoLibro = idAlumnoLibro;
         this.idUsuario = idUsuario;
         this.idLibro = idLibro;
         this.idRevisor = idRevisor;
     }
 
-    public int getIdAlumnoLibro() {
+    public Integer getIdAlumnoLibro() {
         return idAlumnoLibro;
     }
 
-    public void setIdAlumnoLibro(int idAlumnoLibro) {
+    public void setIdAlumnoLibro(Integer idAlumnoLibro) {
         this.idAlumnoLibro = idAlumnoLibro;
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public int getIdLibro() {
+    public Integer getIdLibro() {
         return idLibro;
     }
 
-    public void setIdLibro(int idLibro) {
+    public void setIdLibro(Integer idLibro) {
         this.idLibro = idLibro;
     }
 
-    public int getIdRevisor() {
+    public Integer getIdRevisor() {
         return idRevisor;
     }
 
-    public void setIdRevisor(int idRevisor) {
+    public void setIdRevisor(Integer idRevisor) {
         this.idRevisor = idRevisor;
     }
+
+   
 }

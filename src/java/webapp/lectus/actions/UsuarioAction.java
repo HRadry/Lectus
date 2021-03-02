@@ -5,6 +5,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Container;
 import java.util.ArrayList;
 import java.util.List;
+import webapp.lectus.dao.AlumnoDao;
+import webapp.lectus.dao.CarreraDao;
+import webapp.lectus.dao.GrupoDao;
 import webapp.lectus.dao.UsuarioDao;
 import webapp.lectus.models.Alumno;
 import webapp.lectus.models.Carrera;
@@ -39,27 +42,38 @@ public class UsuarioAction extends ActionSupport {
     }
         
     public String create() throws Exception {
+        CarreraDao carreraDao=new CarreraDao();
+        carreras = carreraDao.all();
+        System.out.println(carreras);
         return SUCCESS;
     }
     
     public String store() throws Exception {
-        UsuarioDao UsuarioDao=new UsuarioDao();
-        int idRegUsuario= UsuarioDao.insert(usuario);
+        UsuarioDao usuarioDao=new UsuarioDao();
+        GrupoDao grupoDao=new GrupoDao();
+        AlumnoDao alumnoDao= new AlumnoDao();
+        int idUsuario= usuarioDao.insert(usuario);
+        int idGrupo= grupoDao.insert(grupo);
+        alumno.setIdUsuario(idUsuario);
+        alumno.setIdGrupo(idGrupo);
+        alumnoDao.insert(alumno);
         mensaje = usuario.getNombre() + " se registró exitosamente en la lista de contactos";
         return SUCCESS;
     }
     
     public String details() throws Exception {
         UsuarioDao UsuarioDao=new UsuarioDao();
+        CarreraDao CarreraDao= new CarreraDao();
         usuario = UsuarioDao.find(getId());
-        carreras = UsuarioDao.carreras();
+        carreras = CarreraDao.all();
         return SUCCESS;
     }
     
     public String edit() throws Exception {
         UsuarioDao UsuarioDao=new UsuarioDao();
+        CarreraDao CarreraDao= new CarreraDao();
         usuario = UsuarioDao.find(getId());
-        carreras = UsuarioDao.carreras();
+        carreras = CarreraDao.all();
         return SUCCESS;
     }
     
@@ -96,6 +110,10 @@ public class UsuarioAction extends ActionSupport {
 
     public List<Carrera> getCarreras() {
         return carreras;
+    }
+
+    public void setCarreras(List<Carrera> carreras) {
+        this.carreras = carreras;
     }
 
     public Carrera getCarrera() {

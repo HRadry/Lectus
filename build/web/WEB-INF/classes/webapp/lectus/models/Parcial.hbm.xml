@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class catalog="lectus" name="webapp.lectus.models.Parcial" optimistic-lock="version" table="parcial">
+    <class name="webapp.lectus.models.Parcial"  catalog="lectus" table="parcial" optimistic-lock="version">
         <id name="idParcial" type="java.lang.Integer">
             <column name="idParcial"/>
             <generator class="identity"/>
         </id>
-        <property name="nombre" type="string">
+        <property name="nombre" type="java.lang.String">
             <column length="80" name="nombre" not-null="true"/>
         </property>
         <property name="fechaInicio" type="date">

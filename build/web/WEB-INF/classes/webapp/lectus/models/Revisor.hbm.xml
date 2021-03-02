@@ -11,6 +11,18 @@
         </property>
         <property name="idLibro" type="java.lang.Integer">
             <column name="idLibro" length="45" not-null="true" />
+        </property>
+        <property name="idArea" type="java.lang.Integer">
+            <column name="idArea" length="45" not-null="true" />
         </property>   
+        <property name="numeroEmpleado" type="java.lang.Integer">
+            <column name="numeroEmpleado" length="45" not-null="true" />
+        </property>
+        <property name="numeroCubo" type="java.lang.Integer">
+            <column name="numeroCubo" length="45" not-null="true" />
+        </property>
+         <property name="cargo" type="java.lang.String">
+            <column name="cargo" length="45" not-null="true" />
+        </property>
     </class>    
 </hibernate-mapping>

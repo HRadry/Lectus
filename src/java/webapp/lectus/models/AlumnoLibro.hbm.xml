@@ -3,17 +3,17 @@
 <hibernate-mapping>
     <class name="webapp.lectus.models.AlumnoLibro" table="alumnolibro" catalog="lectus" optimistic-lock="version">
         <id name="idAlumnoLibro" type="java.lang.Integer">
-            <column name="idAlumnoLibro" />
-            <generator class="identity" />
+            <column name="idAlumnoLibro"/>
+            <generator class="identity"/>
         </id>
         <property name="idUsuario" type="java.lang.Integer">
-            <column name="idUsuario" length="45" not-null="false" />
+            <column name="idUsuario" length="45" not-null="false"/>
         </property>
         <property name="idLibro" type="java.lang.Integer">
-            <column name="idLibro" length="45" not-null="false" />
+            <column name="idLibro" length="45" not-null="false"/>
         </property>   
         <property name="idRevisor" type="java.lang.Integer">
-            <column name="idRevisor" length="45" not-null="false" />
+            <column name="idRevisor" length="45" not-null="false"/>
         </property>
     </class>    
 </hibernate-mapping>

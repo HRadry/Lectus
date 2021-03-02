@@ -2,48 +2,38 @@ package webapp.lectus.models;
 
 public class EntregaReporte implements java.io.Serializable {
 
-    private int idEntregaReporte;
-    private int idAlumno;
-    private int idParcial;
+    private Integer idEntregaReporte;
+    private Integer idParcial;
     private String calificacion;
     private String comentario;
     private String reportePDF;
-    private int idAlumnoLibro;
+    private Integer idAlumnoLibro;
 
     public EntregaReporte() {
     }
 
-    public EntregaReporte(int idEntregaReporte, int idAlumno, int idParcial, String calificacion, String comentario, String reportePDF, int idAlumnoLibro) {
+    public EntregaReporte(Integer idEntregaReporte, Integer idParcial, String calificacion, String comentario, String reportePDF, Integer idAlumnoLibro) {
         this.idEntregaReporte = idEntregaReporte;
-        this.idAlumno = idAlumno;
         this.idParcial = idParcial;
         this.calificacion = calificacion;
         this.comentario = comentario;
         this.reportePDF = reportePDF;
         this.idAlumnoLibro = idAlumnoLibro;
-    }    
+    }
 
-    public int getIdEntregaReporte() {
+    public Integer getIdEntregaReporte() {
         return idEntregaReporte;
     }
 
-    public void setIdEntregaReporte(int idEntregaReporte) {
+    public void setIdEntregaReporte(Integer idEntregaReporte) {
         this.idEntregaReporte = idEntregaReporte;
     }
 
-    public int getIdAlumno() {
-        return idAlumno;
-    }
-
-    public void setIdAlumno(int idAlumno) {
-        this.idAlumno = idAlumno;
-    }
-
-    public int getIdParcial() {
+    public Integer getIdParcial() {
         return idParcial;
     }
 
-    public void setIdParcial(int idParcial) {
+    public void setIdParcial(Integer idParcial) {
         this.idParcial = idParcial;
     }
 
@@ -70,12 +60,14 @@ public class EntregaReporte implements java.io.Serializable {
     public void setReportePDF(String reportePDF) {
         this.reportePDF = reportePDF;
     }
-    
-    public int getIdAlumnoLibro() {
+
+    public Integer getIdAlumnoLibro() {
         return idAlumnoLibro;
     }
 
-    public void setIdAlumnoLibro(int idAlumnoLibro) {
+    public void setIdAlumnoLibro(Integer idAlumnoLibro) {
         this.idAlumnoLibro = idAlumnoLibro;
     }
+
+       
 }

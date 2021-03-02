@@ -9,7 +9,7 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
-    /*private static final SessionFactory sessionFactory;
+    private static final SessionFactory sessionFactory;
     private static ServiceRegistry serviceRegistry;
    
     static {
@@ -28,10 +28,10 @@ public class HibernateUtil {
     
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
-    }*/
+    }
     
     // Puedes ocupar cualquiera de estos métodos (la que está comentada o la de abajo, igual funcionan)
-    
+    /*
     private static SessionFactory sessionFactory;
  
     public static SessionFactory getSessionFactory() {
@@ -47,5 +47,5 @@ public class HibernateUtil {
         }
  
         return sessionFactory;
-    }
+    }*/
 }

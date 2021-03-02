@@ -80,11 +80,11 @@
                 <tbody>
                     <s:iterator value="usuarios">
                         <tr class="align-middle">                    
-                            <td class="align-middle"><s:property value="matricula"/></td>
+                           <td class="align-middle"><s:property value="matricula"/></td>
                             <td class="align-middle"><s:property value="%{nombre +' ' + apellidoPaterno + ' ' + apellidoMaterno}"/></td>
                             <td class="align-middle"><s:property value="carrera"/></td>
                             <td class="align-middle"><s:property value="grupo"/></td>
-
+                            
                             <s:url action="details" var="urlDetails">
                                 <s:param name="id"><s:property value="idUsuario"/></s:param>
                             </s:url>

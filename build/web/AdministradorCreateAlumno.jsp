@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
@@ -101,7 +102,7 @@
 
                                 <div class="form-group">
                                     <label for="telefono" class="font-weight-bolder">Número telefónico</label>
-                                    <input type="number" class="form-control form-control-lg" id="telefono" name="usuario.telefono" placeholder="9512345678" required>
+                                    <input type="number" class="form-control form-control-lg" id="telefono" name="alumno.telefono" placeholder="9512345678" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -115,13 +116,10 @@
                                 <div class="form-group">
                                     <label for="carrera" class="font-weight-bolder">Carrera</label>
                                     <select class="form-control form-control-lg" id="carrera" name="usuario.carrera" required>
-                                        <option selected disabled value="">Seleccione una opción...</option>       
-                                        <option value="Ingeniería Forestal">Ingeniería Forestal</option>
-                                        <option value="Licenciatura en Biología">Licenciatura en Biología</option>
-                                        <option value="Licenciatura en Informática">Licenciatura en Informática</option>
-                                        <option value="Licenciatura en Ciencias Ambientales">Licenciatura en Ciencias Ambientales</option>
-                                        <option value="Ingeniería en Tecnología de la Madera">Ingeniería en Tecnología de la Madera</option>
-                                        <option value="Licenciatura en Administración Turística">Licenciatura en Administración Turística</option>
+                                        <option selected disabled value="">Seleccione una opción...</option>      
+                                        <c:forEach items="${carreras}" var="carreras">
+                                        <option value="${carreras.getIdCarrera()}">${carreras.getNombre()}</option>
+                                        </c:forEach>
                                     </select>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
@@ -132,7 +130,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="semestre" class="font-weight-bolder">Semestre</label>
-                                            <select class="form-control form-control-lg" id="semestre" name="usuario.semestre" required>
+                                            <select class="form-control form-control-lg" id="semestre" name="grupo.semestre" required>
                                                 <option selected disabled value="">Seleccione...</option>
                                                 <option value="Primero">Primero</option>
                                                 <option value="Segundo">Segundo</option>
@@ -154,7 +152,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="grupo" class="font-weight-bolder">Grupo</label>
-                                            <input type="text" class="form-control form-control-lg" id="grupo" name="usuario.grupo" placeholder="703" required>
+                                            <input type="text" class="form-control form-control-lg" id="grupo" name="grupo.grupo" placeholder="703" required>
                                             <div class="invalid-feedback">
                                                 Este campo es necesario 👆, por favor, acomplételo.
                                             </div>
@@ -163,7 +161,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="matricula" class="font-weight-bolder">Matrícula</label>
-                                    <input type="number" class="form-control form-control-lg" id="matricula" name="usuario.matricula" placeholder="1000000009" required>
+                                    <input type="number" class="form-control form-control-lg" id="matricula" name="alumno.matricula" placeholder="1000000009" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -172,7 +170,7 @@
                                 <div class="form-group">
                                     <label for="password" class="font-weight-bolder">Contraseña</label> 
                                     <div class="input-group mb-3">                                                                           
-                                        <input type="text" class="form-control form-control-lg" id="password" name="usuario.password" placeholder="**********" required>
+                                        <input type="password" class="form-control form-control-lg" id="password" name="usuario.password" placeholder="**********" required>
 
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-lg btn-outline-warning px-2" id="btn-password"><img src="../img/keys.svg" height="25" alt="icon" loading="lazy"></button>                                    
