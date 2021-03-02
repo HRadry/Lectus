@@ -21,6 +21,11 @@
         <!-- Custom styles for DataTable -->
         <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+        <style>                                     
+            table {
+                table-layout: fixed;
+            }
+        </style>
     </head>
 
     <body>
@@ -48,29 +53,22 @@
                 </div>
             </div>
         </nav>
-
+        
         <br>
         <div class="text-center mt-4 container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/lectus/panel/administrador">Panel</a></li>
-                <li class="breadcrumb-item"><a href="/lectus/revisor/list">Administrar revisores</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Asignar alumnos</li>
-            </ol>
             <div class="pricing-header mb-4 text-center animate-opacity container">
-                <h1 class="display-6">Asignación de alumnos al revisor ${nombreRevisor}</h1>
+                <h1 class="display-6">Administración de alumnos <img src="../img/estudiante.svg" height="40" alt="icon" loading="lazy"></h1>
             </div>
         </div>
-        <input type="hidden" value="${idRevisor}"/><!--Id del Revisor-->
-        <input type="hidden" value="${nombreRevisor}"/><!--Id del Revisor-->
 
         <div class="table-responsive container mt-4 mb-4">
             <table id="example" class="table table-striped">
                 <thead class="text-center">
                     <tr class="table-active">
-                        <th class="align-middle">Matrícula</th>
                         <th class="align-middle">Nombre</th>
-                        <th class="align-middle">Carrera</th>
-                        <th class="align-middle">Grupo</th>
+                        <th class="align-middle">Apellido paterno</th>
+                        <th class="align-middle">Apellido materno</th>
+                        <th class="align-middle">Matrícula</th>
                         <th class="align-middle">Detalles</th>                                            
                         <th class="text-center">Seleccionar</th>
                     </tr>
@@ -79,61 +77,51 @@
                 <tbody>
                     <s:iterator value="usuarios">
                         <tr class="align-middle">                            
+                            <td class="align-middle"><s:property value="nombre"/></td>
+                            <td class="align-middle"><s:property value="apellidoPaterno"/></td>
+                            <td class="align-middle"><s:property value="apellidoMaterno"/></td>
                             <td class="align-middle"><s:property value="matricula"/></td>
-                            <td class="align-middle"><s:property value="%{nombre +' ' + apellidoPaterno + ' ' + apellidoMaterno}"/></td>
-                            <td class="align-middle"><s:property value="carrera"/></td>
-                            <td class="align-middle"><s:property value="grupo"/></td>
 
-                            <s:url action="detailsAlumno" var="urlDetails">
+                            <s:url action="details" var="urlDetails">
                                 <s:param name="id"><s:property value="idUsuario"/></s:param>
                             </s:url>
                             <td class="text-center">
-                                <a class="btn btn-outline-info" href="${urlDetails}" role="button"> <img src="../svg/detalles.svg" width="35" height="35"> </a>
+                                <a class="btn btn-outline-info" href="${urlDetails}" role="button"> <img src="../img/info.svg" width="35" height="35"> </a>
                             </td>
-                            <td class="text-center">                                
-                                <a class="btn btn-outline-success" href="javascript:asignarId('${idUsuario}', '${nombre}', '${idRevisor}', '${nombreRevisor}')" role="button" aria-pressed="true">Seleccionar</a>
+                            <td class="text-center">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                             </td>
                         </tr>
                     </s:iterator>                  
                 </tbody>
-                <tfoot class="text-center">
-                    <tr class="table-active">
-                        <th class="align-middle">Matrícula</th>
-                        <th class="align-middle">Nombre</th>
-                        <th class="align-middle">Carrera</th>
-                        <th class="align-middle">Grupo</th>
-                        <th class="align-middle">Detalles</th>                                            
-                        <th class="text-center">Seleccionar</th>               
-                    </tr>
             </table>
             <br>
-            <div class="text-center mt-2">                              
-                <a class="button btn btn-lg btn-color-out" href="/lectus/revisor/list" role="button"><i data-feather="arrow-left"></i> Regresar</a>                                                
-            </div>
+            <button type="submit" class="btn btn-lg btn-color font-weight-normal float-right">Guardar <img src="../img/floppy-disk.svg" height="25" alt="icon" loading="lazy"></button>
         </div>        
 
 
-       <div class="modal fade" id="modalAsignar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-success">
-                        <h5 class="modal-title text-light" id="exampleModalCenterTitle"> Asignar alumno </h5>
+                <div class="modal-content" style="border-color: #dc3545;">
+                    <div class="modal-header" style="background-color: #dc3545;">
+                        <h5 class="modal-title text-light" id="exampleModalCenterTitle"> Eliminar registro</h5>
                         <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
-                            <img src="../svg/cancel.svg" width="20" height="20">
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="row modal-body text-center">
                         <div class="col-3">
-                            <img src="../svg/cheque.svg" height="90">       
+                            <img src="../img/warning.svg" height="90">       
                         </div>
 
                         <div class="col-9 mt-3">
-                            <p>¿Desea asignar el alumno<br>"<span class="text-success" id="alumno"></span>" al revisor"<span class="text-success" id="revisor"></span>"?<br></p>
+                            <p>¿Desea eliminar el registro<br>"<span class="text-danger" id="titulo-in"></span>"?<br></p>
+                            <span style="color:gray;">Esta operación no se podrá deshacer</span>
                         </div>
                     </div>
                     <div class="modal-footer" style="justify-content: center;">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><b>Cancelar</b></button>
-                        <button type="button" class="btn btn-success" id="btnAceptar"><b>Aceptar</b></button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"> <b>Cancelar <img src="../img/cancel-2.svg" height="20"></b> </button>
+                        <button type="button" class="btn btn-outline-danger" id="btnDelete"> <b>Aceptar <img src="../img/check.svg" height="25"></b> </button>
                     </div>
                 </div>
             </div>
@@ -147,16 +135,19 @@
 
         <!-- Bootstrap core JavaScript -->      
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>        
-        <!-- ================================================== -->  
-        <script src="https://unpkg.com/feather-icons"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.js"></script>
+        <!-- ================================================== -->
+
+        <!-- Bootstrap core Data Table JQuery -->    
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>    
+        <!-- ================================================== -->
 
         <script type="text/javascript">
             $(document).ready(function () {
-                feather.replace();
-                
                 $('#example').DataTable({
                     "oLanguage": {
                         "sSearch": '<a class="btn btn-lg searchBtn" style="color:hsl(357, 72%, 40%)" id="searchBtn"> <b> Buscar algún registro <img src="../img/buscar.svg" height="25"></b> </a>',
@@ -210,11 +201,10 @@
                 });
             });
 
-            function asignarId(id, nombre,idRevisor,nombreRevisor) { // 1 se recibe tu idCono
+            function asignarId(id, nombre) { // 1 se recibe tu idCono
                 idUsuario = id;
-                document.getElementById("alumno").innerHTML = nombre;
-                document.getElementById("revisor").innerHTML = nombreRevisor;
-                $("#modalAsignar").modal("show"); // 2 se muestra el modal
+                document.getElementById("titulo-in").innerHTML = nombre;
+                $("#modalDelete").modal("show"); // 2 se muestra el modal
             }
 
             function eliminarCono(id) { //5 se ejecuta el controlador pasandole el idCono

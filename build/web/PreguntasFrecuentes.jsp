@@ -6,15 +6,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Módulo de los lineamientos para la entrega del reporte de lectura">
+        <meta name="description" content="Módulo para las preguntas frecuentes">
         <title>Preguntas frecuentes</title>
-
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
         <!-- Favicons -->
         <link rel="icon" href="../img/logo.svg" sizes="32x32" type="image/png">
-
         <!-- Custom styles for this template -->
         <link href="../css/principal.css" rel="stylesheet">
         <style>
@@ -26,7 +23,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark background-nav border-bottom shadow-sm p-3 px-md-4 mb-3">
+        <nav class="navbar navbar-expand-md navbar-dark background-primary border-bottom shadow-sm p-3 px-md-4 mb-3">
             <div class="container">
                 <a class="navbar-brand" href="/lectus/index/home"><img src="../img/logo-white.svg" width="180" height="40" class="d-inline-block align-top" alt="Logo de la aplicación" loading="lazy"></a>                
             </div>
@@ -45,11 +42,11 @@
             </div>
 
             <div class="accordion mx-3 mx-md-5" id="accordionExample">
-                <div class="card border-line">
+                <div class="card border-line-primary">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
                             <button class="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Primera pregunta
+                                <img src="../img/dropdown.svg" width="20" height="20"> Primera pregunta 
                             </button>
                         </h2>
                     </div>
@@ -60,11 +57,11 @@
                     </div>
                 </div>
                 
-                <div class="card border-line">
+                <div class="card border-line-primary">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
                             <button class="btn btn-block text-left font-weight-bold collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Segunda pregunta
+                                <img src="../img/dropdown.svg" width="20" height="20"> Segunda pregunta
                             </button>
                         </h2>
                     </div>
@@ -75,7 +72,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <!-- Bootstrap core JavaScript -->      

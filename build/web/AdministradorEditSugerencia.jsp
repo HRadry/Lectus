@@ -5,8 +5,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Módulo para agregar un nuevo alumno">        
-        <title>Agregar nuevo alumno</title>
+        <meta name="description" content="Módulo para editar libro">        
+        <title>Editar libro</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <!-- Favicons -->
@@ -45,138 +45,77 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/lectus/panel/administrador">Panel</a></li>
-                    <li class="breadcrumb-item"><a href="/lectus/revisor/list">Administrar revisores</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Agregar nuevo revisor</li>
+                    <li class="breadcrumb-item"><a href="/lectus/sugerencia/list">Administrar libros sugeridos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Editar libro sugereido</li>
                 </ol>
             </nav>
 
             <div>
-                <h1 class="display-6">Agregar nuevo revisor</h1>
+                <h1 class="display-6">Editar libro sugerido</h1>
             </div>
         </div>
 
         <main role="main" class="inner cover container mt-4 mb-2">                     
             <section class="form-container d-flex w-100 h-100 pt-md-2 p-3 mx-auto flex-column">
-                <form class="needs-validation" novalidate action="/lectus/revisor/store" method="POST">
-                    <input type="hidden" name="usuario.tipoUsuario" value="Revisor">
+                <form class="needs-validation" novalidate action="sugerencia/update" method="POST">
+                    <input type="hidden" name="sugerencia.idSugerencia" value="${sugerencia.getIdSugerencia()}">
                     <div class="row">
                         <div class="col-md-6">
-                            <legend class="font-weight-normal">1.- Datos generales del revisor</legend>
+                            <legend class="font-weight-normal">1.- Datos generales del libro</legend>
                             <div class="form-group">
-                                <label for="nombre" class="font-weight-bolder">Nombre</label>
-                                <input type="text" class="form-control form-control-lg" id="nombre" name="usuario.nombre" placeholder="Laura" required>
+                                <label for="titulo" class="font-weight-bolder">Título</label>
+                                <input type="text" class="form-control form-control-lg" id="titulo" name="sugerencia.titulo" value="${sugerencia.getTitulo()}" size="80" maxlength="80" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="apellidoPaterno" class="font-weight-bolder">Apellido paterno</label>
-                                <input type="text" class="form-control form-control-lg" id="apellidoPaterno" name="usuario.apellidoPaterno" placeholder="López" required>
+                                <label for="autor" class="font-weight-bolder">Autor</label>
+                                <input type="text" class="form-control form-control-lg" id="autor" name="sugerencia.autor" value="${sugerencia.getAutor()}" size="80" maxlength="80" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="apellidoMaterno" class="font-weight-bolder">Apellido materno</label>
-                                <input type="text" class="form-control form-control-lg" id="apellidoMaterno" name="usuario.apellidoMaterno" placeholder="Núñez" required>
-                                <div class="invalid-feedback">
-                                    Este campo es necesario 👆, por favor, acomplételo.
-                                </div>
-                            </div>
-
-                            <legend class="font-weight-normal">2.- Datos de alta al sistema</legend>
-                            <div class="form-group">
-                                <label for="email" class="font-weight-bolder">Correo institucional</label>
-                                <input type="email" class="form-control form-control-lg" id="correo" name="usuario.correo" placeholder="laura@unsij.edu.mx" required>
-                                <div class="invalid-feedback">
-                                    Este campo es necesario 👆, por favor, acomplételo.
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password" class="font-weight-bolder">Contraseña</label> 
-                                <div class="input-group mb-3">                                                                           
-                                    <input type="text" class="form-control form-control-lg" id="password" name="usuario.password" placeholder="**********" required>
-
-                                    <div class="input-group-append">
-                                        <button type="button" class="btn btn-lg btn-out-tertiary px-2" id="btn-password"><img src="../img/keys.svg" height="25" alt="icon" loading="lazy"></button>                                    
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Este campo es necesario 👆, por favor, acomplételo.
-                                </div>
-                            </div>                                                                                                        
-                        </div>
-
-                        <div class="col-md-6">
-                            <legend class="font-weight-normal">3.- Datos institucionales</legend>
-                            <div class="form-group">
-                                <label for="numeroEmpleado" class="font-weight-bolder">Número de empleado</label>
-                                <input type="number" class="form-control form-control-lg" id="numeroEmpleado" name="usuario.numeroEmpleado" placeholder="1000000009" required>
-                                <div class="invalid-feedback">
-                                    Este campo es necesario 👆, por favor, acomplételo.
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="cargo" class="font-weight-bolder">Cargo</label>
-                                <input type="text" class="form-control form-control-lg" id="cargo" name="usuario.cargo" placeholder="Jefe de carrera" required>
-                                <div class="invalid-feedback">
-                                    Este campo es necesario 👆, por favor, acomplételo.
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="carrera" class="font-weight-bolder">Carrera</label>
-                                <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" required>
-                                    <option selected disabled value="">Seleccione...</option>       
-                                    <option>Ingeniería Forestal</option>
-                                    <option>Licenciatura en Biología</option>
-                                    <option>Licenciatura en Informática</option>
-                                    <option>Licenciatura en Ciencias Ambientales</option>
-                                    <option>Ingeniería en Tecnología de la Madera</option>
-                                    <option>Licenciatura en Administración Turística</option>
+                                <label for="genero" class="font-weight-bolder">Género</label>                                
+                                <select class="custom-select custom-select-lg" id="genero" name="sugerencia.genero" required>
+                                    <option selected hidden>${sugerencia.getGenero()}</option>                                       
+                                    <option>Cuento</option>
+                                    <option>Novela</option>
+                                    <option>Relato</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="area" class="font-weight-bolder">Área</label>
-                                <select class="custom-select custom-select-lg" id="area" name="usuario.area" required>
-                                    <option selected disabled value="">Seleccione...</option>                                                                                                                                                                                         
-                                    <option>Biblioteca</option>
-                                    <option>Centro de Idiomas</option>
-                                    <option>Construcción y Mantenimiento</option>
-                                    <option>Departameno de Redes</option>                                                                        
-                                    <option>División de Estudios de Postgrado</option>
-                                    <option>Instituto de Estudios Ambientales</option>
-                                    <option>Jefaturas</option>
-                                    <option>Recursos Humanos</option>
-                                    <option>Recursos Financieros</option>
-                                    <option>Recursos Materiales</option>
-                                    <option>Rectoría</option>
-                                    <option>Sala de Cómputo 1</option>
-                                    <option>Sala de Cómputo 2</option>
-                                    <option>Sala de Cómputo 3</option>
-                                    <option>Sala de Cómputo 4</option>
-                                    <option>Sala de Cómputo 5</option>
-                                    <option>Servicios Esolares</option>  
-                                    <option>Vice-Rectoría Académica</option>
-                                    <option>Vice-Rectoría Administrativa</option>
+                                <label for="edicion" class="font-weight-bolder">Edición</label>
+                                <!--<input type="text" class="form-control form-control-lg" id="edicion" name="sugerencia.edicion" minlength="7" maxlength="15" size="15" value="${sugerencia.getEdicion()}" required>-->
+                                <select class="custom-select custom-select-lg" id="genero" name="sugerencia.edicion" value="${sugerencia.getEdicion()}" required>
+                                    <option selected hidden>${sugerencia.getEdicion()}</option>                                       
+                                    <option>Primera</option>
+                                    <option>Segunda</option>
+                                    <option>Tercera</option>
+                                    <option>Cuarta</option>
+                                    <option>Quinta</option>
+                                    <option>Sexta</option>
+                                    <option>Séptima</option>
+                                    <option>Octava</option>
+                                    <option>Novena</option>
+                                    <option>Décima</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
-                                </div> 
-                            </div>                            
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="numeroCubo" class="font-weight-bolder">Número de cubo</label>
-                                    <input type="text" class="form-control form-control-lg" id="numeroCubo" name="usuario.numeroCubo" placeholder="13" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <label for="numeroPagina" class="font-weight-bolder">Número de páginas</label>
+                                    <input type="text" class="form-control form-control-lg" id="numeroPagina" name="sugerencia.numeroPagina" value="${sugerencia.getNumeroPagina()}" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -184,25 +123,86 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="extension" class="font-weight-bolder">Extensión del área</label>
-                                        <input type="text" class="form-control form-control-lg" id="extension" name="usuario.extension" placeholder="320" size="4" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <label for="anoPublicacion" class="font-weight-bolder">Año de publicación</label>
+                                        <input type="text" class="form-control form-control-lg" id="anoPublicacion" name="sugerencia.anoPublicacion" value="${sugerencia.getAnoPublicacion()}" size="4" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>
                                     </div>
-                                </div>                                                                
-                            </div>
 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Segunda columna -->
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="telefono" class="font-weight-bolder">Teléfono del área</label>
-                                <input type="phone" class="form-control form-control-lg" id="telefono" name="usuario.telefono" placeholder="951-123-456-7" size="45" minlength="10" maxlength="45" required>
+                                <label for="sinopsis" class="font-weight-bolder">Sinópsis</label>
+                                <textarea class="form-control text-justify" id="word" name="sugerencia.sinopsis" rows="8" size="800" maxlength="800" oninput="countWord()" required>${sugerencia.getSinopsis()}</textarea>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
-                            </div>                                                        
+                                <p><small id="show">0</small> <small> caracteres restantes de 800.</small></p>
+                            </div>
 
-                            <div class="text-center mt-4">
-                                <a href="/lectus/revisor/list" class="btn btn-lg btn-out-gray font-weight-normal my-2 mx-2">Cancelar</a>
+                            <legend class="font-weight-normal">2.- Cargar archivos</legend>
+                            <div class="form-group">
+                                <label for="portada" class="font-weight-bolder">Portada (imagen)</label> 
+                                <div class="input-group mb-3">                                                                           
+                                    <input type="text" class="form-control form-control-lg" id="portada" name="sugerencia.portada" value="${sugerencia.getPortada()}" required>                                    
+                                </div>
+                                <div class="invalid-feedback">
+                                    Este campo es necesario 👆, por favor, acomplételo.
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-4">
+                                <label for="archivoPDF" class="font-weight-bolder">Libro (PDF)</label>
+                                <div class="input-group mb-3">                                                                           
+                                    <input type="text" class="form-control form-control-lg" id="archivoPDF" name="sugerencia.archivoPDF" value="${sugerencia.getArchivoPDF()}"required>                                                                           
+                                </div>
+                                <div class="invalid-feedback">
+                                    Este campo es necesario 👆, por favor, acomplételo.
+                                </div>
+                            </div>
+
+                            <legend class="font-weight-normal">3.- Disponibilidad</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="numeroMaximoRevisores" class="font-weight-bolder">Número máximo de revisores</label>
+                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <div class="invalid-feedback">
+                                        Este campo es necesario 👆, por favor, acomplételo.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="numeroMaximoAlumnos" class="font-weight-bolder">Número máximo de alumnos</label>
+                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <div class="invalid-feedback">
+                                            Este campo es necesario 👆, por favor, acomplételo.
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status" class="font-weight-bolder">Status</label>
+                                <!--<input type="text" class="form-control form-control-lg" id="c" name="libro.edicion" placeholder="Segunda" required>-->
+                                <select class="custom-select custom-select-lg" id="status" name=" " value=" " required>
+                                    <option selected hidden>  </option>                                      
+                                    <option>Libro sugerido</option>  
+                                    <option>Libro disponible</option>
+                                    <option>Libro no disponible</option>                                                                          
+                                </select>
+                                <div class="invalid-feedback">
+                                    Este campo es necesario 👆, por favor, acomplételo.
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-3">
+                                <a href="list" class="btn btn-lg btn-out-gray font-weight-normal my-2 mx-2">Cancelar</a>
                                 <button type="submit" class="btn btn-lg btn-solid-secondary font-weight-normal">Guardar</button>
                             </div>
                         </div>
@@ -210,12 +210,22 @@
                 </form>
             </section>
         </main>
+
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="text-center">
+                        <img src="${sugerencia.portada}" width="200" height="250" class="img-thumbnail d-inline-block align-top rounded" alt="Portada del libro" loading="lazy">                                         
+                    </div>
+                </div>
+            </div>
+        </div>                                    
         <!-- Bootstrap core JavaScript -->      
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>        
-        <!-- ================================================== -->       
+        <!-- ================================================== -->
         <script type="text/javascript">
                                             (function camposVacios() {
                                                 'use strict';
@@ -277,43 +287,13 @@
                                                 for (var i = 0; i < split.length; i++) {
                                                     if (split[i] != "") {
                                                         count += 1;
-                                                        x = 425 - count;
+                                                        x = 800 - count;
                                                     }
                                                 }
 
                                                 // Display it as output 
                                                 document.getElementById("show")
                                                         .innerHTML = x;
-                                            }
-
-                                            $('.custom-file-input').on('change', function () {
-                                                var fileName = document.getElementById("nameFile1").files[0].name;
-                                                $(this).next('.form-control-file').addClass("selected").html(fileName);
-                                            });
-
-                                            $('.custom-file-input').on('change', function () {
-                                                var fileName = document.getElementById("nameFile2").files[0].name;
-                                                $(this).next('.form-control-file').addClass("selected").html(fileName);
-                                            });
-
-                                            /*Generador de contraseña*/
-                                            const input = document.querySelector('#password');
-                                            const button = document.querySelector('#btn-password');
-
-                                            button.addEventListener('click', () => {
-                                                input.value = GeneratePassword(16);
-                                            });
-
-                                            function GeneratePassword(length = 17) {
-                                                const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890@#$%&';
-
-                                                let password = '';
-
-                                                for (let i = 0; i < length; ++i) {
-                                                    let at = Math.floor(Math.random() * (charset.length + 1));
-                                                    password += charset.charAt(at);
-                                                }
-                                                return password;
                                             }
         </script>
     </body>

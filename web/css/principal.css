@@ -1,46 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-:root {
-    
-    --primary-color: hsl(160, 100%, 21%);/*verde*/
-    --secondary-color:hsl(12, 100%, 46%);/*naranja*/
-    --tertiary-color:hsl(204, 94%, 47%, .25);/*azul*/
-    --quaternary-color:hsl(17, 56%, 42%);/*cafe*/
-
-    --color-white: hsl(0, 0%, 100%);
-    --color-black: hsl(0, 0%, 0%);
-    --gray-color: hsl(208, 14%, 46%);
-    
-    /*--primary-color-alt: hsl(3, 76%, 60%);*/
-    --primary-color-acent: hsl(0, 100%, 24%);  
-    /*--primary-color-transparency: hsl(357, 72%, 40%, .25);*/
-}
-
-
-.border-line{
-    border: 1px;
-    border-style: solid;
-    border-color: var(--primary-color);
-}
-
-.color-text{
-    color: var(--primary-color);
-}
-
-
+/*---------------------------- Body ----------------------------*/
 body{
     font-family: 'Roboto', sans-serif !important;
-}
-
-.dropdown-toggle::after {
-    display: none;
 }
 
 .container {
     max-width: 960px;
 }
 
-/*Animación de botón*/
+/*---------------------------- Fonts ----------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/*---------------------------- Colors ----------------------------*/
+:root {
+    --primary-color:hsl(160, 100%, 21%);/*verde*/
+    --secondary-color:hsl(12, 100%, 46%);/*naranja*/
+    --tertiary-color:hsl(204, 94%, 47%);/*azul ,.25*/    
+
+    --opacity-color:hsl(204, 94%, 47%, .25);/*azul transparente*/ 
+    
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+    --gray-color: hsl(208, 14%, 46%);   
+    --tab-color: hsl(0, 0%, 95%, 1); /*color de filas elemento li (detalles)*/
+}
+
+/*---------------------------- Background´s ----------------------------*/
+.background-primary{
+    background-color: var(--primary-color);
+}
+
+.background-opacity{
+    background-color: var(--opacity-color);
+}
+
+.background-tab{
+    background-color: var(--tab-color);
+}
+
+/*---------------------------- Buttons Solid ----------------------------*/
+/*Verde*/
+.btn-solid-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-solid-primary:hover {
+    background-color: var(--white-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/*Naranja*/
+.btn-solid-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.btn-solid-secondary:hover {
+    background-color: var(--white-color);
+    color: var(--secondary-color);
+}
+
+/*Blanco*/
+.btn-solid-white {
+    background-color: var(--white-color);
+    border-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+.btn-solid-white:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+/*---------------------------- Buttons Outline ----------------------------*/
+/*Verde*/
+.btn-out-primary {  
+    background-color: var(--white-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-out-primary:hover {
+    background-color: var(--primary-color);    
+    border-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/*Naranja*/
+.btn-out-secondary {  
+    background-color: var(--white-color);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.btn-out-secondary:hover{
+    background-color: var(--secondary-color);    
+    border-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+/*Azul*/
+.btn-out-tertiary {
+    background-color: var(--white-color);
+    border-color: var(--tertiary-color);
+    color: var(--tertiary-color);
+}
+
+.btn-out-tertiary:hover {
+    background-color: var(--tertiary-color);    
+    border-color: var(--tertiary-color);
+    color: var(--white-color);
+}
+
+/*Blanco*/
+.btn-out-white {
+    /*background-color: var(--primary-color);
+    border-color: var(--white-color);
+    color: var(--white-color);*/
+    background-color: var(--white-color);
+    border-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+.btn-out-white:hover {
+    /*background-color: var(--white-color);    
+    border-color: var(--white-color);
+    color: var(--primary-color);*/
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+/*Gris*/
+.btn-out-gray {
+    background-color: var(--white-color);
+    border-color: var(--gray-color);
+    color: var(--gray-color);
+}
+
+.btn-out-gray:hover {
+    background-color: var(--gray-color);    
+    border-color: var(--gray-color);
+    color: var(--white-color);
+}
+
+/*---------------------------- Buttons focus ----------------------------*/
+.btn.focus,
+.btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--opacity-color);
+}
+
+/*---------------------------- Animations Buttons ----------------------------*/
 .button svg{
     margin-left: .4rem;
     transition: transform .2s;
@@ -53,100 +167,132 @@ body{
     transform: translateX(.4rem);
 }
 
-
-/* --------------------- Nav ------------------------ */
-
-.background-nav {
-    background-color: var(--primary-color);
-}
-
-
-/* --------------------- Botón Normal ------------------------ */
-
-.btn-color {
-    background-color: var(--primary-color);
+/*---------------------------- Border´s ----------------------------*/
+.border-line-primary{
+    border: 1px;
+    border-style: solid;
     border-color: var(--primary-color);
-    color: var(--color-white);
 }
 
-.btn-color:hover {
-    background-color: var(--color-white);
+/*---------------------------- Text Color´s ----------------------------*/
+.color-text-primary{
     color: var(--primary-color);
 }
 
-/* --------------------- Botón Collapse ------------------------ */
-.btn-collapse.focus, .btn:focus {
+/*---------------------------- Forms ----------------------------*/
+/*custom-select*/
+.custom-select:focus {
+    border-color: var(--tertiary-color);
     outline: 0;
-    box-shadow: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem var(--opacity-color);
 }
 
-
-/* --------------------- Botón Color Out ------------------------ */
-
-.btn-color-out {
-    background-color: var(--color-white);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+.custom-select {
+    border: 1px solid var(--tertiary-color);
 }
 
-.btn-color-out:hover {
-    background-color: var(--primary-color);
-    color: var(--color-white);
-    border-color: var(--color-white);
+/*form-control*/
+textarea {
+    resize: none;
 }
-
-/* --------------------- Botón Color Gray ------------------------ */
-
-.btn-color-gray {
-    background-color: var(--gray-color);
-    border-color: var(--gray-color);
-    color: var(--color-white);
-}
-
-.btn-color-gray:hover {
-    background-color: var(--color-white);
-    color: var(--gray-color);
-    border-color: var(--gray-color);
-}
-
-
-/* --------------------- Botón White Background ------------------------ */
-
-.btn-wb {
-    background-color: var(--primary-color);
-    border-color: var(--color-white);
-    color: var(--color-white);
-}
-
-.btn-wb:hover {
-    background-color: var(--color-white);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-
-/* --------------------- Botones Focus ------------------------ */
-
-.btn.focus,
-.btn:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
-}
-
-
-/* --------------------- Formularios ------------------------ */
 
 .form-control:focus {
+    color: var(--black-color);    
+    border-color: var(--tertiary-color);   
+    box-shadow: 0 0 0 0.2rem var(--opacity-color);
+}
+
+.form-control {    
+    border-color: var(--tertiary-color);
+}
+
+.form-control-lg {    
+    border-color: var(--tertiary-color);
+}
+
+/*Subir archivos*/
+.custom-file-input~.custom-file-label::after {
+    content: "Buscar";
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+}
+
+.custom-file-control.selected::after {
+    content: "" !important;
+}
+
+.custom-file-label {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--black-color);
+    background-color: var(--white-color);
+    background-clip: padding-box;
+    border: 1px solid var(--tertiary-color);
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/*---------------------------- Navbar ----------------------------*/
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-item:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+/*---------------------------- Pagination DataTable ----------------------------*/
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: var(--primary-color);
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: var(--white-color);
+    text-decoration: none;
+    background-color: var(--gray-color);
+    border-color: var(--gray-color);
+}
+
+/*---------------------------- Tables ----------------------------*/
+.table-fixed {
+    table-layout: fixed;
+}
+
+/* --------------------- Formularios ------------------------ */
+/*
+.form-control:focus {
     color: #495057;
-    background-color: var(--color-white);
+    background-color: var(--white-color);
     border-color: var(--secondary-color);
     outline: 0;
-    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+    box-shadow: 0 0 0 0.2rem var(--tertiary-color);
 }
 
 .form-control {
     border-radius: .3rem;
-    border-color: var(--tertiary-colot);
+    border-color: var(--tertiary-color);
 }
 
 .bg-custom-1 {
@@ -156,28 +302,21 @@ body{
 .bg-custom-2 {
     background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 }
-
-
-/* --------------------- Dropdown ------------------------ */
-
-.dropdown-item:hover {
-    background-color: var(--primary-color);
-    color: var(--color-white);
-}
+*/
 
 
 /* --------------------- Forms ------------------------ */
-
+/*
 textarea {
     resize: none;
 }
 
 .form-control:focus {
     color: #495057;
-    background-color: var(--color-white);
+    background-color: var(--white-color);
     border-color: var(--secondary-color);
     outline: 0;
-    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+    box-shadow: 0 0 0 0.2rem var(--tertiary-color);
 }
 
 .form-control-lg {
@@ -186,13 +325,13 @@ textarea {
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: .3rem;
-    border-color: var(--tertiary-colot);
+    border-color: var(--tertiary-color);
 }
 
 .custom-file-input~.custom-file-label::after {
     content: "Buscar";
     background-color: var(--primary-color);
-    color: var(--color-white);
+    color: var(--white-color);
     border-color: var(--primary-color);
 }
 
@@ -211,26 +350,26 @@ textarea {
     color: #4a4957;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid var(--tertiary-colot);
+    border: 1px solid var(--tertiary-color);
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .form-control-file:focus {
     color: #495057;
-    background-color: var(--color-white);
+    background-color: var(--white-color);
     border-color: var(--secondary-color);
     outline: 0;
-    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+    box-shadow: 0 0 0 0.2rem var(--tertiary-color);
 }
 
 .jumbotron {
     background-color: var(--secondary-color);
 }
-
+*/
 
 /* --------------------- Footer ------------------------ */
-
+/*
 .blog-footer {
     padding: 2.5rem 0;
     color: #999;
@@ -250,14 +389,14 @@ textarea {
 .page-link:focus {
     z-index: 3;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem var(--tertiary-colot);
+    box-shadow: 0 0 0 0.2rem var(--tertiary-color);
 }
 
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
     background-color: var(--primary-color);
-    border-color: var(--tertiary-colot);
+    border-color: var(--tertiary-color);
 }
 
 .page-link {
@@ -287,9 +426,24 @@ textarea {
     color: var(--primary-color);
     border-color: #ffc107;
     background-color: white;
-}
+}*/
 
-.form-control:disabled, .form-control[readonly] {
-    background-color: #E7F0E7;
-    opacity: .5;
-}
+/*.form-control-file:focus {
+    color: red;
+    background-color: var(--white-color);
+    border-color: var(--secondary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--opacity-color);
+}*/
+
+/*
+.btn-lg.focus,
+.btn-lg:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--opacity-color);
+}*/
+
+/*.btn-collapse.focus, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--opacity-color);
+}*/

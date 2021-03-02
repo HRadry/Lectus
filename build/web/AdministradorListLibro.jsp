@@ -7,44 +7,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Módulo para la administración de libros">
-        <title>Administración de libros</title>
-
+        <title>Administrar libros</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
         <!-- Favicons -->
         <link rel="icon" href="../img/logo.svg" sizes="32x32" type="image/png">
-
         <!-- Custom styles for this template -->
         <link href="../css/principal.css" rel="stylesheet">
-
         <!-- Custom styles for DataTable -->
-        <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">        
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark background-nav border-bottom shadow-sm p-3 px-md-4 mb-3">
+        <nav class="navbar navbar-expand-md navbar-dark background-primary border-bottom shadow-sm p-3 px-md-4 mb-3">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../img/logo-white.svg" width="180" height="40" class="d-inline-block align-top" alt="Logo de la aplicación" loading="lazy"></a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src="../img/opciones.svg" width="40" height="40" class="d-inline-block align-top" alt="icon" loading="lazy">
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item text-light">
-                            <a class="text-black font-weight-bold btn btn-wb mr-2 mb-1" href="/lectus/panel/administrador"><img src="../img/menu.svg" class="mr-1" width="20" height="20"> Ir al panel</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="text-black font-weight-bold btn btn-wb dropdown-toggle mb-1" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../img/dropdown.svg" width="20" height="20"> Opciones</a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="#"> <img src="../img/perfil.svg" width="25" height="25"> Mi perfil</a>
-                                <a class="dropdown-item" href="/lectus/log/logout"> <img src="../img/salir.svg" width="25" height="25"> Cerrar sesión</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="/lectus/index/home"><img src="../img/logo-white.svg" width="180" height="40" class="d-inline-block align-top" alt="Logo de la aplicación" loading="lazy"></a>                
             </div>
         </nav>
 
@@ -57,9 +34,8 @@
             </nav>
 
             <div>
-                <h1 class="display-6">Administrar libros</h1>
-                
-                <a class="btn btn-color-out btn-lg font-weight-bold mt-4" role="button" href="create">Agregar un nuevo libro <img src="../svg/agregar.svg" height="35" alt="icon" loading="lazy"></a>    
+                <h1 class="display-6">Administrar libros</h1>                
+                <a class="btn btn-out-primary btn-lg font-weight-bold mt-4" role="button" href="create">Agregar nuevo libro <img src="../svg/agregar.svg" height="35" alt="icon" loading="lazy"></a>    
             </div>
         </div>
         
@@ -67,22 +43,22 @@
             <table id="example" class="table table-striped">
                 <thead>
                     <tr class="table-active">
-                        <th class="text-justify">Título</th>
-                        <th class="text-justify">Autor</th>
-                        <th class="text-justify">Género</th>
-                        <th>Detalles</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th class="align-middle text-justify">Título</th>
+                        <th class="align-middle text-justify">Autor</th>
+                        <th class="align-middle text-justify">Género</th>
+                        <th class="align-middle text-center">Detalles</th>
+                        <th class="align-middle text-center">Editar</th>
+                        <th class="align-middle text-center">Eliminar</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <s:iterator value="libros">
                         <tr>
-                            <td class="text-justify align-middle" ><s:property value="titulo"/></td>
-                            <td class="text-justify align-middle"><s:property value="autor"/></td>
+                            <td class="text-left align-middle" ><s:property value="titulo"/></td>
+                            <td class="text-left align-middle"><s:property value="autor"/></td>
                             <td class="text-justify align-middle"><s:property value="genero"/></td>
-                            <td>
+                            <td class="text-center align-middle">
                                 <s:url action="details" var="urlDetails">
                                     <s:param name="id">
                                         <s:property value="idLibro"/>
@@ -91,7 +67,7 @@
                                 <a class="btn btn-outline-info" role="button" href="${urlDetails}"> <img src="../svg/detalles.svg" width="35" height="35"> </a>
                             </td>
 
-                            <td>
+                            <td class="text-center align-middle">
                                 <s:url action="edit" var="urlEdit">
                                     <s:param name="id">
                                         <s:property value="idLibro"/>
@@ -100,27 +76,25 @@
                                 <a class="btn btn-outline-warning" role="button" href="${urlEdit}"> <img src="../svg/editar.svg" width="35" height="35"> </a>
                             </td>
 
-                            <td>                                
+                            <td class="text-center align-middle">                                
                                 <a class="btn btn-outline-secondary" href="javascript:asignarId('${idLibro}', '${titulo}')" role="button" aria-pressed="true"> <img src="../svg/eliminar.svg" width="35" height="35"> </a>
                             </td>
                         </tr>
                     </s:iterator>                   
                 </tbody>
 
-                <!--<tfoot>
+                <tfoot>
                     <tr class="table-active">
-
-                        <th class="text-justify">Título</th>
-                        <th class="text-justify">Autor</th>
-                        <th class="text-justify">Género</th>
-                        <th>Detalles</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th class="align-middle text-justify">Título</th>
+                        <th class="align-middle text-justify">Autor</th>
+                        <th class="align-middle text-justify">Género</th>
+                        <th class="align-middle text-center">Detalles</th>
+                        <th class="align-middle text-center">Editar</th>
+                        <th class="align-middle text-center">Eliminar</th>
                     </tr>
-                </tfoot>-->
+                </tfoot>
             </table>
         </div> 
-
 
         <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -132,18 +106,18 @@
                         </button>
                     </div>
                     <div class="row modal-body text-center">
-                        <div class="col-3">
-                            <img src="../img/warning.svg" height="90">       
+                        <div class="col-4 text-center">
+                            <img src="../svg/advertencia.svg" width="150" height="90">       
                         </div>
 
-                        <div class="col-9 mt-3">
-                            <p class="font-weight-bold">¿Desea eliminar el libro "<span class="text-danger" id="titulo-in"></span>"?<br></p>
+                        <div class="col-8 mt-3">
+                            <p class="font-weight-normal">¿Desea eliminar el libro <br> "<span class="font-weight-bold" id="titulo-in"></span>"?<br></p>
                             <span class="text-muted">Esta operación no se podrá deshacer</span>
                         </div>
                     </div>
-                    <div class="modal-footer" style="justify-content: center;">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><b>Cancelar</b></button>
-                        <button type="button" class="btn btn-danger" id="btnDelete"><b>Aceptar</b></button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-out-gray" data-dismiss="modal"><b>Cancelar</b></button>
+                        <button type="button" class="btn btn-solid-secondary" id="btnDelete"><b>Aceptar</b></button>
                     </div>
                 </div>
             </div>
@@ -165,8 +139,8 @@
             $(document).ready(function () {
                 $('#example').DataTable({
                     "oLanguage": {
-                        "sSearch": '<a class="btn btn-lg searchBtn color-text" id="searchBtn"><b>Buscar libro <img src="../svg/buscar.svg" width="30" height="30"></b></a>',
-                        "sLengthMenu": '<a class="btn btn-lg color-text"><b> Mostar _MENU_ registros</b></a>'
+                        "sSearch": '<a class="btn btn-lg searchBtn color-text-primary" id="searchBtn"><b>Buscar libro <img src="../svg/buscar.svg" width="30" height="30"></b></a>',
+                        "sLengthMenu": '<a class="btn btn-lg color-text-primary"><b> Mostar _MENU_ registros</b></a>'
                     },
                     language: {
                         "sProcessing": "Procesando...",
@@ -226,5 +200,4 @@
             }
         </script>
     </body>
-
 </html>

@@ -21,7 +21,11 @@
         <!-- Custom styles for DataTable -->
         <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-        
+        <style>                             
+            table {
+                table-layout: fixed;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark background-nav border-bottom shadow-sm p-3 px-md-4 mb-3">
@@ -50,13 +54,8 @@
         </nav>  
 
         <div class="text-center mt-4 container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/lectus/panel/administrador">Panel</a></li>
-                <li class="breadcrumb-item"><a href="/lectus/revisor/list">Administrar revisores</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Asignar Libros</li>
-            </ol>
             <div class="pricing-header mb-4 text-center animate-opacity container">
-                <h1 class="display-6">Asignación de libros al revisor ${Nombre}</h1>
+                <h1 class="display-6">Asignacion de libros <img src="../img/revisor.svg" height="40" alt="icon" loading="lazy"></h1>
             </div>
             <!---<div class="d-flex justify-content-center">                
                 <div id="alert" class="alert alert-primary text-center w-50 p-3" role="alert">
@@ -66,12 +65,12 @@
         </div>
         <input type="hidden" value="${idRevisor}"/><!--Id del Revisor-->
         <input type="hidden" value="${Nombre}"/><!--Id del Revisor-->
-        <!--<div class="text-center text-danger">
-        <s:actionerror/>
-    </div>
-    <div class="text-center text-success">
-        <s:actionmessage/>
-    </div>-->
+        <div class="text-center text-danger">
+            <s:actionerror/>
+        </div>
+        <div class="text-center text-success">
+            <s:actionmessage/>
+        </div>
         <br>
         <div class="table-responsive container mt-4 mb-4">
             <table id="example" class="table table-striped">
@@ -81,9 +80,8 @@
                         <th class="align-middle">Autor</th>
                         <th class="align-middle">Genero</th>
                         <th class="align-middle">Paginas</th>
-                        <th class="align-middle">Disponibilidad</th>
                         <th class="text-center">Asignar Libros</th>
-                        
+                        <!--<th class="text-center">Asignar Alumnos</th>-->
 
                     </tr>
                 </thead>
@@ -94,9 +92,8 @@
                             <s:hidden name="idLibro" value="idLibro" />
                             <td class="align-middle"><s:property value="titulo"/></td>
                             <td class="align-middle"><s:property value="autor"/></td>
-                            <td class="align-middle text-center"><s:property value="genero"/></td>                            
-                            <td class="align-middle text-center"><s:property value="numeroPagina"/></td>
-                            <td class="align-middle text-center"><s:property value="3"/></td>
+                            <td class="align-middle"><s:property value="genero"/></td>
+                            <td class="align-middle"><s:property value="numeroPagina"/></td>
 
                             <td class="text-center">                                
                                 <a class="btn btn-outline-secondary" href="javascript:asignarId('${idLibro}', '${Nombre}', '${idRevisor}', '${titulo}')" role="button" aria-pressed="true">Seleccionar</a>
@@ -111,42 +108,42 @@
                         <th class="align-middle">Autor</th>
                         <th class="align-middle">Genero</th>
                         <th class="align-middle">Paginas</th>
-                        <th class="align-middle">Disponibilidad</th>
                         <th class="text-center">Asignar Libros</th>                   
                     </tr>
                 </tfoot>
             </table>
-            <div class="text-center mt-2">                              
-                <a class="button btn btn-lg btn-color-out" href="/lectus/revisor/list" role="button"><i data-feather="arrow-left"></i> Regresar</a>                                                
+            <div class="text-center mt-2">
+                <a href="/lectus/revisor/list" class="btn btn-lg btn-color font-weight-normal my-2 mx-2">Volver <img src="../img/volver.svg" height="25" alt="icon" loading="lazy"></a>
             </div>
         </div>        
 
-        <div class="modal fade" id="modalAsignar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-success">
-                        <h5 class="modal-title text-light" id="exampleModalCenterTitle"> Asignar libro </h5>
+                <div class="modal-content" style="border-color: #dc3545;">
+                    <div class="modal-header" style="background-color: #dc3545;">
+                        <h5 class="modal-title text-light" id="exampleModalCenterTitle"> Eliminar registro</h5>
                         <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
-                            <img src="../svg/cancel.svg" width="20" height="20">
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="row modal-body text-center">
                         <div class="col-3">
-                            <img src="../svg/cheque.svg" height="90">       
+                            <img src="../img/warning.svg" height="90">       
                         </div>
 
                         <div class="col-9 mt-3">
-                            <p>¿Desea asignar el libro<br>"<span class="text-success" id="titulo-in"></span>" al usuario "<span class="text-success" id="titulo-inn"></span>"?<br></p>
+                            <p>¿Desea asignar el libro<br>"<span class="text-danger" id="titulo-in"></span>" al usuario "<span class="text-danger" id="titulo-inn"></span>"?<br></p>
                         </div>
                     </div>
                     <div class="modal-footer" style="justify-content: center;">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><b>Cancelar</b></button>
-                        <button type="button" class="btn btn-success" id="btnAceptar"><b>Aceptar</b></button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"> <b>Cancelar <img src="../img/cancel-2.svg" height="20"></b> </button>
+                        <button type="button" class="btn btn-outline-danger" id="btnDelete" onclick="javascript:eliminarCono()" data-dismiss="modal"><b>Aceptar <img src="../img/check.svg" height="25"></b> </button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <footer id="footer" class="mastfoot mt-auto">
             <div class="inner">
                 <p></p>
@@ -155,14 +152,19 @@
 
         <!-- Bootstrap core JavaScript -->      
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>        
-        <!-- ================================================== -->  
-        <script src="https://unpkg.com/feather-icons"></script>        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.js"></script>
+        <!-- ================================================== -->
+
+        <!-- Bootstrap core Data Table JQuery -->    
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>    
+        <!-- ================================================== -->
+
         <script type="text/javascript">
                             $(document).ready(function () {
-                                feather.replace();
                                 $('#example').DataTable({
                                     "oLanguage": {
                                         "sSearch": '<a class="btn btn-lg searchBtn" style="color:hsl(357, 72%, 40%)" id="searchBtn"> <b> Buscar algún registro <img src="../img/buscar.svg" height="25"></b> </a>',
@@ -199,6 +201,8 @@
                                         {orderable: false, targets: 2},
                                         {orderable: false, targets: 3},
                                         {orderable: false, targets: 4},
+                                        {orderable: false, targets: 5},
+                                        {orderable: false, targets: 6}
                                     ],
                                     order: [[0, 'asc']]
                                 });
@@ -223,7 +227,7 @@
                                 //alert("id" + titulo + idLibro + nom + revisor);
                                 document.getElementById("titulo-in").innerHTML = titu;
                                 document.getElementById("titulo-inn").innerHTML = nom;
-                                $("#modalAsignar").modal("show"); // 2 se muestra el modal
+                                $("#modalDelete").modal("show"); // 2 se muestra el modal
                                 //alert("todo ook");
                             }
 

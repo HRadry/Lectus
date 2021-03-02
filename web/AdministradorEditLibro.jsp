@@ -7,41 +7,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Módulo para editar libro">        
         <title>Editar libro</title>
-
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
         <!-- Favicons -->
         <link rel="icon" href="../img/logo.svg" sizes="32x32" type="image/png">
-
         <!-- Custom styles for this template -->
-        <link href="../css/carousel.css" rel="stylesheet">
         <link href="../css/principal.css" rel="stylesheet">
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark background-nav border-bottom shadow-sm p-3 px-md-4 mb-3">
+        <nav class="navbar navbar-expand-md navbar-dark background-primary border-bottom shadow-sm p-3 px-md-4 mb-3">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../img/logo-white.svg" width="180" height="40" class="d-inline-block align-top" alt="Logo de la aplicación" loading="lazy"></a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src="../img/opciones.svg" width="40" height="40" class="d-inline-block align-top" alt="icon" loading="lazy">
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item text-light">
-                            <a class="text-black font-weight-bold btn btn-wb mr-2 mb-1" href="/lectus/panel/administrador"><img src="../img/menu.svg" class="mr-1" width="20" height="20"> Ir al panel</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="text-black font-weight-bold btn btn-wb dropdown-toggle mb-1" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../img/dropdown.svg" width="20" height="20"> Opciones</a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="#"> <img src="../img/perfil.svg" width="25" height="25"> Mi perfil</a>
-                                <a class="dropdown-item" href="/lectus/log/logout"> <img src="../img/salir.svg" width="25" height="25"> Cerrar sesión</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="/lectus/index/home"><img src="../img/logo-white.svg" width="180" height="40" class="d-inline-block align-top" alt="Logo de la aplicación" loading="lazy"></a>
             </div>
         </nav>
 
@@ -68,7 +45,7 @@
                             <legend class="font-weight-normal">1.- Datos generales del libro</legend>
                             <div class="form-group">
                                 <label for="titulo" class="font-weight-bolder">Título</label>
-                                <input type="text" class="form-control form-control-lg" id="titulo" name="libro.titulo" value="${libro.getTitulo()}" required>
+                                <input type="text" class="form-control form-control-lg" id="titulo" name="libro.titulo" value="${libro.getTitulo()}" size="80" maxlength="80" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -76,7 +53,7 @@
 
                             <div class="form-group">
                                 <label for="autor" class="font-weight-bolder">Autor</label>
-                                <input type="text" class="form-control form-control-lg" id="autor" name="libro.autor" value="${libro.getAutor()}" required>
+                                <input type="text" class="form-control form-control-lg" id="autor" name="libro.autor" value="${libro.getAutor()}" size="80" maxlength="80" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -90,7 +67,6 @@
                                     <option>Novela</option>
                                     <option>Relato</option>
                                 </select>
-                                <!--<input type="text" class="form-control form-control-lg" id="genero" name="libro.genero" placeholder="Novela negra" required>-->
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -120,7 +96,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="numeroPagina" class="font-weight-bolder">Número de páginas</label>
-                                    <input type="text" class="form-control form-control-lg" id="numeroPagina" name="libro.numeroPagina" value="${libro.getNumeroPagina()}" minlength="2" maxlength="4" size="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <input type="text" class="form-control form-control-lg" id="numeroPagina" name="libro.numeroPagina" value="${libro.getNumeroPagina()}" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -129,7 +105,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="anoPublicacion" class="font-weight-bolder">Año de publicación</label>
-                                        <input type="text" class="form-control form-control-lg" id="anoPublicacion" name="libro.anoPublicacion" value="${libro.getAnoPublicacion()}" minlength="4" maxlength="4" size="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <input type="text" class="form-control form-control-lg" id="anoPublicacion" name="libro.anoPublicacion" value="${libro.getAnoPublicacion()}" size="4" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>
@@ -143,7 +119,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sinopsis" class="font-weight-bolder">Sinópsis</label>
-                                <textarea class="form-control text-justify" id="word" name="libro.sinopsis" rows="8" maxlength="800" oninput="countWord()" required>${libro.getSinopsis()}</textarea>
+                                <textarea class="form-control text-justify" id="word" name="libro.sinopsis" rows="8" size="800" maxlength="800" oninput="countWord()" required>${libro.getSinopsis()}</textarea>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -152,12 +128,12 @@
 
                             <legend class="font-weight-normal">2.- Cargar archivos</legend>
                             <div class="form-group">
-                                <label for="portada" class="font-weight-bolder">Portada</label> 
+                                <label for="portada" class="font-weight-bolder">Portada (imagen)</label> 
                                 <div class="input-group mb-3">                                                                           
                                     <input type="text" class="form-control form-control-lg" id="portada" name="libro.portada" value="${libro.getPortada()}" required>
 
                                     <div class="input-group-append">
-                                        <button type="button" class="btn btn-lg btn-outline-info px-2" data-toggle="modal" data-target=".bd-example-modal-sm"><img src="../svg/ver.svg" height="25" alt="icon" loading="lazy"></button>                                    
+                                        <button type="button" class="btn btn-lg btn-out-tertiary px-2" data-toggle="modal" data-target=".bd-example-modal-sm"><img src="../svg/ver.svg" height="25" alt="icon" loading="lazy"></button>                                    
                                     </div>
                                 </div>
                                 <div class="invalid-feedback">
@@ -170,7 +146,7 @@
                                 <div class="input-group mb-3">                                                                           
                                     <input type="text" class="form-control form-control-lg" id="archivoPDF" name="libro.archivoPDF" value="${libro.getArchivoPDF()}"required>                                        
                                     <div class="input-group-append">
-                                        <a class="btn btn-lg btn-outline-info px-2" target=”_blank” href="${libro.archivoPDF}" role="button"><img src="../svg/ver.svg" height="25" alt="icon" loading="lazy"></a>                                    
+                                        <a class="btn btn-lg btn-out-tertiary px-2" target="_blank" href="${libro.archivoPDF}" role="button"><img src="../svg/ver.svg" height="25" alt="icon" loading="lazy"></a>                                    
                                     </div>
                                 </div>
                                 <div class="invalid-feedback">
@@ -178,9 +154,44 @@
                                 </div>
                             </div>
 
+                            <legend class="font-weight-normal">3.- Disponibilidad</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="numeroMaximoRevisores" class="font-weight-bolder">Número máximo de revisores</label>
+                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <div class="invalid-feedback">
+                                        Este campo es necesario 👆, por favor, acomplételo.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="numeroMaximoAlumnos" class="font-weight-bolder">Número máximo de alumnos</label>
+                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <div class="invalid-feedback">
+                                            Este campo es necesario 👆, por favor, acomplételo.
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status" class="font-weight-bolder">Status</label>
+                                <!--<input type="text" class="form-control form-control-lg" id="c" name="libro.edicion" placeholder="Segunda" required>-->
+                                <select class="custom-select custom-select-lg" id="status" name=" " value=" " required>
+                                    <option selected hidden>  </option>                                      
+                                    <option>Libro sugerido</option>  
+                                    <option>Libro disponible</option>
+                                    <option>Libro no disponible</option>                                                                          
+                                </select>
+                                <div class="invalid-feedback">
+                                    Este campo es necesario 👆, por favor, acomplételo.
+                                </div>
+                            </div>
+
                             <div class="text-center mt-3">
-                                <a href="list" class="btn btn-lg btn-color-out font-weight-normal my-2 mx-2">Cancelar</a>
-                                <button type="submit" class="btn btn-lg btn-color font-weight-normal">Guardar</button>
+                                <a href="list" class="btn btn-lg btn-out-gray font-weight-normal my-2 mx-2">Cancelar</a>
+                                <button type="submit" class="btn btn-lg btn-solid-secondary font-weight-normal">Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -202,7 +213,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>        
-        <!-- ================================================== -->  
+        <!-- ================================================== -->
         <script type="text/javascript">
                                             (function camposVacios() {
                                                 'use strict';
@@ -274,5 +285,4 @@
                                             }
         </script>
     </body>
-
 </html>
