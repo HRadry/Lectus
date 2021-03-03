@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/web/AdministradorEditLibro.jsp</file>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/src/java/webapp/lectus/actions/LibroAction.java</file>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/src/java/webapp/lectus/dao/LoginDao.java</file>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/src/java/webapp/lectus/dao/LibroDao.java</file>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/src/java/struts.xml</file>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/src/java/webapp/lectus/actions/AlumnoLibroAction.java</file>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/web/AlumnoListLibro.jsp</file>
+            <file>file:/C:/Users/herna/OneDrive/Documentos/LECTUSBIEN/LectuS-v8/src/java/webapp/lectus/dao/AlumnoLibroDao.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -88,7 +88,7 @@
 
                             <div class="form-group">
                                 <label for="telefono" class="font-weight-bolder">Teléfono</label>
-                                <input type="phone" class="form-control form-control-lg" id="telefono" name="" placeholder="951-123-456-7" size="45" minlength="10" maxlength="45" required>
+                                <input type="phone" class="form-control form-control-lg" id="telefono" name="alumno.telefono" placeholder="951-123-456-7" size="45" minlength="10" maxlength="45" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -99,7 +99,7 @@
                             <legend class="font-weight-normal">2.- Datos académicos</legend>
                             <div class="form-group">
                                 <label for="matricula" class="font-weight-bolder">Matrícula</label>
-                                <input type="number" class="form-control form-control-lg" id="matricula" name="usuario.matricula" placeholder="1000000009" required>
+                                <input type="number" class="form-control form-control-lg" id="matricula" name="alumno.matricula" placeholder="1000000009" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -107,7 +107,7 @@
                             
                             <div class="form-group">
                                 <label for="carrera" class="font-weight-bolder">Carrera</label>
-                                <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" required>
+                                <select class="custom-select custom-select-lg" id="carrera" name="grupo.carrera" required>
                                     <option selected disabled value="">Seleccione...</option>       
                                     <option>Ingeniería Forestal</option>
                                     <option>Licenciatura en Biología</option>
@@ -125,7 +125,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="semestre" class="font-weight-bolder">Semestre</label>
-                                        <select class="custom-select custom-select-lg" id="semestre" name="usuario.semestre" required>
+                                        <select class="custom-select custom-select-lg" id="semestre" name="grupo.semestre" required>
                                             <option selected disabled value="">Seleccione...</option>
                                             <option>Primero</option>
                                             <option>Segundo</option>
@@ -148,7 +148,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="grupo" class="font-weight-bolder">Grupo</label>
-                                        <input type="text" class="form-control form-control-lg" id="grupo" name="usuario.grupo" placeholder="703" size="45" maxlength="45" required>
+                                        <input type="text" class="form-control form-control-lg" id="grupo" name="grupo.grupo" placeholder="703" size="45" maxlength="45" required>
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>

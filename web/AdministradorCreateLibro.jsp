@@ -39,6 +39,7 @@
         <main role="main" class="inner cover container mt-4 mb-1">                     
             <section class="form-container d-flex w-100 h-100 pt-md-2 p-3 mx-auto flex-column">
                 <form class="needs-validation" novalidate action="libro/store" method="POST">
+                     <input type="hidden" name="libro.estatus" value="Disponible">
                     <div class="row">
                         <div class="col-md-6">
                             <legend class="font-weight-normal">1.- Datos generales del libro</legend>
@@ -147,7 +148,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="numeroMaximoRevisores" class="font-weight-bolder">Número máximo de revisores</label>
-                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name=" " placeholder="10" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name="libro.numeroMaximoRevisores" placeholder="10" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -156,7 +157,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="numeroMaximoAlumnos" class="font-weight-bolder">Número máximo de alumnos</label>
-                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name=" " placeholder="10" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name="libro.numeroMaximoAlumnos" placeholder="10" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>

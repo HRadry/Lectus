@@ -41,7 +41,7 @@
         </global-results>-->
         
         <action name="autentication" class="webapp.lectus.actions.LoginAction" method="autentication">  
-            <result name="success">/login.jsp</result>            
+            <result name="success">/Login.jsp</result>            
         </action> 
         
         <action name="login" class="webapp.lectus.actions.LoginAction" method="loginRegister">
@@ -52,11 +52,11 @@
 
             <!--<result name="success">/panelAdministrador.jsp</result>-->
                                     
-            <result name="revisor" type="dispatcher">/panelRevisor.jsp</result>
-            <result name="alumno" type="dispatcher">/panelAlumno.jsp</result>
-            <result name="administrador" type="dispatcher">/panelAdministrador.jsp</result>
+            <result name="revisor" type="dispatcher">/PanelRevisor.jsp</result>
+            <result name="alumno" type="dispatcher">/PanelAlumno.jsp</result>
+            <result name="administrador" type="dispatcher">/PanelAdministrador.jsp</result>
             <!--<result name="success" type="redirect">/log/profile</result>-->
-            <result name="input">/login.jsp</result>
+            <result name="input">/Login.jsp</result>
         </action>
         
         <!--<action name="homeAction" class="webapp.lectus.actions.LoginAction" method="execute">
@@ -81,9 +81,13 @@
     <!-- Administración Libro -->
     <package name="libro" extends="struts-default" namespace="/libro">                
         <action name="list" class="webapp.lectus.actions.LibroAction" method="list">
+            <param name="estatus">Libro disponible</param>
             <result name="success">/AdministradorListLibro.jsp</result>
         </action>
-        
+        <action name="listSugerencia" class="webapp.lectus.actions.LibroAction" method="list">
+            <param name="estatus">Libro sugerido</param>
+            <result name="success">/AdministradorListLibro.jsp</result>
+        </action>
         <action name="create" class="webapp.lectus.actions.LibroAction" method="create">
             <result name="success">/AdministradorCreateLibro.jsp</result>
         </action>
@@ -122,7 +126,7 @@
         </action>
         
         <action name="panel" class="webapp.lectus.actions.LibroAction" method="panel">
-            <result name="success">/panelAdministrador.jsp</result>
+            <result name="success">/PanelAdministrador.jsp</result>
         </action>
         
         <!--<action name="backPanel" class="webapp.lectus.actions.LibroAction" method="backPanel">
@@ -163,17 +167,14 @@
             
         <!-- Botón para el administracdor para regresar a su panel -->
         <action name="panel" class="webapp.lectus.actions.UsuarioAction" method="execute">
-            <result name="success">/panelAdministrador.jsp</result>
+            <result name="success">/PanelAdministrador.jsp</result>
         </action>
         
         <!-- PROVICIONAL Botón para redirigir al panel alumno desde el panel adeministrador -->
         <action name="alumnoForward" class="webapp.lectus.actions.UsuarioAction" method="execute">
-            <result name="success">/panelAlumno.jsp</result>
+            <result name="success">/PanelAlumno.jsp</result>
         </action>     
         
-        <action name="libros" class="webapp.lectus.actions.LibroAction" method="list">
-            <result name="success">/AlumnoListLibro.jsp</result>
-        </action>
         <action name="entregaReporte" class="webapp.lectus.actions.EntregaReporteAction" method="execute">
             <result name="success">/AlumnoEntregaReporte.jsp</result>
         </action>
@@ -185,7 +186,11 @@
     
     <!-- Alumno - Libro (el alumno escoge un libro)--> 
     <!-- extends="json-default" -->
-    <package name="alumnoLibro" extends="json-default" namespace="/alumnoLibro">                
+    <package name="alumnoLibro" extends="json-default" namespace="/alumnoLibro">             
+        <action name="libros" class="webapp.lectus.actions.AlumnoLibroAction" method="list">
+            <param name="estatus">Libro disponible</param>
+            <result name="success">/AlumnoListLibro.jsp</result>
+        </action>        
         <action name="showDetails" class="webapp.lectus.actions.AlumnoLibroAction" method="showDetails">
             <result type="json">
                 <param name="noCache">true</param>
@@ -195,7 +200,7 @@
         </action>
         
         <action name="select" class="webapp.lectus.actions.AlumnoLibroAction" method="select">
-            <result name="success" type="redirect">/alumno/libros</result>
+            <result name="success" type="redirect">/alumnoLibro/libros</result>
         </action>
     </package>
                   
@@ -231,12 +236,12 @@
         </action>
         
         <action name="panel" class="webapp.lectus.actions.UsuarioAction" method="execute">
-            <result name="success">/panelAdministrador.jsp</result>
+            <result name="success">/PanelAdministrador.jsp</result>
         </action>
         
         <!--PROVICIONAL Botón para redirigir al panel revisor desde el panel adeministrador-->
         <action name="revisorForward" class="webapp.lectus.actions.UsuarioAction" method="execute">
-            <result name="success">/panelRevisor.jsp</result>
+            <result name="success">/PanelRevisor.jsp</result>
         </action>
         <!-- ******************************************************** --> 
         <action name="asignarAlumnos" class="webapp.lectus.actions.UsuarioAction" method="list">
@@ -309,16 +314,16 @@
     <!-- Botón para regresar al panel de cada usuario --> 
     <package name="panel" extends="struts-default" namespace="/panel">
         <action name="administrador" class="webapp.lectus.actions.UsuarioAction" method="administrador">
-            <result name="success">/panelAdministrador.jsp</result>
+            <result name="success">/PanelAdministrador.jsp</result>
         </action> 
         <action name="revisor" class="webapp.lectus.actions.UsuarioAction" method="alumno">
-            <result name="success">/panelRevisor.jsp</result>
+            <result name="success">/PanelRevisor.jsp</result>
         </action>
         <action name="alumno" class="webapp.lectus.actions.UsuarioAction" method="alumno">
-            <result name="success">/panelAlumno.jsp</result>
+            <result name="success">/PanelAlumno.jsp</result>
         </action> 
         <action name="lineamiento" class="webapp.lectus.actions.LineamientoAction" method="execute">
-            <result name="success">/lineamientos.jsp</result>
+            <result name="success">/Lineamientos.jsp</result>
         </action> 
     </package>
     

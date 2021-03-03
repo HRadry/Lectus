@@ -34,7 +34,7 @@
 
                 <div class="form-group">
                     <label class="font-weight-bold" for="inputUser">Correo</label>
-                    <input type="number" id="inputUser" class="form-control form-control-lg"  name="matricula" required autofocus>                
+                    <input type="email" id="inputUser" class="form-control form-control-lg"  name="correo" required autofocus>                
                 </div>                      
 
                 <div class="form-group">

@@ -2,6 +2,7 @@ package webapp.lectus.dao;
 
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.Filter;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -43,31 +44,35 @@ public class AlumnoLibroDao {
         session.close();        
         return false;
     }
-    public List<Libro> all() throws HibernateException {
+    public List<Libro> all(String estatus) throws HibernateException {
         List<Libro> lista = null;
         List<Libro> listaLibros = null;
-        Libro libro ;
+        Libro libro = new Libro();
         int c=0;
         try { 
             iniciaOperacion(); 
-           
+           // Activamos el filtro para mostrar sólo a los libros disponibles o sugeridos segun sea el caso	
+            Filter filtro = session.enableFilter("filtroLibro");
+            filtro.setParameter("libroParam", estatus);
+            
             lista = session.createQuery("from Libro").list(); 
-            System.out.println("lista" + lista);
-            while(!lista.isEmpty())
+            System.out.println("lista" + c);
+            Iterator<Libro> ite = lista.iterator();
+           while (ite.hasNext())
             {
-                libro = lista.get(c);
+                 libro = ite.next();
                  System.out.println("objeto obtenido de lista" + libro);
-                if(libro.getNumeroMaximoAlumnos() > 0){
-                    System.out.println("objeto obtenido de lista" + libro.getNumeroMaximoAlumnos());
-                    listaLibros.add(libro);
-                } 
-                c++;
+                if(libro.getNumeroMaximoAlumnos() == 0){
+                    System.out.println("objeto obtenido de lista ==0" + libro);
+                    lista.remove(libro);
+                }
             }
            
         } finally { 
             session.close(); 
         }  
-        return listaLibros; 
+         System.out.println("objeto obtenido de lista final" + lista);
+        return lista; 
     }
     
     public int seleccion(AlumnoLibro alumnoLibro) throws HibernateException {
@@ -83,6 +88,22 @@ public class AlumnoLibroDao {
             session.close();
         }
         return id;
+    }
+    
+    public void numeroMaximoAlumnos (int idLibro) {
+        System.out.println("entro bien");
+        String sentencia = "update Libro set numeroMaximoAlumnos = numeroMaximoAlumnos-1 where idLibro='" + idLibro + "'";
+        try {
+            iniciaOperacion();
+            //session.beginTransaction();
+            session.createQuery(sentencia).executeUpdate();
+            
+
+        } catch (Exception e) {
+            System.out.println("error" + e);
+        }finally {
+            session.close();
+        }
     }
     private void iniciaOperacion() throws HibernateException {
         session = HibernateUtil.getSessionFactory().openSession();

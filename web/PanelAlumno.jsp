@@ -60,7 +60,7 @@
                         <img class="mb-4" src="../svg/libros.svg" alt="" width="140" height="140">
                         <h2>Libros</h2>
                         <p class="mb-4">Escoja el libro que desee leer en este parcial.</p>                        
-                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/alumno/libros" role="button"><span>Ver libros</span> <i data-feather="arrow-right"></i></a>
+                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/alumnoLibro/libros" role="button"><span>Ver libros</span> <i data-feather="arrow-right"></i></a>
                     </div>
                 </div>
 

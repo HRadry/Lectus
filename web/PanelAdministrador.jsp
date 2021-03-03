@@ -96,7 +96,7 @@
                         <img class="mb-4" src="../svg/sugerencia.svg" alt="" width="140" height="140">
                         <h2>Administrar <br> libros sugeridos</h2>
                         <p class="mb-4">Vea las sugerencias de libros realizadas por los alumnos para tomar ideas.</p>
-                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/sugerencia/list" role="button"><span>Administrar</span> <i data-feather="arrow-right"></i></a>                        
+                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/libro/listSugerencia" role="button"><span>Administrar</span> <i data-feather="arrow-right"></i></a>                        
                     </div>                        
                 </div>
                 
@@ -105,7 +105,7 @@
                         <img class="mb-4" src="../svg/grafico.svg" alt="" width="140" height="140">
                         <h2>Generar <br> reportes</h2>
                         <p class="mb-4">Genere reportes correspondientes a la entrega de reportes de lectura de los alumnos.</p>
-                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/sugerencia/list" role="button"><span>Generar</span> <i data-feather="arrow-right"></i></a>                        
+                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/libro/list" role="button"><span>Generar</span> <i data-feather="arrow-right"></i></a>                        
                     </div>                        
                 </div> 
             </div>               

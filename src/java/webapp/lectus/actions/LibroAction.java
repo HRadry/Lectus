@@ -15,6 +15,7 @@ public class LibroAction extends ActionSupport {
     private String colorMensaje;
     private String nombre;
     private String idRevisor;
+    private String estatus;
     @Override
     public String execute() throws Exception {               
         return SUCCESS;
@@ -22,7 +23,7 @@ public class LibroAction extends ActionSupport {
     
     public String list() throws Exception {        
         LibroDao libroDao = new LibroDao();
-        libros = libroDao.all();
+        libros = libroDao.all(getEstatus());
         return SUCCESS;
     }
     
@@ -135,6 +136,12 @@ public class LibroAction extends ActionSupport {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
 }

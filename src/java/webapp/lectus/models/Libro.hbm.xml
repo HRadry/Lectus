@@ -48,5 +48,9 @@
         <property name="estatus" type="java.lang.String">
             <column length="45" name="estatus" not-null="true"/>
         </property>
+        <filter name="filtroLibro" condition=":libroParam = estatus"></filter>
     </class>
+    <filter-def name="filtroLibro">
+        <filter-param name="libroParam" type="java.lang.String"/>
+    </filter-def>
 </hibernate-mapping>

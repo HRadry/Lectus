@@ -22,6 +22,7 @@ public class AlumnoLibroAction extends ActionSupport {
     private String mensaje;
     private String style;
     private String jsonString;
+    private String estatus;
 
     @Override
     public String execute() throws Exception {
@@ -30,8 +31,8 @@ public class AlumnoLibroAction extends ActionSupport {
     }
 
     public String list() throws Exception {
-        AlumnoLibroDao LibroDao = new AlumnoLibroDao();
-        libros = LibroDao.all();
+        AlumnoLibroDao AlumnoLibroDao = new AlumnoLibroDao();
+        libros = AlumnoLibroDao.all(getEstatus());
         return SUCCESS;
     }
 
@@ -46,6 +47,7 @@ public class AlumnoLibroAction extends ActionSupport {
 
     public String select() throws Exception {
         AlumnoLibroDao AlumnoLibroDao = new AlumnoLibroDao();
+        AlumnoLibroDao LibroDao = new AlumnoLibroDao();
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         Usuario idLogged = (Usuario) session.getAttribute("userLogged");
@@ -53,6 +55,7 @@ public class AlumnoLibroAction extends ActionSupport {
         alumnoLibro.setIdLibro(idLibro);
         alumnoLibro.setIdRevisor(33);
         AlumnoLibroDao.seleccion(alumnoLibro);
+        AlumnoLibroDao.numeroMaximoAlumnos(idLibro);
         return SUCCESS;
     }
 
@@ -110,6 +113,14 @@ public class AlumnoLibroAction extends ActionSupport {
 
     public void setAlumnoLibro(AlumnoLibro alumnoLibro) {
         this.alumnoLibro = alumnoLibro;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
 }

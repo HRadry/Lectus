@@ -158,7 +158,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="numeroMaximoRevisores" class="font-weight-bolder">Número máximo de revisores</label>
-                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name="libro.numeroMaximoRevisores" value="${libro.getNumeroMaximoRevisores()}" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -167,7 +167,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="numeroMaximoAlumnos" class="font-weight-bolder">Número máximo de alumnos</label>
-                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name="libro.numeroMaximoAlumnos" value="${libro.getNumeroMaximoAlumnos()}" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>
@@ -178,8 +178,8 @@
                             <div class="form-group">
                                 <label for="status" class="font-weight-bolder">Status</label>
                                 <!--<input type="text" class="form-control form-control-lg" id="c" name="libro.edicion" placeholder="Segunda" required>-->
-                                <select class="custom-select custom-select-lg" id="status" name=" " value=" " required>
-                                    <option selected hidden>  </option>                                      
+                                <select class="custom-select custom-select-lg" id="status" name="libro.estatus" required>
+                                      <option selected disabled value="${libro.getEstatus()}">${libro.getEstatus()}</option>                                      
                                     <option>Libro sugerido</option>  
                                     <option>Libro disponible</option>
                                     <option>Libro no disponible</option>                                                                          

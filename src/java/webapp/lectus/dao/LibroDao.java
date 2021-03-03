@@ -72,11 +72,14 @@ public class LibroDao {
         return libro; 
     }
     
-    public List<Libro> all() throws HibernateException 
+    public List<Libro> all(String estatus) throws HibernateException 
     { 
        List<Libro> listaLibros = null;
         try {
             iniciaOperacion();
+            // Activamos el filtro para mostrar sólo a los libros disponibles o sugeridos segun sea el caso	
+            Filter filtro = session.enableFilter("filtroLibro");
+            filtro.setParameter("libroParam", estatus);
             listaLibros = session.createQuery("from Libro").list();
             Iterator<Libro> ite = listaLibros.iterator();
             Libro emp = null;
@@ -93,7 +96,7 @@ public class LibroDao {
         }
         return listaLibros;
     }
-    
+        
     private void iniciaOperacion() throws HibernateException 
     { 
         session = HibernateUtil.getSessionFactory().openSession(); 
