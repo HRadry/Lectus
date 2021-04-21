@@ -47,7 +47,7 @@
                         <th class="text-center align-middle">Detalles</th>
                         <th class="text-center align-middle">Editar</th>
                         <th class="text-center align-middle">Eliminar</th>
-                        <th class="text-center align-middle">Asignar libros</th>
+                        <th class="text-center align-middle">Asignar libro</th>
                         <th class="text-center align-middle">Asignar alumnos</th>
                     </tr>
                 </thead>
@@ -86,7 +86,7 @@
                                         <s:property value="idUsuario"/>
                                     </s:param>
                                 </s:url>
-                                <a class="btn btn-outline-danger" role="button" href="${urlEdit}"> <img src="../svg/libros.svg" width="35" height="35"> </a>
+                                <a class="btn btn-outline-danger" role="button" href="/lectus/libro/asignarLibros"> <img src="../svg/libros.svg" width="35" height="35"> </a>
                             </td>
                             
                             <td class="text-center align-middle">
@@ -95,7 +95,7 @@
                                         <s:property value="idUsuario"/>
                                     </s:param>
                                 </s:url>
-                                <a class="btn btn-outline-dark" role="button" href="${urlEdit}"> <img src="../svg/alumno.svg" width="35" height="35"> </a>
+                                <a class="btn btn-outline-primary" role="button" href="${urlEdit}"> <img src="../svg/alumno.svg" width="35" height="35"> </a>
                             </td>
                         </tr>
                     </s:iterator>                   
@@ -107,7 +107,7 @@
                         <th class="text-center align-middle">Detalles</th>
                         <th class="text-center align-middle">Editar</th>
                         <th class="text-center align-middle">Eliminar</th>                        
-                        <th class="text-center align-middle">Asignar libros</th>
+                        <th class="text-center align-middle">Asignar libro</th>
                         <th class="text-center align-middle">Asignar alumnos</th>
                     </tr>
                 </tfoot>
