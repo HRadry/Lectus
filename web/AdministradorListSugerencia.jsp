@@ -51,7 +51,7 @@
                 </thead>
 
                 <tbody>
-                    <s:iterator value="sugerencias">
+                    <s:iterator value="libros">
                         <tr>
                             <td class="align-middle" ><s:property value="titulo"/></td>
                             <td class="align-middle"><s:property value="autor"/></td>
@@ -59,14 +59,14 @@
                             <td class="text-center">
                                 <s:url action="details" var="urlDetails">
                                     <s:param name="id">
-                                        <s:property value="idSugerencia"/>
+                                        <s:property value="idLibro"/>
                                     </s:param>
                                 </s:url>
                                 <a class="btn btn-outline-info" role="button" href="${urlDetails}"> <img src="../svg/detalles.svg" width="35" height="35"> </a>
                             </td>                        
 
                             <td class="text-center">                                
-                                <a class="btn btn-outline-secondary" href="javascript:asignarId('${idSugerencia}', '${titulo}')" role="button" aria-pressed="true"> <img src="../svg/eliminar.svg" width="35" height="35"> </a>
+                                <a class="btn btn-outline-secondary" href="javascript:asignarId('${idLibro}', '${titulo}')" role="button" aria-pressed="true"> <img src="../svg/eliminar.svg" width="35" height="35"> </a>
                             </td>
                         </tr>
                     </s:iterator>                   

@@ -264,12 +264,12 @@
         </action>
        
     </package>
-        
-    <!-- Sugerencia  
+                   
+    <!-- Sugerencia --> 
     <package name="sugerencia" extends="struts-default" namespace="/sugerencia">
         <action name="send" class="webapp.lectus.actions.SugerenciaAction" method="execute">
             <result name="success">/AlumnoCreateSugerencia.jsp</result>
-            <result name="success">/home.jsp</result>
+            <!--<result name="success">/home.jsp</result>-->
         </action>
         
         <action name="store" class="webapp.lectus.actions.SugerenciaAction" method="store">
@@ -278,6 +278,7 @@
         </action>
         
         <action name="list" class="webapp.lectus.actions.SugerenciaAction" method="list">
+            <param name="estatus">Libro sugerido</param>
             <result name="success">/AdministradorListSugerencia.jsp</result>
         </action>
         
@@ -287,9 +288,17 @@
         
         <action name="delete" class="webapp.lectus.actions.SugerenciaAction" method="delete">
             <result name="success" type="redirect">/sugerencia/list</result>
-        </action>                                
-    </package>   
-    -->
+        </action>
+        <!-- -->
+        <action name="edit" class="webapp.lectus.actions.SugerenciaAction" method="edit">
+            <result name="success">/AdministradorEditSugerencia.jsp</result>
+        </action>
+        
+        <action name="update" class="webapp.lectus.actions.SugerenciaAction" method="update">
+            <result name="success" type="redirect">/sugerencia/list</result>
+        </action>                           
+    </package>  
+    
     <!-- Parcial --> 
     <package name="parcial" extends="struts-default" namespace="/parcial">
         <action name="list" class="webapp.lectus.actions.ParcialAction" method="list">

@@ -96,7 +96,7 @@
                         <img class="mb-4" src="../svg/sugerencia.svg" alt="" width="140" height="140">
                         <h2>Administrar <br> libros sugeridos</h2>
                         <p class="mb-4">Vea las sugerencias de libros realizadas por los alumnos para tomar ideas.</p>
-                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/libro/listSugerencia" role="button"><span>Administrar</span> <i data-feather="arrow-right"></i></a>                        
+                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/sugerencia/list" role="button"><span>Administrar</span> <i data-feather="arrow-right"></i></a>                        
                     </div>                        
                 </div>
                 

@@ -37,13 +37,14 @@
             <div class="row mt-4 text-left">    
                 <section class="form-container d-flex mx-auto pt-md-2 p-3 w-100 h-100 flex-column">
                     <form class="needs-validation" novalidate action="/lectus/sugerencia/store" method="POST" enctype="multipart/form-data">                    
+                        <input type="hidden" name="libro.estatus" value="Libro Sugerido">
                         <div class="row">
                             <div class="col-md-6">
                                 <fieldset>
                                     <legend class="font-weight-normal">1.- Datos generales del libro</legend>
                                     <div class="form-group">
                                         <label for="titulo" class="font-weight-bolder">Título</label>
-                                        <input type="text" class="form-control form-control-lg" id="titulo" name="sugerencia.titulo" required>
+                                        <input type="text" class="form-control form-control-lg" id="titulo" name="libro.titulo" required>
                                         <small class="text-danger">*Obligatorio</small>
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
@@ -52,7 +53,7 @@
 
                                     <div class="form-group">
                                         <label for="autor" class="font-weight-bolder">Autor</label>
-                                        <input type="text" class="form-control form-control-lg" id="autor" name="sugerencia.autor" required>
+                                        <input type="text" class="form-control form-control-lg" id="autor" name="libro.autor" required>
                                         <small class="text-danger">*Obligatorio</small>
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
@@ -61,7 +62,7 @@
 
                                     <div class="form-group">
                                         <label for="genero" class="font-weight-bolder">Género</label>                                
-                                        <select class="custom-select custom-select-lg" id="genero" name="sugerencia.genero" required>
+                                        <select class="custom-select custom-select-lg" id="genero" name="libro.genero" required>
                                             <option selected disabled value="">Seleccionar...</option>
                                             <option>Cuento</option>
                                             <option>Novela</option>
@@ -76,7 +77,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="numeroPagina" class="font-weight-bolder">Número de páginas</label>
-                                            <input type="number" class="form-control form-control-lg" id="numeroPagina" name="sugerencia.numeroPagina" min="0" step="1" max="900" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                            <input type="number" class="form-control form-control-lg" id="numeroPagina" name="libro.numeroPagina" min="0" step="1" max="900" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                             <small class="text-danger">*Obligatorio</small>
                                             <div class="invalid-feedback">
                                                 Este campo es necesario 👆, por favor, acomplételo.
@@ -89,7 +90,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="sinopsis" class="font-weight-bolder">Sinópsis <small>(opcional)</small></label>
-                                    <textarea class="form-control text-justify" id="word" name="sugerencia.sinopsis" rows="8" maxlength="1400" oninput="countWord()"></textarea>                                    
+                                    <textarea class="form-control text-justify" id="word" name="libro.sinopsis" rows="8" maxlength="1400" oninput="countWord()"></textarea>                                    
                                     <p><small id="show">0</small> <small> caracteres restantes de 1400.</small></p>
                                 </div>
 

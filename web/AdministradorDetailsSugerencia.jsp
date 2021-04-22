@@ -32,14 +32,14 @@
             </nav>
 
             <div>
-                <h1 class="display-6">${sugerencia.titulo}</h1>
+                <h1 class="display-6">${libro.titulo}</h1>
             </div> 
             <div class="row mt-4">
                 <div class="col-md-4 mt-0 mt-md-0">                    
                     <div class="text-center">
                         <div class="mt-2">
-                            <img src="${sugerencia.portada}" alt="Portada imagen" data-src="holder.js/300x350?text=Portada no disponible&theme=gray&size=15" class="img-thumbnail d-inline-block align-top rounded" onerror="this.style.display = 'none'" loading="lazy">   <!-- onerror="this.src='../svg/imagen.svg'" onerror="this.src='../svg/imagen.svg'" -->                                      
-                            <a class="btn btn-lg btn-block btn-out-primary mt-4" target="_blank" href="${libro.archivoPDF}" role="button"><img src="../svg/pdf.svg" height="30" alt="icon" loading="lazy"> Ver libro</a>                                                        
+                            <img src="${libro.portada}" alt="Portada imagen" data-src="holder.js/300x350?text=Portada no disponible&theme=gray&size=15" class="img-thumbnail d-inline-block align-top rounded" onerror="this.style.display = 'none'" loading="lazy">   <!-- onerror="this.src='../svg/imagen.svg'" onerror="this.src='../svg/imagen.svg'" -->                                      
+                            <a class="btn btn-lg btn-block btn-out-primary mt-4" target="_blank" href="../libros/${libro.archivoPDF}" role="button"><img src="../svg/pdf.svg" height="30" alt="icon" loading="lazy"> Ver libro</a>                                                        
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                                         Autor:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${sugerencia.autor}.</span>
+                                        <span class="card-text font-weight-normal">${libro.autor}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -67,45 +67,45 @@
                                         Género:
                                     </div>
                                     <div class="col-6">
-                                        <span class="font-weight-normal">${sugerencia.genero}.</span>
+                                        <span class="font-weight-normal">${libro.genero}.</span>
                                     </div>
                                 </div>
                             </li>                           
-                            <li class="list-group-item font-weight-bold background-tab">
+                            <!--<li class="list-group-item font-weight-bold background-tab">
                                 <div class="row">
                                     <div class="col-6 d-flex align-items-center">
                                         Año de publicación:
                                     </div>
                                     <div class="col-6">
                                         <span class="card-text font-weight-normal">                                                                                        
-                                            ${sugerencia.anoPublicacion}<s:property value="mensajeDisponibilidad"/>.                                                                                        
+                                            ${libro.anoPublicacion}<s:property value="mensajeDisponibilidad"/>.                                                                                        
                                         </span>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="list-group-item font-weight-bold">
+                            </li>-->
+                            <li class="list-group-item font-weight-bold background-tab">
                                 <div class="row">
                                     <div class="col-6 d-flex align-items-center">
                                         Número de páginas:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${sugerencia.numeroPagina}.</span>
+                                        <span class="card-text font-weight-normal">${libro.numeroPagina}.</span>
                                     </div>
                                 </div>
                             </li>                                              
-                            <li class="list-group-item font-weight-bold background-tab">
+                            <!--<li class="list-group-item font-weight-bold background-tab">
                                 <div class="row">
                                     <div class="col-6 d-flex align-items-center">
                                         Edición:
                                     </div>
                                     <div class="col-6">
                                         <span class="card-text font-weight-normal">
-                                            ${sugerencia.edicion}<s:property value="mensajeDisponibilidad"/>.
+                                            ${libro.edicion}<s:property value="mensajeDisponibilidad"/>.
                                         </span>
                                         </span>
                                     </div>
                                 </div>
-                            </li>                           
+                            </li>-->                        
                         </ul>                        
                     </div> 
 
@@ -117,7 +117,7 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <span class="card-text font-weight-normal">
-                                    ${sugerencia.sinopsis}<s:property value="mensajeDisponibilidad"/>
+                                    ${libro.sinopsis}<s:property value="mensajeDisponibilidad"/>.
                                 </span>
                             </li>
                         </ul>
@@ -125,7 +125,7 @@
 
                     <div class="text-center mt-2">                              
                         <a class="button btn btn-lg btn-out-primary my-2 mx-2" href="/lectus/sugerencia/list" role="button"><i data-feather="arrow-left"></i> Regresar</a>                                                
-                        <a class="button btn btn-lg btn-solid-secondary" href="/lectus/sugerencia/edit.action?id=${sugerencia.idSugerencia}" role="button">Editar datos</a>                                                                    
+                        <a class="button btn btn-lg btn-solid-secondary" href="/lectus/sugerencia/edit.action?id=${libro.idLibro}" role="button">Editar datos</a>                                                                    
                     </div>
                 </div>  
             </div>         

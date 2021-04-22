@@ -58,13 +58,13 @@
         <main role="main" class="inner cover container mt-4 mb-2">                     
             <section class="form-container d-flex w-100 h-100 pt-md-2 p-3 mx-auto flex-column">
                 <form class="needs-validation" novalidate action="sugerencia/update" method="POST">
-                    <input type="hidden" name="sugerencia.idSugerencia" value="${sugerencia.getIdSugerencia()}">
+                    <input type="hidden" name="libro.idLibro" value="${libro.getIdLibro()}">
                     <div class="row">
                         <div class="col-md-6">
                             <legend class="font-weight-normal">1.- Datos generales del libro</legend>
                             <div class="form-group">
                                 <label for="titulo" class="font-weight-bolder">Título</label>
-                                <input type="text" class="form-control form-control-lg" id="titulo" name="sugerencia.titulo" value="${sugerencia.getTitulo()}" size="80" maxlength="80" required>
+                                <input type="text" class="form-control form-control-lg" id="titulo" name="libro.titulo" value="${libro.getTitulo()}" size="80" maxlength="80" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -72,7 +72,7 @@
 
                             <div class="form-group">
                                 <label for="autor" class="font-weight-bolder">Autor</label>
-                                <input type="text" class="form-control form-control-lg" id="autor" name="sugerencia.autor" value="${sugerencia.getAutor()}" size="80" maxlength="80" required>
+                                <input type="text" class="form-control form-control-lg" id="autor" name="libro.autor" value="${libro.getAutor()}" size="80" maxlength="80" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -80,8 +80,8 @@
 
                             <div class="form-group">
                                 <label for="genero" class="font-weight-bolder">Género</label>                                
-                                <select class="custom-select custom-select-lg" id="genero" name="sugerencia.genero" required>
-                                    <option selected hidden>${sugerencia.getGenero()}</option>                                       
+                                <select class="custom-select custom-select-lg" id="genero" name="libro.genero" required>
+                                    <option selected hidden>${libro.getGenero()}</option>                                       
                                     <option>Cuento</option>
                                     <option>Novela</option>
                                     <option>Relato</option>
@@ -93,9 +93,9 @@
 
                             <div class="form-group">
                                 <label for="edicion" class="font-weight-bolder">Edición</label>
-                                <!--<input type="text" class="form-control form-control-lg" id="edicion" name="sugerencia.edicion" minlength="7" maxlength="15" size="15" value="${sugerencia.getEdicion()}" required>-->
-                                <select class="custom-select custom-select-lg" id="genero" name="sugerencia.edicion" value="${sugerencia.getEdicion()}" required>
-                                    <option selected hidden>${sugerencia.getEdicion()}</option>                                       
+                                <!--<input type="text" class="form-control form-control-lg" id="edicion" name="libro.edicion" minlength="7" maxlength="15" size="15" value="${libro.getEdicion()}" required>-->
+                                <select class="custom-select custom-select-lg" id="genero" name="libro.edicion" value="${libro.getEdicion()}" required>
+                                    <option selected hidden>${libro.getEdicion()}</option>                                       
                                     <option>Primera</option>
                                     <option>Segunda</option>
                                     <option>Tercera</option>
@@ -115,7 +115,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="numeroPagina" class="font-weight-bolder">Número de páginas</label>
-                                    <input type="text" class="form-control form-control-lg" id="numeroPagina" name="sugerencia.numeroPagina" value="${sugerencia.getNumeroPagina()}" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <input type="text" class="form-control form-control-lg" id="numeroPagina" name="libro.numeroPagina" value="${libro.getNumeroPagina()}" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -124,7 +124,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="anoPublicacion" class="font-weight-bolder">Año de publicación</label>
-                                        <input type="text" class="form-control form-control-lg" id="anoPublicacion" name="sugerencia.anoPublicacion" value="${sugerencia.getAnoPublicacion()}" size="4" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <input type="text" class="form-control form-control-lg" id="anoPublicacion" name="libro.anoPublicacion" value="${libro.getAnoPublicacion()}" size="4" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>
@@ -138,7 +138,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sinopsis" class="font-weight-bolder">Sinópsis</label>
-                                <textarea class="form-control text-justify" id="word" name="sugerencia.sinopsis" rows="8" size="800" maxlength="800" oninput="countWord()" required>${sugerencia.getSinopsis()}</textarea>
+                                <textarea class="form-control text-justify" id="word" name="libro.sinopsis" rows="8" size="800" maxlength="800" oninput="countWord()" required>${libro.getSinopsis()}</textarea>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -149,7 +149,7 @@
                             <div class="form-group">
                                 <label for="portada" class="font-weight-bolder">Portada (imagen)</label> 
                                 <div class="input-group mb-3">                                                                           
-                                    <input type="text" class="form-control form-control-lg" id="portada" name="sugerencia.portada" value="${sugerencia.getPortada()}" required>                                    
+                                    <input type="text" class="form-control form-control-lg" id="portada" name="libro.portada" value="${libro.getPortada()}" required>                                    
                                 </div>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -159,7 +159,7 @@
                             <div class="form-group mt-4">
                                 <label for="archivoPDF" class="font-weight-bolder">Libro (PDF)</label>
                                 <div class="input-group mb-3">                                                                           
-                                    <input type="text" class="form-control form-control-lg" id="archivoPDF" name="sugerencia.archivoPDF" value="${sugerencia.getArchivoPDF()}"required>                                                                           
+                                    <input type="text" class="form-control form-control-lg" id="archivoPDF" name="libro.archivoPDF" value="${libro.getArchivoPDF()}"required>                                                                           
                                 </div>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -170,7 +170,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="numeroMaximoRevisores" class="font-weight-bolder">Número máximo de revisores</label>
-                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <input type="number" class="form-control form-control-lg" id="numeroMaximoRevisores" name="libro.numeroMaximoRevisores" value="${libro.getNumeroMaximoRevisores()}" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
@@ -179,7 +179,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="numeroMaximoAlumnos" class="font-weight-bolder">Número máximo de alumnos</label>
-                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name=" " value=" " size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                        <input type="number" class="form-control form-control-lg" id="numeroMaximoAlumnos" name="libro.numeroMaximoAlumnos" value="${libro.getNumeroMaximoAlumnos()}" size="4" min="1" max="99" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>
@@ -190,8 +190,9 @@
                             <div class="form-group">
                                 <label for="status" class="font-weight-bolder">Status</label>
                                 <!--<input type="text" class="form-control form-control-lg" id="c" name="libro.edicion" placeholder="Segunda" required>-->
-                                <select class="custom-select custom-select-lg" id="status" name=" " value=" " required>
-                                    <option selected hidden>  </option>                                      
+                                <select class="custom-select custom-select-lg" id="status" name="libro.estatus" value="${libro.getEstatus()}" required>
+                                    <!--<option selected disabled value="${libro.getEstatus()}">${libro.getEstatus()}</option>-->                                      
+                                    <option selected hidden>${libro.getEdicion()}</option>   
                                     <option>Libro sugerido</option>  
                                     <option>Libro disponible</option>
                                     <option>Libro no disponible</option>                                                                          
@@ -200,6 +201,7 @@
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
+
 
                             <div class="text-center mt-3">
                                 <a href="list" class="btn btn-lg btn-out-gray font-weight-normal my-2 mx-2">Cancelar</a>
@@ -215,7 +217,7 @@
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="text-center">
-                        <img src="${sugerencia.portada}" width="200" height="250" class="img-thumbnail d-inline-block align-top rounded" alt="Portada del libro" loading="lazy">                                         
+                        <img src="${libro.portada}" width="200" height="250" class="img-thumbnail d-inline-block align-top rounded" alt="Portada del libro" loading="lazy">                                         
                     </div>
                 </div>
             </div>
