@@ -13,23 +13,28 @@ import webapp.lectus.models.Alumno;
 import webapp.lectus.models.Carrera;
 import webapp.lectus.models.Grupo;
 import webapp.lectus.models.Usuario;
+import webapp.lectus.models.UsuarioAlumno;
 
-public class UsuarioAction extends ActionSupport {
+public class AlumnoAction extends ActionSupport {
     
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
+    private List<UsuarioAlumno> usuarioAlumno = new ArrayList<UsuarioAlumno>();
     private List<Carrera> carreras = new ArrayList<Carrera>();
+    
     private Alumno alumno = new Alumno();
+    private Carrera carrera = new Carrera();
     private Grupo grupo = new Grupo();
     private Usuario usuario = new Usuario();
-    private Carrera carrera = new Carrera();
-    private int id;
+    private UsuarioAlumno UsuarioTipoAlumno = new UsuarioAlumno();
+    
+   
     private String idRevisor;
     private String nombreRevisor;
     private String tipoUsuario;
-    private String carreraEncontrada;
     private String mensaje;
     private String style;
-                 
+    
+    private int id;
+      
     @Override
     public String execute() throws Exception {        
         return SUCCESS;
@@ -37,14 +42,13 @@ public class UsuarioAction extends ActionSupport {
     
     public String list() throws Exception {
         UsuarioDao UsuarioDao = new UsuarioDao();
-        usuarios = UsuarioDao.all(getTipoUsuario());
+        usuarioAlumno = UsuarioDao.all(getTipoUsuario());
         return SUCCESS;
     }
         
     public String create() throws Exception {
         CarreraDao carreraDao=new CarreraDao();
         carreras = carreraDao.all();
-        System.out.println(carreras);
         return SUCCESS;
     }
     
@@ -57,14 +61,13 @@ public class UsuarioAction extends ActionSupport {
         alumno.setIdUsuario(idUsuario);
         alumno.setIdGrupo(idGrupo);
         alumnoDao.insert(alumno);
-        mensaje = usuario.getNombre() + " se registró exitosamente en la lista de contactos";
         return SUCCESS;
     }
     
     public String details() throws Exception {
         UsuarioDao UsuarioDao=new UsuarioDao();
         CarreraDao CarreraDao= new CarreraDao();
-        usuario = UsuarioDao.find(getId());
+        UsuarioTipoAlumno = UsuarioDao.find(getId());
         carreras = CarreraDao.all();
         return SUCCESS;
     }
@@ -72,42 +75,40 @@ public class UsuarioAction extends ActionSupport {
     public String edit() throws Exception {
         UsuarioDao UsuarioDao=new UsuarioDao();
         CarreraDao CarreraDao= new CarreraDao();
-        usuario = UsuarioDao.find(getId());
+        UsuarioTipoAlumno = UsuarioDao.find(getId());
         carreras = CarreraDao.all();
         return SUCCESS;
     }
     
     public String update() throws Exception {        
         UsuarioDao UsuarioDao=new UsuarioDao();
+        GrupoDao grupoDao=new GrupoDao();
+        AlumnoDao alumnoDao= new AlumnoDao();
         UsuarioDao.update(usuario);
+        grupoDao.update(grupo);
+        alumnoDao.update(alumno);
         return SUCCESS;
     }
         
     public String delete() throws Exception {        
         UsuarioDao UsuarioDao=new UsuarioDao();
-        usuario = UsuarioDao.find(getId());
-        UsuarioDao.delete(usuario);
+        UsuarioDao.delete(getId());
         style = "alert-danger";
         mensaje="El alumno " + usuario.getNombre() +" fue eliminado correctamente";
         return SUCCESS;
     }
     
-    public String administrador() throws Exception {        
-        return SUCCESS;
-    }        
     
-    public String revisor() throws Exception {        
-        return SUCCESS;
+    //Setter & Getter//
+    
+    public List<UsuarioAlumno> getUsuarioAlumno() {
+        return usuarioAlumno;
     }
-    
-    public String alumno() throws Exception {        
-        return SUCCESS;
-    }
-    
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }  
 
+    public void setUsuarioAlumno(List<UsuarioAlumno> usuarioAlumno) {
+        this.usuarioAlumno = usuarioAlumno;
+    }
+    
     public List<Carrera> getCarreras() {
         return carreras;
     }
@@ -179,16 +180,7 @@ public class UsuarioAction extends ActionSupport {
     public void setNombreRevisor(String nombreRevisor) {
         this.nombreRevisor = nombreRevisor;
     }
-
-
-    public String getCarreraEncontrada() {
-        return carreraEncontrada;
-    }
-
-    public void setCarreraEncontrada(String carreraEncontrada) {
-        this.carreraEncontrada = carreraEncontrada;
-    }
-
+    
     public Container getContainer() {
         return container;
     }
@@ -211,7 +203,17 @@ public class UsuarioAction extends ActionSupport {
 
     public void setStyle(String style) {
         this.style = style;
-    }        
+    }       
+
+    public UsuarioAlumno getUsuarioTipoAlumno() {
+        return UsuarioTipoAlumno;
+    }
+
+    public void setUsuarioTipoAlumno(UsuarioAlumno UsuarioTipoAlumno) {
+        this.UsuarioTipoAlumno = UsuarioTipoAlumno;
+    }
+    
+    
 }
 
 

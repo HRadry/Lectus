@@ -47,6 +47,7 @@
                             </div>
                             <div class="col-md-7 mt-2">
                                 <div class="text-justify pl-3 pl-md-3">
+                                    <p class="mt-2 font-weight-bold">Lugares disponibles: <span class="font-weight-normal">${libros.getCupo()}.</span></p>
                                     <p class="mt-2 font-weight-bold">Título: <span class="font-weight-normal">${libros.getTitulo()}.</span></p>
                                     <p class="mt-2 font-weight-bold">Autor: <span class="card-text font-weight-normal">${libros.getAutor()}.</span></p> 
                                     <p class="mt-2 font-weight-bold">Género: <span class="font-weight-normal">${libros.getGenero()}</span>.</p>   

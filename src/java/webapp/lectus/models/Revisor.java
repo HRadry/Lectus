@@ -88,4 +88,11 @@ public class Revisor implements java.io.Serializable{
     public void setCargo(String cargo) {
         this.cargo = cargo;
     } 
+
+    @Override
+    public String toString() {
+        return "Revisor{" + "idRevisor=" + idRevisor + ", idUsuario=" + idUsuario + ", idLibro=" + idLibro + ", idArea=" + idArea + ", numeroEmpleado=" + numeroEmpleado + ", numeroCubo=" + numeroCubo + ", cargo=" + cargo + '}';
+    }
+    
+    
 }

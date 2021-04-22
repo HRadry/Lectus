@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import webapp.lectus.connection.HibernateUtil;
 import webapp.lectus.models.Carrera;
 import webapp.lectus.models.Usuario;
+import webapp.lectus.models.UsuarioAlumno;
 
 public class UsuarioDao {
 
@@ -29,6 +30,7 @@ public class UsuarioDao {
         }
         return id;
     }
+
     public void update(Usuario usuario) throws HibernateException {
         try {
             iniciaOperacion();
@@ -42,45 +44,45 @@ public class UsuarioDao {
         }
     }
 
-    public void delete(Usuario usuario) throws HibernateException {
+    public void delete(int idUsuario) throws HibernateException {
         try {
             iniciaOperacion();
-            session.delete(usuario);
+            System.out.println("iddddddddddddddd" + idUsuario);
+            String sentencia = "DELETE from Usuario where idUsuario='" + idUsuario + "'";
+            session.createQuery(sentencia).executeUpdate();
             concretaOperacion();
         } catch (HibernateException he) {
-            manejaExcepcion(he);
-            throw he;
-        } finally {
-            session.close();
+            System.out.println("Hay datos en el alumno" + he);
         }
+        session.close();
     }
 
-    public Usuario find(int idUsuario) throws HibernateException {
-        Usuario usuario = null;
+    public UsuarioAlumno find(int idUsuario) throws HibernateException {
+        UsuarioAlumno usuarioAlumno = null;
+        String sentencia = "from UsuarioAlumno where idUsuario='" + idUsuario + "'";
         try {
-            System.out.println("usuarioDaoooo" + idUsuario);
             iniciaOperacion();
-            usuario = (Usuario) session.get(Usuario.class, idUsuario);
+            usuarioAlumno = (UsuarioAlumno) session.createQuery(sentencia).uniqueResult();
         } finally {
             session.close();
         }
-        return usuario;
+        return usuarioAlumno;
     }
-    
-    public List<Usuario> all(String tipoUsuario) throws HibernateException {
-        List<Usuario> listaUsuarios = null;
 
+    public List<UsuarioAlumno> all(String tipoUsuario) throws HibernateException {
+        List<UsuarioAlumno> listaUsuarios = null;
+        String sentencia = "from UsuarioAlumno";
         try {
             iniciaOperacion();
             // Activamos el filtro para mostrar sólo a los revisores o alumnos		
-            Filter filtro = session.enableFilter("filtroUsuario");
-            filtro.setParameter("usuarioParam", tipoUsuario);
-            listaUsuarios = session.createQuery("from Usuario").list();
-            Iterator<Usuario> ite = listaUsuarios.iterator();
-            Usuario emp = null;
+            Filter filtro = session.enableFilter("filtroUsuarioAlumno");
+            filtro.setParameter("usuarioAlumnoParam", tipoUsuario);
+            listaUsuarios = session.createQuery(sentencia).list();
+            Iterator<UsuarioAlumno> ite = listaUsuarios.iterator();
+            UsuarioAlumno emp = null;
 
             while (ite.hasNext()) {
-                emp = ite.next();                
+                emp = ite.next();
             }
         } finally {
             session.close();

@@ -10,7 +10,7 @@
             <column name="idUsuario" length="45" not-null="true" />
         </property>
         <property name="idLibro" type="java.lang.Integer">
-            <column name="idLibro" length="45" not-null="true" />
+            <column name="idLibro" length="45" not-null="false" />
         </property>
         <property name="idArea" type="java.lang.Integer">
             <column name="idArea" length="45" not-null="true" />

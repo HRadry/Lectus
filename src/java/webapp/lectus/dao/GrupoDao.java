@@ -30,10 +30,10 @@ public class GrupoDao {
         }
         return id;
     }
-    public void update(Usuario usuario) throws HibernateException {
+    public void update(Grupo grupo) throws HibernateException {
         try {
             iniciaOperacion();
-            session.update(usuario);
+            session.update(grupo);
             concretaOperacion();
         } catch (HibernateException he) {
             manejaExcepcion(he);

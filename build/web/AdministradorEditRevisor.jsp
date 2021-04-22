@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html lang="es">
@@ -59,13 +60,15 @@
             <section class="form-container d-flex w-100 h-100 pt-md-2 p-3 mx-auto flex-column">
                 <form class="needs-validation" novalidate action="/lectus/revisor/update" method="POST">
                     <input type="hidden" name="usuario.tipoUsuario" value="Revisor">
-                    <input type="hidden" name="usuario.idUsuario" value="${usuario.getIdUsuario()}">
+                    <input type="hidden" name="usuario.idUsuario" value="${usuarioTipoRevisor.getIdUsuario()}">
+                    <input type="hidden" name="revisor.idRevisor" value="${usuarioTipoRevisor.getIdRevisor()}">
+                    <input type="hidden" name="revisor.idUsuario" value="${usuarioTipoRevisor.getIdUsuario()}">
                     <div class="row">
                         <div class="col-md-6">
                             <legend class="font-weight-normal">1.- Datos generales del revisor</legend>
                             <div class="form-group">
                                 <label for="nombre" class="font-weight-bolder">Nombre</label>
-                                <input type="text" class="form-control form-control-lg" id="nombre" name="usuario.nombre" value="${usuario.getNombre()}" required>
+                                <input type="text" class="form-control form-control-lg" id="nombre" name="usuario.nombre" value="${UsuarioTipoRevisor.getNombre()}" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -73,7 +76,7 @@
 
                             <div class="form-group">
                                 <label for="apellidoPaterno" class="font-weight-bolder">Apellido paterno</label>
-                                <input type="text" class="form-control form-control-lg" id="apellidoPaterno" name="usuario.apellidoPaterno" value="${usuario.getApellidoPaterno()}" required>
+                                <input type="text" class="form-control form-control-lg" id="apellidoPaterno" name="usuario.apellidoPaterno" value="${usuarioTipoRevisor.getApellidoPaterno()}" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -81,24 +84,18 @@
 
                             <div class="form-group">
                                 <label for="apellidoMaterno" class="font-weight-bolder">Apellido materno</label>
-                                <input type="text" class="form-control form-control-lg" id="apellidoMaterno" name="usuario.apellidoMaterno" value="${usuario.getApellidoMaterno()}" required>
+                                <input type="text" class="form-control form-control-lg" id="apellidoMaterno" name="usuario.apellidoMaterno" value="${usuarioTipoRevisor.getApellidoMaterno()}" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>     
 
                             <legend class="font-weight-normal">2.- Datos de alta al sistema</legend>
-                            <div class="form-group">
-                                <label for="matricula" class="font-weight-bolder">Clave de trabajador</label>
-                                <input type="number" class="form-control form-control-lg" id="matricula" name="usuario.matricula" value="${usuario.getMatricula()}" required>
-                                <div class="invalid-feedback">
-                                    Este campo es necesario 👆, por favor, acomplételo.
-                                </div>
-                            </div>
+
 
                             <div class="form-group">
                                 <label for="correo" class="font-weight-bolder">Correo electrónico</label>
-                                <input type="email" class="form-control form-control-lg" id="correo" name="usuario.correo" value="${usuario.getCorreo()}" size="45" maxlength="45" required>
+                                <input type="email" class="form-control form-control-lg" id="correo" name="usuario.correo" value="${usuarioTipoRevisor.getCorreo()}" size="45" maxlength="45" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -107,7 +104,7 @@
                             <div class="form-group">
                                 <label for="password" class="font-weight-bolder">Contraseña</label> 
                                 <div class="input-group mb-3">                                                                           
-                                    <input type="text" class="form-control form-control-lg" id="password" name="usuario.password" value="${usuario.getPassword()}" size="45" minlength="8" maxlength="45" required>                                    
+                                    <input type="text" class="form-control form-control-lg" id="password" name="usuario.password" value="${usuarioTipoRevisor.getPassword()}" size="45" minlength="8" maxlength="45" required>                                    
                                 </div>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -119,7 +116,7 @@
                             <legend class="font-weight-normal">3.- Datos institucionales</legend>
                             <div class="form-group">
                                 <label for="numeroEmpleado" class="font-weight-bolder">Número de empleado</label>
-                                <input type="number" class="form-control form-control-lg" id="numeroEmpleado" name="usuario.numeroEmpleado" value="" required>
+                                <input type="number" class="form-control form-control-lg" id="numeroEmpleado" name="revisor.numeroEmpleado" value="${usuarioTipoRevisor.getNumeroEmpleado()}" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -127,7 +124,7 @@
 
                             <div class="form-group">
                                 <label for="cargo" class="font-weight-bolder">Cargo</label>
-                                <input type="text" class="form-control form-control-lg" id="cargo" name="usuario.cargo" value="" required>
+                                <input type="text" class="form-control form-control-lg" id="cargo" name="revisor.cargo" value="${usuarioTipoRevisor.getCargo()}" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -135,14 +132,11 @@
 
                             <div class="form-group">
                                 <label for="carrera" class="font-weight-bolder">Carrera</label>
-                                <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" value="" required>
-                                    <option selected hidden> </option>       
-                                    <option>Ingeniería Forestal</option>
-                                    <option>Licenciatura en Biología</option>
-                                    <option>Licenciatura en Informática</option>
-                                    <option>Licenciatura en Ciencias Ambientales</option>
-                                    <option>Ingeniería en Tecnología de la Madera</option>
-                                    <option>Licenciatura en Administración Turística</option>
+                                <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" required>
+                                    <option selected hidden value="${UsuarioTipoRevisor.getIdCarrera()}">${usuarioTipoRevisor.getCarrera()}</option>     
+                                    <c:forEach items="${carreras}" var="carreras">                                            
+                                        <option value="${carreras.getIdCarrera()}">${carreras.getNombre()}</option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -151,60 +145,45 @@
 
                             <div class="form-group">
                                 <label for="area" class="font-weight-bolder">Área</label>
-                                <select class="custom-select custom-select-lg" id="area" name="usuario.area" value=" " required>
-                                    <option selected hidden> </option>                                                                                                                                                                                     
-                                    <option>Biblioteca</option>
-                                    <option>Centro de Idiomas</option>
-                                    <option>Construcción y Mantenimiento</option>
-                                    <option>Departameno de Redes</option>                                                                        
-                                    <option>División de Estudios de Postgrado</option>
-                                    <option>Instituto de Estudios Ambientales</option>
-                                    <option>Jefaturas</option>
-                                    <option>Recursos Humanos</option>
-                                    <option>Recursos Financieros</option>
-                                    <option>Recursos Materiales</option>
-                                    <option>Rectoría</option>
-                                    <option>Sala de Cómputo 1</option>
-                                    <option>Sala de Cómputo 2</option>
-                                    <option>Sala de Cómputo 3</option>
-                                    <option>Sala de Cómputo 4</option>
-                                    <option>Sala de Cómputo 5</option>
-                                    <option>Servicios Esolares</option>  
-                                    <option>Vice-Rectoría Académica</option>
-                                    <option>Vice-Rectoría Administrativa</option>
+                                <select class="custom-select custom-select-lg" id="area" name="revisor.idArea" required>
+                                    <option selected hidden value="${usuarioTipoRevisor.getArea()}">${usuarioTipoRevisor.getEdificio()}</option>                                                                                                                                                                                        
+                                    <c:forEach items="${areas}" var="areas">                                            
+                                        <option value="${areas.getIdArea()}">${areas.getEdificio()}</option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div> 
-                            </div>                            
+                            </div>        
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="numeroCubo" class="font-weight-bolder">Número de cubo</label>
-                                    <input type="text" class="form-control form-control-lg" id="numeroCubo" name="usuario.numeroCubo" value="" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
-                                    <div class="invalid-feedback">
-                                        Este campo es necesario 👆, por favor, acomplételo.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="extension" class="font-weight-bolder">Extensión del área</label>
-                                        <input type="text" class="form-control form-control-lg" id="extension" name="usuario.extension" value="" size="4" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
-                                        <div class="invalid-feedback">
-                                            Este campo es necesario 👆, por favor, acomplételo.
-                                        </div>
-                                    </div>
-                                </div>                                                                
-                            </div>
-
+                            <!--<div class="row">--->
                             <div class="form-group">
-                                <label for="telefono" class="font-weight-bolder">Teléfono del área</label>
-                                <input type="phone" class="form-control form-control-lg" id="telefono" name="usuario.telefono" value="" size="45" minlength="10" maxlength="45" required>
+                                <label for="numeroCubo" class="font-weight-bolder">Número de cubo</label>
+                                <input type="text" class="form-control form-control-lg" id="numeroCubo" name="revisor.numeroCubo" value="${usuarioTipoRevisor.getNumeroCubo()}" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
+
+
+                            <!--<div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="extension" class="font-weight-bolder">Extensión del área</label>
+                                    <input type="text" class="form-control form-control-lg" id="extension" name="usuario.extension" value="" size="4" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>                                                                        
+                                    <div class="invalid-feedback">
+                                        Este campo es necesario 👆, por favor, acomplételo.
+                                    </div>
+                                </div>
+                            </div>                                                                
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono" class="font-weight-bolder">Teléfono del área</label>
+                            <input type="phone" class="form-control form-control-lg" id="telefono" name="usuario.telefono" value="" size="45" minlength="10" maxlength="45" required>
+                            <div class="invalid-feedback">
+                                Este campo es necesario 👆, por favor, acomplételo.
+                            </div>
+                        </div>-->
 
                             <div class="text-center mt-4">
                                 <a href="/lectus/revisor/list" class="btn btn-lg btn-out-gray font-weight-normal my-2 mx-2">Cancelar</a>
@@ -223,104 +202,104 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>        
         <!-- ================================================== -->  
         <script type="text/javascript">
-                                            (function camposVacios() {
-                                                'use strict';
-                                                window.addEventListener('load', function () {
-                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                                    var forms = document.getElementsByClassName('needs-validation');
-                                                    // Loop over them and prevent submission
-                                                    var validation = Array.prototype.filter.call(forms, function (form) {
-                                                        form.addEventListener('submit', function (event) {
-                                                            if (form.checkValidity() === false) {
-                                                                event.preventDefault();
-                                                                event.stopPropagation();
-                                                            }
-                                                            form.classList.add('was-validated');
-                                                        }, false);
-                                                    });
+                                    (function camposVacios() {
+                                        'use strict';
+                                        window.addEventListener('load', function () {
+                                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                            var forms = document.getElementsByClassName('needs-validation');
+                                            // Loop over them and prevent submission
+                                            var validation = Array.prototype.filter.call(forms, function (form) {
+                                                form.addEventListener('submit', function (event) {
+                                                    if (form.checkValidity() === false) {
+                                                        event.preventDefault();
+                                                        event.stopPropagation();
+                                                    }
+                                                    form.classList.add('was-validated');
                                                 }, false);
-                                            })();
-
-                                            function solonumeros(e) {
-                                                key = e.keyCode || e.which;
-
-                                                teclado = String.fromCharCode(key).toLowerCase();
-
-                                                numeros = "1234567890";
-
-                                                especiales = "35-43-45";
-
-                                                teclado_especial = false;
-
-                                                for (var i in especiales) {
-                                                    if (key == especiales[i]) {
-                                                        teclado_especial = true;
-                                                        break;
-                                                    }
-                                                }
-
-                                                if (numeros.indexOf(teclado) == -1 && !teclado_especial) {
-                                                    return false;
-                                                }
-                                            }
-
-                                            function countWord() {
-
-                                                // Get the input text value 
-                                                var words = document
-                                                        .getElementById("word").value;
-
-                                                // Initialize the word counter 
-                                                var count = 0;
-
-                                                // Split the words on each 
-                                                // space character  
-                                                var split = words.split('');
-
-                                                // Loop through the words and  
-                                                // increase the counter when  
-                                                // each split word is not empty 
-                                                for (var i = 0; i < split.length; i++) {
-                                                    if (split[i] != "") {
-                                                        count += 1;
-                                                        x = 425 - count;
-                                                    }
-                                                }
-
-                                                // Display it as output 
-                                                document.getElementById("show")
-                                                        .innerHTML = x;
-                                            }
-
-                                            $('.custom-file-input').on('change', function () {
-                                                var fileName = document.getElementById("nameFile1").files[0].name;
-                                                $(this).next('.form-control-file').addClass("selected").html(fileName);
                                             });
+                                        }, false);
+                                    })();
 
-                                            $('.custom-file-input').on('change', function () {
-                                                var fileName = document.getElementById("nameFile2").files[0].name;
-                                                $(this).next('.form-control-file').addClass("selected").html(fileName);
-                                            });
+                                    function solonumeros(e) {
+                                        key = e.keyCode || e.which;
 
-                                            /*Generador de contraseña*/
-                                            const input = document.querySelector('#password');
-                                            const button = document.querySelector('#btn-password');
+                                        teclado = String.fromCharCode(key).toLowerCase();
 
-                                            button.addEventListener('click', () => {
-                                                input.value = GeneratePassword(16);
-                                            });
+                                        numeros = "1234567890";
 
-                                            function GeneratePassword(length = 17) {
-                                                const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890@#$%&';
+                                        especiales = "35-43-45";
 
-                                                let password = '';
+                                        teclado_especial = false;
 
-                                                for (let i = 0; i < length; ++i) {
-                                                    let at = Math.floor(Math.random() * (charset.length + 1));
-                                                    password += charset.charAt(at);
-                                                }
-                                                return password;
+                                        for (var i in especiales) {
+                                            if (key == especiales[i]) {
+                                                teclado_especial = true;
+                                                break;
                                             }
+                                        }
+
+                                        if (numeros.indexOf(teclado) == -1 && !teclado_especial) {
+                                            return false;
+                                        }
+                                    }
+
+                                    function countWord() {
+
+                                        // Get the input text value 
+                                        var words = document
+                                                .getElementById("word").value;
+
+                                        // Initialize the word counter 
+                                        var count = 0;
+
+                                        // Split the words on each 
+                                        // space character  
+                                        var split = words.split('');
+
+                                        // Loop through the words and  
+                                        // increase the counter when  
+                                        // each split word is not empty 
+                                        for (var i = 0; i < split.length; i++) {
+                                            if (split[i] != "") {
+                                                count += 1;
+                                                x = 425 - count;
+                                            }
+                                        }
+
+                                        // Display it as output 
+                                        document.getElementById("show")
+                                                .innerHTML = x;
+                                    }
+
+                                    $('.custom-file-input').on('change', function () {
+                                        var fileName = document.getElementById("nameFile1").files[0].name;
+                                        $(this).next('.form-control-file').addClass("selected").html(fileName);
+                                    });
+
+                                    $('.custom-file-input').on('change', function () {
+                                        var fileName = document.getElementById("nameFile2").files[0].name;
+                                        $(this).next('.form-control-file').addClass("selected").html(fileName);
+                                    });
+
+                                    /*Generador de contraseña*/
+                                    const input = document.querySelector('#password');
+                                    const button = document.querySelector('#btn-password');
+
+                                    button.addEventListener('click', () => {
+                                        input.value = GeneratePassword(16);
+                                    });
+
+                                    function GeneratePassword(length = 17) {
+                                        const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890@#$%&';
+
+                                        let password = '';
+
+                                        for (let i = 0; i < length; ++i) {
+                                            let at = Math.floor(Math.random() * (charset.length + 1));
+                                            password += charset.charAt(at);
+                                        }
+                                        return password;
+                                    }
         </script>
     </body>
 </html>

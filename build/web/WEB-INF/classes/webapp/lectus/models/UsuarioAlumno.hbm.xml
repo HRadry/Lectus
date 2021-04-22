@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="webapp.lectus.models.UsuarioAlumno" catalog="lectus" table="usuarioalumno" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column length="45" name="idUsuario"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="45" name="nombre" not-null="true"/>
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column length="45" name="apellidoPaterno" not-null="true"/>
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column length="45" name="apellidoMaterno" not-null="true"/>
+        </property>
+        <property name="telefono" type="string">
+            <column length="20" name="telefono" not-null="true"/>
+        </property>
+        <property name="matricula" type="java.lang.Integer">
+            <column length="20" name="matricula" not-null="true"/>
+        </property>
+         <property name="carrera" type="string">
+            <column length="45" name="carrera" not-null="true"/>
+        </property>
+        <property name="idCarrera" type="java.lang.Integer">
+            <column length="45" name="idCarrera" not-null="true"/>
+        </property>
+        <property name="semestre" type="string">
+            <column length="20" name="semestre" not-null="true"/>
+        </property>
+        <property name="idAlumno" type="java.lang.Integer">
+            <column length="45" name="idAlumno" not-null="true"/>
+        </property>
+        <property name="idGrupo" type="java.lang.Integer">
+            <column length="45" name="idGrupo" not-null="true"/>
+        </property>
+        <property name="grupo" type="string">
+            <column length="20" name="grupo" not-null="true"/>
+        </property>
+        <property name="correo" type="string">
+            <column length="45" name="correo" not-null="true"/>
+        </property>       
+        <property name="password" type="string">
+            <column length="45" name="password" not-null="true"/>
+        </property>
+        <property name="tipoUsuario" type="string">
+            <column length="45" name="tipoUsuario" not-null="true"/>
+        </property>
+        <filter name="filtroUsuarioAlumno" condition=":usuarioAlumnoParam = tipoUsuario"></filter>
+    </class>
+    <filter-def name="filtroUsuarioAlumno">
+        <filter-param name="usuarioAlumnoParam" type="java.lang.String"/>
+    </filter-def>
+</hibernate-mapping>

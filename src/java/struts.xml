@@ -8,7 +8,8 @@
     
     <!-- index-->    
     <package name="index" extends="struts-default" namespace="/index">  
-        <action name="home" class="webapp.lectus.actions.LibroAction" method="list">  
+        <action name="home" class="webapp.lectus.actions.LibroAction" method="list"> 
+            <param name="estatus">Libro disponible</param> 
             <result name="success">/Home.jsp</result>            
         </action> 
         <action name="lineamiento" class="webapp.lectus.actions.LineamientoAction" method="execute">
@@ -129,49 +130,65 @@
             <result name="success">/PanelAdministrador.jsp</result>
         </action>
         
-        <!--<action name="backPanel" class="webapp.lectus.actions.LibroAction" method="backPanel">
-            <result name="success" type="redirect">/libro/panel</result>
-        </action>-->
+         <!-- ******************************************************** --> 
+        <action name="asignarAlumnos" class="webapp.lectus.actions.AlumnoAction" method="list">
+            <param name="tipoUsuario">Alumno</param>
+            <result name="success">/AdministradorAsignarAlumnos.jsp</result>
+        </action>
+        <action name="detailsAlumno" class="webapp.lectus.actions.AlumnoAction" method="details">
+                 <result name="success">/AdministradorAsignarAlumnosDetails.jsp</result>
+        </action>
+        
+        <action name="asignarLibros" class="webapp.lectus.actions.LibroAction" method="list">
+            <result name="success">/AdministradorAssignAlumnos.jsp</result>
+        </action>
+        
+         <!--Asignar libros al revisor-->
+        <action name="asignar" class="webapp.lectus.actions.RevisorAction" method="asignar">
+            <result name="success" type="redirect">/revisor/asignarLibros</result>
+        </action>
+        <!-- ******************************************************** -->  
+        <!-- ******************************************************** -->
     </package>                                
 
     <!-- Alumno --> 
     <package name="alumno" extends="struts-default" namespace="/alumno">                
-        <action name="list" class="webapp.lectus.actions.UsuarioAction" method="list">
+        <action name="list" class="webapp.lectus.actions.AlumnoAction" method="list">
             <param name="tipoUsuario">Alumno</param>
             <result name="success">/AdministradorListAlumno.jsp</result>
         </action>
         
-        <action name="create" class="webapp.lectus.actions.UsuarioAction" method="create">
+        <action name="create" class="webapp.lectus.actions.AlumnoAction" method="create">
             <result name="success">/AdministradorCreateAlumno.jsp</result>            
         </action>
         
-        <action name="store" class="webapp.lectus.actions.UsuarioAction" method="store">
+        <action name="store" class="webapp.lectus.actions.AlumnoAction" method="store">
             <result name="success" type="redirect">/alumno/list</result>
         </action>
         
-        <action name="details" class="webapp.lectus.actions.UsuarioAction" method="details">
+        <action name="details" class="webapp.lectus.actions.AlumnoAction" method="details">
             <result name="success">/AdministradorDetailsAlumno.jsp</result>
         </action>
         
-        <action name="edit" class="webapp.lectus.actions.UsuarioAction" method="edit">
+        <action name="edit" class="webapp.lectus.actions.AlumnoAction" method="edit">
             <result name="success">/AdministradorEditAlumno.jsp</result>
         </action>
         
-        <action name="update" class="webapp.lectus.actions.UsuarioAction" method="update">
+        <action name="update" class="webapp.lectus.actions.AlumnoAction" method="update">
             <result name="success" type="redirect">/alumno/list</result>
         </action>
         
-        <action name="delete" class="webapp.lectus.actions.UsuarioAction" method="delete">
+        <action name="delete" class="webapp.lectus.actions.AlumnoAction" method="delete">
             <result name="success" type="redirect">/alumno/list</result>
         </action> 
             
         <!-- Botón para el administracdor para regresar a su panel -->
-        <action name="panel" class="webapp.lectus.actions.UsuarioAction" method="execute">
+        <action name="panel" class="webapp.lectus.actions.AlumnoAction" method="execute">
             <result name="success">/PanelAdministrador.jsp</result>
         </action>
         
         <!-- PROVICIONAL Botón para redirigir al panel alumno desde el panel adeministrador -->
-        <action name="alumnoForward" class="webapp.lectus.actions.UsuarioAction" method="execute">
+        <action name="alumnoForward" class="webapp.lectus.actions.AlumnoAction" method="execute">
             <result name="success">/PanelAlumno.jsp</result>
         </action>     
         
@@ -206,62 +223,46 @@
                   
     <!-- Revisor --> 
     <package name="revisor" extends="struts-default" namespace="/revisor">                
-        <action name="list" class="webapp.lectus.actions.UsuarioAction" method="list">
+        <action name="list" class="webapp.lectus.actions.RevisorAction" method="list">
             <param name="tipoUsuario">Revisor</param>
             <result name="success">/AdministradorListRevisor.jsp</result>
         </action>
         
-        <action name="create" class="webapp.lectus.actions.UsuarioAction" method="create">
+        <action name="create" class="webapp.lectus.actions.RevisorAction" method="create">
             <result name="success">/AdministradorCreateRevisor.jsp</result>
         </action>
         
-        <action name="store" class="webapp.lectus.actions.UsuarioAction" method="store">
+        <action name="store" class="webapp.lectus.actions.RevisorAction" method="store">
             <result name="success" type="redirect">/revisor/list</result>
         </action> 
         
-        <action name="details" class="webapp.lectus.actions.UsuarioAction" method="details">
+        <action name="details" class="webapp.lectus.actions.RevisorAction" method="details">
             <result name="success">/AdministradorDetailsRevisor.jsp</result>
         </action>  
               
-        <action name="edit" class="webapp.lectus.actions.UsuarioAction" method="edit">
+        <action name="edit" class="webapp.lectus.actions.RevisorAction" method="edit">
             <result name="success">/AdministradorEditRevisor.jsp</result>
         </action>
         
-        <action name="update" class="webapp.lectus.actions.UsuarioAction" method="update">
+        <action name="update" class="webapp.lectus.actions.RevisorAction" method="update">
             <result name="success" type="redirect">/revisor/list</result>
         </action>
         
-        <action name="delete" class="webapp.lectus.actions.UsuarioAction" method="delete">
+        <action name="delete" class="webapp.lectus.actions.RevisorAction" method="delete">
             <result name="success" type="redirect">/revisor/list</result>
+            <result name="input">/home
+                .jsp</result>  
         </action>
         
-        <action name="panel" class="webapp.lectus.actions.UsuarioAction" method="execute">
+        <action name="panel" class="webapp.lectus.actions.RevisorAction" method="execute">
             <result name="success">/PanelAdministrador.jsp</result>
         </action>
         
         <!--PROVICIONAL Botón para redirigir al panel revisor desde el panel adeministrador-->
-        <action name="revisorForward" class="webapp.lectus.actions.UsuarioAction" method="execute">
+        <action name="revisorForward" class="webapp.lectus.actions.RevisorAction" method="execute">
             <result name="success">/PanelRevisor.jsp</result>
         </action>
-        <!-- ******************************************************** --> 
-        <action name="asignarAlumnos" class="webapp.lectus.actions.UsuarioAction" method="list">
-            <param name="tipoUsuario">Alumno</param>
-            <result name="success">/AdministradorAsignarAlumnos.jsp</result>
-        </action>
-        <action name="detailsAlumno" class="webapp.lectus.actions.UsuarioAction" method="details">
-                 <result name="success">/AdministradorAsignarAlumnosDetails.jsp</result>
-        </action>
-        
-        <action name="asignarLibros" class="webapp.lectus.actions.LibroAction" method="list">
-            <result name="success">/AdministradorAsignarLibros.jsp</result>
-        </action>
-        
-         <!--Asignar libros al revisor-->
-        <action name="asignar" class="webapp.lectus.actions.RevisorAction" method="asignar">
-            <result name="success" type="redirect">/revisor/asignarLibros</result>
-        </action>
-        <!-- ******************************************************** -->  
-        <!-- ******************************************************** -->
+       
     </package>
         
     <!-- Sugerencia  
@@ -313,13 +314,13 @@
     
     <!-- Botón para regresar al panel de cada usuario --> 
     <package name="panel" extends="struts-default" namespace="/panel">
-        <action name="administrador" class="webapp.lectus.actions.UsuarioAction" method="administrador">
+        <action name="administrador" class="webapp.lectus.actions.PanelAction" method="execute">
             <result name="success">/PanelAdministrador.jsp</result>
         </action> 
-        <action name="revisor" class="webapp.lectus.actions.UsuarioAction" method="alumno">
+        <action name="revisor" class="webapp.lectus.actions.PanelAction" method="execute">
             <result name="success">/PanelRevisor.jsp</result>
         </action>
-        <action name="alumno" class="webapp.lectus.actions.UsuarioAction" method="alumno">
+        <action name="alumno" class="webapp.lectus.actions.PanelAction" method="execute">
             <result name="success">/PanelAlumno.jsp</result>
         </action> 
         <action name="lineamiento" class="webapp.lectus.actions.LineamientoAction" method="execute">
@@ -329,45 +330,40 @@
     
     <!-- Asignar-->
     <!--<package name="asigar" namespace="/asignar" extends="struts-default">
-        <action name="revisorIndex" class="webapp.lectus.actions.UsuarioAction" method="list">
+        <action name="revisorIndex" class="webapp.lectus.actions.AlumnoAction" method="list">
             <param name="tipoUsuario">Revisor</param>
             <result name="success">/asignarRevisor.jsp</result>
         </action>
         
-        <action name="asignarIndex" class="webapp.lectus.actions.UsuarioAction" method="list">
+        <action name="asignarIndex" class="webapp.lectus.actions.AlumnoAction" method="list">
             <param name="tipoUsuario">Alumno</param>
             <result name="success">/asignarAlumno.jsp</result>
         </action>
         
-        <action name="asignarL" class="webapp.lectus.actions.UsuarioAction" method="execute">
+        <action name="asignarL" class="webapp.lectus.actions.AlumnoAction" method="execute">
             <result name="success">/asignarLibros.jsp</result>
         </action>        
-    </package>-->
-    
-    <!-- Calificacion -->   
-    <!-- extends="json-default" -->
-    <package name="reporte" namespace="/reporte" extends="struts-default">
-        <action name="list" class="webapp.lectus.actions.EntregaReporteAction" method="list">
-            <param name="tipoUsuario">Alumno</param>
-            <result name="success">/RevisorListReporte.jsp</result>
-        </action>
-        <action name="calificar" class="webapp.lectus.actions.EntregaReporteAction" method="calificar">
-            <result name="success" type="redirect">/reporte/list</result>
-        </action>
     </package>
     
-    <!-- Cargar imagen-->
-    <package name="fileUploadPackage" namespace="/fileUploadPackage" extends="struts-default">
-        <action name="userImage" class="webapp.lectus.actions.FileUploadAction" method="execute">			
-            <interceptor-ref name="fileUpload">
-                <param name="maximumSize">104857600</param>
-                <param name="allowedTypes">
-                    image/png,image/gif,image/jpeg,image/pjpeg,application/pdf
-                </param>
-            </interceptor-ref>
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="success">/SuccessUserImage.jsp</result>
-            <result name="input">/UserImage.jsp</result>
-        </action>
-    </package>
+   
+     
+    <action name="calificar" class="webapp.lectus.actions.EntregaReporteAction" method="calificar">
+        <result name="success" type="redirect">/reporte/list</result>
+    </action>
+</package>-->
+    
+<!-- Cargar imagen-->
+<package name="fileUploadPackage" namespace="/fileUploadPackage" extends="struts-default">
+    <action name="userImage" class="webapp.lectus.actions.FileUploadAction" method="execute">			
+        <interceptor-ref name="fileUpload">
+            <param name="maximumSize">104857600</param>
+            <param name="allowedTypes">
+                image/png,image/gif,image/jpeg,image/pjpeg,application/pdf
+            </param>
+        </interceptor-ref>
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+        <result name="success">/SuccessUserImage.jsp</result>
+        <result name="input">/UserImage.jsp</result>
+    </action>
+</package>
 </struts>

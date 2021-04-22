@@ -4,32 +4,40 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Container;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import webapp.lectus.dao.EntregaReporteDao;
+import webapp.lectus.dao.ParcialDao;
 import webapp.lectus.dao.UsuarioDao;
 import webapp.lectus.models.EntregaReporte;
+import webapp.lectus.models.Parcial;
 import webapp.lectus.models.Usuario;
+import webapp.lectus.models.UsuarioAlumno;
 
 public class EntregaReporteAction extends ActionSupport {
     
-    private List<Usuario> usuarios = new ArrayList<Usuario>();
+    private List<UsuarioAlumno> usuarioAlumno = new ArrayList<UsuarioAlumno>();
     private Usuario usuario = new Usuario();
-    private EntregaReporte entregaReporte = new EntregaReporte();    
+    private EntregaReporte entregaReporte = new EntregaReporte();   
+    private List<Parcial> parciales = new ArrayList<Parcial>();
+    private Parcial parcial = new Parcial();
     private String tipoUsuario;
     private int id;
     private String mensaje;
     private String style;
+    private Date fechaLimite;
 
     @Override
     public String execute() throws Exception {
-        //call Service class to store personBean's state in database
-
+        ParcialDao parcialDao = new ParcialDao();
+        parcial = parcialDao.findParcial();
+        fechaLimite=parcial.getFechaLimiteEntregaAlumno();
         return SUCCESS;
     }
     
     public String list() throws Exception {
         UsuarioDao UsuarioDao = new UsuarioDao();
-        usuarios = UsuarioDao.all(getTipoUsuario());
+        usuarioAlumno = UsuarioDao.all(getTipoUsuario());
         return SUCCESS;
     }
         
@@ -43,11 +51,16 @@ public class EntregaReporteAction extends ActionSupport {
         mensaje = usuario.getNombre() + " se registró exitosamente en la lista de contactos";
         return SUCCESS;
     }
-        
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }  
 
+    public List<UsuarioAlumno> getUsuarioAlumno() {
+        return usuarioAlumno;
+    }
+
+    public void setUsuarioAlumno(List<UsuarioAlumno> usuarioAlumno) {
+        this.usuarioAlumno = usuarioAlumno;
+    }
+        
+    
     public EntregaReporte getEntregaReporte() {
         return entregaReporte;
     }
@@ -102,5 +115,31 @@ public class EntregaReporteAction extends ActionSupport {
 
     public void setStyle(String style) {
         this.style = style;
-    }        
+    }     
+
+    public List<Parcial> getParciales() {
+        return parciales;
+    }
+
+    public void setParciales(List<Parcial> parciales) {
+        this.parciales = parciales;
+    }
+
+    public Parcial getParcial() {
+        return parcial;
+    }
+
+    public void setParcial(Parcial parcial) {
+        this.parcial = parcial;
+    }
+
+    public Date getFechaLimite() {
+        return fechaLimite;
+    }
+
+    public void setFechaLimite(Date fechaLimite) {
+        this.fechaLimite = fechaLimite;
+    }
+    
+    
 }

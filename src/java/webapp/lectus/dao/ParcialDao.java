@@ -38,6 +38,20 @@ public class ParcialDao {
         return parcial; 
     }
     
+     public Parcial findParcial() throws HibernateException 
+    { 
+        Parcial parcial = new Parcial();  
+        try { 
+            iniciaOperacion(); 
+            String sentencia = "from Parcial where CURDATE() between fechaInicio and fechaFin";
+            parcial = (Parcial) session.createQuery(sentencia).uniqueResult();
+            System.out.println("El parcial es: " + parcial);
+        } finally { 
+            session.close(); 
+        }  
+        return parcial; 
+    }
+    
     public List<Parcial> all() throws HibernateException 
     { 
         List<Parcial> listaParciales = null;  

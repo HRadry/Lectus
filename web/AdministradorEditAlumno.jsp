@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html lang="es">
@@ -40,13 +41,18 @@
             <section class="form-container d-flex w-100 h-100 pt-md-2 p-3 mx-auto flex-column">
                 <form class="needs-validation" novalidate action="/lectus/alumno/update" method="POST">
                     <input type="hidden" name="usuario.tipoUsuario" value="Alumno">
-                    <input type="hidden" name="usuario.idUsuario" value="${usuario.getIdUsuario()}">
+                    <input type="hidden" name="usuario.idUsuario" value="${UsuarioTipoAlumno.getIdUsuario()}">
+                    <input type="hidden" name="grupo.idGrupo" value="${UsuarioTipoAlumno.getIdGrupo()}">
+                    <input type="hidden" name="alumno.idAlumno" value="${UsuarioTipoAlumno.getIdAlumno()}">
+                    <input type="hidden" name="alumno.idUsuario" value="${UsuarioTipoAlumno.getIdUsuario()}">
+                    <input type="hidden" name="alumno.idGrupo" value="${UsuarioTipoAlumno.getIdGrupo()}">
+                   
                     <div class="row">
                         <div class="col-md-6">
                             <legend class="font-weight-normal">1.- Datos generales del alumno</legend>
                             <div class="form-group">
                                 <label for="nombre" class="font-weight-bolder">Nombre</label>
-                                <input type="text" class="form-control form-control-lg" id="nombre" name="usuario.nombre" value="${usuario.getNombre()}" size="45" maxlength="45" required>
+                                <input type="text" class="form-control form-control-lg" id="nombre" name="usuario.nombre" value="${UsuarioTipoAlumno.getNombre()}" size="45" maxlength="45" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -54,7 +60,7 @@
 
                             <div class="form-group">
                                 <label for="apellidoPaterno" class="font-weight-bolder">Apellido paterno</label>
-                                <input type="text" class="form-control form-control-lg" id="apellidoPaterno" name="usuario.apellidoPaterno" value="${usuario.getApellidoPaterno()}" size="45" maxlength="45" required>
+                                <input type="text" class="form-control form-control-lg" id="apellidoPaterno" name="usuario.apellidoPaterno" value="${UsuarioTipoAlumno.getApellidoPaterno()}" size="45" maxlength="45" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -62,7 +68,7 @@
 
                             <div class="form-group">
                                 <label for="apellidoMaterno" class="font-weight-bolder">Apellido materno</label>
-                                <input type="text" class="form-control form-control-lg" id="apellidoMaterno" name="usuario.apellidoMaterno" value="${usuario.getApellidoMaterno()}" size="45" maxlength="45" required>
+                                <input type="text" class="form-control form-control-lg" id="apellidoMaterno" name="usuario.apellidoMaterno" value="${UsuarioTipoAlumno.getApellidoMaterno()}" size="45" maxlength="45" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -70,7 +76,7 @@
 
                             <div class="form-group">
                                 <label for="telefono" class="font-weight-bolder">Telefono</label>
-                                <input type="phone" class="form-control form-control-lg" id="telefono" name="" value="" size="45" minlength="45" maxlength="45" required>
+                                <input type="phone" class="form-control form-control-lg" id="telefono" name="alumno.telefono" value="${UsuarioTipoAlumno.getTelefono()}" size="20" minlength="10" maxlength="20" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -81,22 +87,19 @@
                             <legend class="font-weight-normal">2.- Datos académicos</legend>
                             <div class="form-group">
                                 <label for="matricula" class="font-weight-bolder">Matrícula</label>
-                                <input type="number" class="form-control form-control-lg" id="matricula" name="usuario.matricula" value="${usuario.getMatricula()}" required>
+                                <input type="number" class="form-control form-control-lg" id="matricula" name="alumno.matricula" value="${UsuarioTipoAlumno.getMatricula()}" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
-                                
+
                             <div class="form-group">
                                 <label for="carrera" class="font-weight-bolder">Carrera</label>
-                                <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" value="${usuario.getCarrera()}" required>
-                                    <option selected hidden>${usuario.getCarrera()}</option>       
-                                    <option>Ingeniería Forestal</option>
-                                    <option>Licenciatura en Biología</option>
-                                    <option>Licenciatura en Informática</option>
-                                    <option>Licenciatura en Ciencias Ambientales</option>
-                                    <option>Ingeniería en Tecnología de la Madera</option>
-                                    <option>Licenciatura en Administración Turística</option>
+                                <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" required>
+                                    <option selected disable value="${UsuarioTipoAlumno.getIdCarrera()}">${UsuarioTipoAlumno.getCarrera()}</option>
+                                    <c:forEach items="${carreras}" var="carreras">                                            
+                                        <option value="${carreras.getIdCarrera()}">${carreras.getNombre()}</option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -107,49 +110,49 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="semestre" class="font-weight-bolder">Semestre</label>
-                                        <select class="custom-select custom-select-lg" id="semestre" name="usuario.semestre" value="${usuario.getSemestre()}" required>
-                                            <option selected hidden>${usuario.getSemestre()}</option> 
-                                            <option>Primero</option>
-                                            <option>Segundo</option>
-                                            <option>Tercero</option>
-                                            <option>Cuarto</option>
-                                            <option>Quinto</option>
-                                            <option>Sexto</option>
-                                            <option>Séptimo</option>
-                                            <option>Octavo</option>
-                                            <option>Noveno</option>
-                                            <option>Décimo</option>                                    
+                                        <select class="custom-select custom-select-lg" id="semestre" name="grupo.semestre" required>
+                                            <option selected hidden>${UsuarioTipoAlumno.getSemestre()}</option> 
+                                            <option value="Primero">Primero</option>
+                                            <option value="Segundo">Segundo</option>
+                                            <option value="Tercero">Tercero</option>
+                                            <option value="Cuarto">Cuarto</option>
+                                            <option value="Quinto">Quinto</option>
+                                            <option value="Sexto">Sexto</option>
+                                            <option value="Septimo">Séptimo</option>
+                                            <option value="Octavo">Octavo</option>
+                                            <option value="Noveno">Noveno</option>
+                                            <option value="Décimo">Décimo</option>                                
                                         </select>
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="grupo" class="font-weight-bolder">Grupo</label>
-                                        <input type="text" class="form-control form-control-lg" id="grupo" name="usuario.grupo" value="${usuario.getGrupo()}" size="45" maxlength="45" required>
+                                        <input type="text" class="form-control form-control-lg" id="grupo" name="grupo.grupo" value="${UsuarioTipoAlumno.getGrupo()}" size="45" maxlength="45" required>
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
                                         </div>
                                     </div>
                                 </div>
                             </div>                                                        
-                            
+
                             <legend class="font-weight-normal">3.- Datos del sistema</legend>
                             <div class="form-group">
                                 <label for="correo" class="font-weight-bolder">Correo electrónico</label>
-                                <input type="email" class="form-control form-control-lg" id="correo" name="usuario.correo" value="${usuario.getCorreo()}" size="45" maxlength="45" required>
+                                <input type="email" class="form-control form-control-lg" id="correo" name="usuario.correo" value="${UsuarioTipoAlumno.getCorreo()}" size="45" maxlength="45" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
-                                
+
                             <div class="form-group">
                                 <label for="password" class="font-weight-bolder">Contraseña</label> 
                                 <div class="input-group mb-3">                                                                           
-                                    <input type="text" class="form-control form-control-lg" id="password" name="usuario.password" value="${usuario.getPassword()}" size="45" minlength="8" maxlength="45" required>                                    
+                                    <input type="text" class="form-control form-control-lg" id="password" name="usuario.password" value="${UsuarioTipoAlumno.getPassword()}" size="45" minlength="8" maxlength="45" required>                                    
                                 </div>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.

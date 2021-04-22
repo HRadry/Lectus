@@ -35,7 +35,7 @@ public class AreaDao {
         return area ;
     }
 
-    public List<Area> area() throws HibernateException {
+    public List<Area> all() throws HibernateException {
         List<Area> listaArea = null;
 
         try {

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="webapp.lectus.models.UsuarioRevisor" catalog="lectus" table="usuariorevisor" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column length="45" name="idUsuario"/>
+            <generator class="identity"/>
+        </id>
+        <property name="idRevisor" type="java.lang.Integer">
+            <column length="45" name="idRevisor" not-null="true"/>
+        </property>
+        <property name="nombre" type="string">
+            <column length="45" name="nombre" not-null="true"/>
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column length="45" name="apellidoPaterno" not-null="true"/>
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column length="45" name="apellidoMaterno" not-null="true"/>
+        </property>
+        <property name="carrera" type="string">
+            <column length="45" name="carrera" not-null="true"/>
+        </property>
+        <property name="idCarrera" type="java.lang.Integer">
+            <column length="45" name="idCarrera" not-null="true"/>
+        </property>
+        <property name="correo" type="string">
+            <column length="45" name="correo" not-null="true"/>
+        </property>       
+        <property name="password" type="string">
+            <column length="45" name="password" not-null="true"/>
+        </property>
+        <property name="tipoUsuario" type="string">
+            <column length="45" name="tipoUsuario" not-null="true"/>
+        </property>
+        <property name="idLibro" type="java.lang.Integer">
+            <column length="45" name="idLibro" not-null="true"/>
+        </property>
+        <property name="area" type="java.lang.Integer">
+            <column length="45" name="area" not-null="true"/>
+        </property>
+        <property name="edificio" type="java.lang.String">
+            <column length="45" name="edificio" not-null="true"/>
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column length="45" name="telefono" not-null="true"/>
+        </property>
+        <property name="numeroEmpleado" type="java.lang.Integer">
+            <column length="45" name="numeroEmpleado" not-null="true"/>
+        </property>
+        <property name="numeroCubo" type="java.lang.Integer">
+            <column length="45" name="numeroCubo" not-null="true"/>
+        </property>
+        <property name="cargo" type="string">
+            <column length="45" name="cargo" not-null="true"/>
+        </property>
+        <filter name="filtroUsuarioRevisor" condition=":usuarioRevisorParam = tipoUsuario"></filter>
+    </class>
+    <filter-def name="filtroUsuarioRevisor">
+        <filter-param name="usuarioRevisorParam" type="java.lang.String"/>
+    </filter-def>
+</hibernate-mapping>

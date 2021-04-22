@@ -10,6 +10,8 @@ import webapp.lectus.connection.HibernateUtil;
 import webapp.lectus.models.Carrera;
 import webapp.lectus.models.Revisor;
 import webapp.lectus.models.Usuario;
+import webapp.lectus.models.UsuarioAlumno;
+import webapp.lectus.models.UsuarioRevisor;
 
 public class RevisorDao {
 
@@ -30,10 +32,10 @@ public class RevisorDao {
         }
         return id;
     }
-    public void update(Usuario usuario) throws HibernateException {
+    public void update(Revisor revisor) throws HibernateException {
         try {
             iniciaOperacion();
-            session.update(usuario);
+            session.update(revisor);
             concretaOperacion();
         } catch (HibernateException he) {
             manejaExcepcion(he);
@@ -56,56 +58,46 @@ public class RevisorDao {
         }
     }
 
-    public Revisor find(int idLibro) {
-        System.out.println("parametro" + idLibro);
-        Revisor hecho = null;
-        Revisor revisor = new Revisor();
-        String sentencia = "from Revisor where idLibro='" + idLibro + "'";
+    public UsuarioRevisor find(int id) throws HibernateException {
+        UsuarioRevisor usuarioRevisor = null;
+        String sentencia = "from UsuarioRevisor where  idUsuario = '"+ id +"'";
         try {
             iniciaOperacion();
-            //session.beginTransaction();
-            List<Revisor> listaRevisor = (List<Revisor>) session.createQuery(sentencia).list();
-            if (!listaRevisor.isEmpty()) {
-                revisor = listaRevisor.get(0);
-                System.out.println("objeto obtenido" + revisor.getIdRevisor());
-                hecho = revisor;
-            }
-
-        } catch (Exception e) {
-            System.out.println("error");
-        }
-        return hecho;
-    }
-
-    public Carrera findCarrera(int idUsuario) throws HibernateException {
-        
-        Carrera carrera = null;
-        try {
-            System.out.println("usuarioDao" + idUsuario);
-            iniciaOperacion();
-            carrera = (Carrera) session.load(Carrera.class, idUsuario);
-        
+            usuarioRevisor = (UsuarioRevisor) session.createQuery(sentencia).uniqueResult();
         } finally {
             session.close();
         }
-        return carrera;
+        System.out.println("Error"+ sentencia );
+        return usuarioRevisor;
     }
     
-    public List<Usuario> all(String tipoUsuario) throws HibernateException {
-        List<Usuario> listaUsuarios = null;
+    public UsuarioRevisor findRevisorLibro( int id) throws HibernateException {
+        UsuarioRevisor usuarioRevisor = null;
+        String sentencia = "from UsuarioRevisor where  idLibro = 60";
+        try {
+            iniciaOperacion();
+            usuarioRevisor = (UsuarioRevisor) session.createQuery(sentencia).uniqueResult();
+        } finally {
+            session.close();
+        }
+        System.out.println("findRevisorLibro  "+ sentencia );
+        return usuarioRevisor;
+    }
 
+    public List<UsuarioRevisor> all(String tipoUsuario) throws HibernateException {
+        List<UsuarioRevisor> listaUsuarios = null;
+        String sentencia = "from UsuarioRevisor";
         try {
             iniciaOperacion();
             // Activamos el filtro para mostrar sólo a los revisores o alumnos		
-            Filter filtro = session.enableFilter("filtroUsuario");
-            filtro.setParameter("usuarioParam", tipoUsuario);
-            listaUsuarios = session.createQuery("from Usuario").list();
-            Iterator<Usuario> ite = listaUsuarios.iterator();
-            Usuario emp = null;
+            Filter filtro = session.enableFilter("filtroUsuarioRevisor");
+            filtro.setParameter("usuarioRevisorParam", tipoUsuario);
+            listaUsuarios = session.createQuery(sentencia).list();
+            Iterator<UsuarioRevisor> ite = listaUsuarios.iterator();
+            UsuarioRevisor emp = null;
 
             while (ite.hasNext()) {
-                emp = ite.next();
-                
+                emp = ite.next();                
             }
         } finally {
             session.close();
@@ -113,17 +105,6 @@ public class RevisorDao {
         return listaUsuarios;
     }
 
-    public List<Carrera> carreras() throws HibernateException {
-        List<Carrera> listaCarreras = null;
-
-        try {
-            iniciaOperacion();
-            listaCarreras = session.createQuery("from Carrera").list();
-        } finally {
-            session.close();
-        }
-        return listaCarreras;
-    }
     private void iniciaOperacion() throws HibernateException {
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();

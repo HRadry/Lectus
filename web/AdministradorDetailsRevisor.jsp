@@ -68,7 +68,7 @@
                                         Nombre:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.nombre}.</span>
+                                        <span class="card-text font-weight-normal">${usuarioTipoRevisor.nombre}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -78,7 +78,7 @@
                                         Apellido paterno:
                                     </div>
                                     <div class="col-6">
-                                        <span class="font-weight-normal">${usuario.apellidoPaterno}.</span>
+                                        <span class="font-weight-normal">${usuarioTipoRevisor.apellidoPaterno}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -88,7 +88,7 @@
                                         Apellido materno:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.apellidoMaterno}.</span>
+                                        <span class="card-text font-weight-normal">${usuarioTipoRevisor.apellidoMaterno}.</span>
                                     </div>
                                 </div>
                             </li>                             
@@ -107,7 +107,7 @@
                                         Número de empleado:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.matricula}.</span>
+                                        <span class="card-text font-weight-normal">${usuarioTipoRevisor.numeroEmpleado}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -117,7 +117,7 @@
                                         Carrera:
                                     </div>
                                     <div class="col-6">
-                                        <span class="font-weight-normal text-break text-break">${usuario.carrera}.</span>
+                                        <span class="font-weight-normal text-break text-break">${usuarioTipoRevisor.carrera}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -127,7 +127,7 @@
                                         Área:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal text-break">.</span>
+                                        <span class="card-text font-weight-normal text-break">${usuarioTipoRevisor.edificio}.</span>
                                     </div>
                                 </div>
                             </li> 
@@ -137,7 +137,7 @@
                                         Cargo:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal text-break">.</span>
+                                        <span class="card-text font-weight-normal text-break">${usuarioTipoRevisor.cargo}.</span>
                                     </div>
                                 </div>
                             </li> 
@@ -147,7 +147,7 @@
                                         Número de cubo:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">.</span>
+                                        <span class="card-text font-weight-normal">${usuarioTipoRevisor.numeroCubo}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -157,7 +157,7 @@
                                         Teléfono:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal"> Ext. </span>
+                                        <span class="card-text font-weight-normal"> ${usuarioTipoRevisor.telefono} </span>
                                     </div>
                                 </div>
                             </li>
@@ -176,7 +176,7 @@
                                         Correo:
                                     </div>
                                     <div class="col-6">
-                                        <a href="mailto:${usuario.correo}" target="_blank" class="card-text"><span class="card-text font-weight-normal text-break">${usuario.correo}</span></a>
+                                        <a href="mailto:${usuario.correo}" target="_blank" class="card-text"><span class="card-text font-weight-normal text-break">${usuarioTipoRevisor.correo}</span></a>
                                     </div>
                                 </div>
                             </li>
@@ -186,7 +186,7 @@
                                         Tipo de usuario:
                                     </div>
                                     <div class="col-6">
-                                        <span class="font-weight-normal">${usuario.tipoUsuario}.</span>                                        
+                                        <span class="font-weight-normal">${usuarioTipoRevisor.tipoUsuario}.</span>                                        
                                     </div>
                                 </div>
                             </li>                            

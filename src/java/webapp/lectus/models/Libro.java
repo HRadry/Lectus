@@ -19,13 +19,13 @@ public class Libro implements java.io.Serializable {
     private Date fechaCreacion;
     private Date fechaActualizacion;
     private String estatus;
-    
+    private Long cupo;
     
 
     public Libro()  {
     }
 
-    public Libro(Integer idLibro, String titulo, String autor, String genero, Integer numeroPagina, String sinopsis, Integer anoPublicacion, String edicion, String portada, String archivoPDF, Integer numeroMaximoRevisores, Integer numeroMaximoAlumnos, Date fechaCreacion, Date fechaActualizacion, String estatus) {
+    public Libro(Integer idLibro, String titulo, String autor, String genero, Integer numeroPagina, String sinopsis, Integer anoPublicacion, String edicion, String portada, String archivoPDF, Integer numeroMaximoRevisores, Integer numeroMaximoAlumnos, Date fechaCreacion, Date fechaActualizacion, String estatus, Long cupo) {
         this.idLibro = idLibro;
         this.titulo = titulo;
         this.autor = autor;
@@ -41,9 +41,8 @@ public class Libro implements java.io.Serializable {
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
         this.estatus = estatus;
+        this.cupo = cupo;
     }
-
-         
 
     public Integer getIdLibro() {
         return idLibro;
@@ -107,7 +106,7 @@ public class Libro implements java.io.Serializable {
 
     public void setEdicion(String edicion) {
         this.edicion = edicion;
-    }        
+    }
 
     public String getPortada() {
         return portada;
@@ -123,7 +122,7 @@ public class Libro implements java.io.Serializable {
 
     public void setArchivoPDF(String archivoPDF) {
         this.archivoPDF = archivoPDF;
-    }     
+    }
 
     public Integer getNumeroMaximoRevisores() {
         return numeroMaximoRevisores;
@@ -165,10 +164,19 @@ public class Libro implements java.io.Serializable {
         this.estatus = estatus;
     }
 
+    public Long getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(Long cupo) {
+        this.cupo = cupo;
+    }
+
     @Override
     public String toString() {
-        return "Libro{" + "idLibro=" + idLibro + ", titulo=" + titulo + ", autor=" + autor + ", genero=" + genero + ", numeroPagina=" + numeroPagina + ", sinopsis=" + sinopsis + ", anoPublicacion=" + anoPublicacion + ", edicion=" + edicion + ", portada=" + portada + ", archivoPDF=" + archivoPDF + ", numeroMaximoRevisores=" + numeroMaximoRevisores + ", numeroMaximoAlumnos=" + numeroMaximoAlumnos + ", fechaCreacion=" + fechaCreacion + ", fechaActualizacion=" + fechaActualizacion + ", estatus=" + estatus + '}';
+        return "Libro{" + "idLibro=" + idLibro + ", titulo=" + titulo + ", autor=" + autor + ", genero=" + genero + ", numeroPagina=" + numeroPagina + ", sinopsis=" + sinopsis + ", anoPublicacion=" + anoPublicacion + ", edicion=" + edicion + ", portada=" + portada + ", archivoPDF=" + archivoPDF + ", numeroMaximoRevisores=" + numeroMaximoRevisores + ", numeroMaximoAlumnos=" + numeroMaximoAlumnos + ", fechaCreacion=" + fechaCreacion + ", fechaActualizacion=" + fechaActualizacion + ", estatus=" + estatus + ", cupo=" + cupo + '}';
     }
-    
+
+   
     
 }

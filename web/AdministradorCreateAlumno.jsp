@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html lang="es">
@@ -104,17 +105,14 @@
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="carrera" class="font-weight-bolder">Carrera</label>
-                                <select class="custom-select custom-select-lg" id="carrera" name="grupo.carrera" required>
-                                    <option selected disabled value="">Seleccione...</option>       
-                                    <option>Ingeniería Forestal</option>
-                                    <option>Licenciatura en Biología</option>
-                                    <option>Licenciatura en Informática</option>
-                                    <option>Licenciatura en Ciencias Ambientales</option>
-                                    <option>Ingeniería en Tecnología de la Madera</option>
-                                    <option>Licenciatura en Administración Turística</option>
+                                <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" required>
+                                    <option selected disabled value="">Seleccione...</option>
+                                    <c:forEach items="${carreras}" var="carreras">                                            
+                                        <option value="${carreras.getIdCarrera()}">${carreras.getNombre()}</option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -127,16 +125,16 @@
                                         <label for="semestre" class="font-weight-bolder">Semestre</label>
                                         <select class="custom-select custom-select-lg" id="semestre" name="grupo.semestre" required>
                                             <option selected disabled value="">Seleccione...</option>
-                                            <option>Primero</option>
-                                            <option>Segundo</option>
-                                            <option>Tercero</option>
-                                            <option>Cuarto</option>
-                                            <option>Quinto</option>
-                                            <option>Sexto</option>
-                                            <option>Séptimo</option>
-                                            <option>Octavo</option>
-                                            <option>Noveno</option>
-                                            <option>Décimo</option>                                    
+                                            <option value="Primero">Primero</option>
+                                            <option value="Segundo">Segundo</option>
+                                            <option value="Tercero">Tercero</option>
+                                            <option value="Cuarto">Cuarto</option>
+                                            <option value="Quinto">Quinto</option>
+                                            <option value="Sexto">Sexto</option>
+                                            <option value="Septimo">Séptimo</option>
+                                            <option value="Octavo">Octavo</option>
+                                            <option value="Noveno">Noveno</option>
+                                            <option value="Décimo">Décimo</option>                                    
                                         </select>
                                         <div class="invalid-feedback">
                                             Este campo es necesario 👆, por favor, acomplételo.
@@ -144,7 +142,7 @@
                                     </div>
 
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="grupo" class="font-weight-bolder">Grupo</label>
@@ -164,7 +162,7 @@
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="password" class="font-weight-bolder">Contraseña</label> 
                                 <div class="input-group mb-3">                                                                           

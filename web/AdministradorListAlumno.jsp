@@ -54,10 +54,10 @@
                 </thead>
 
                 <tbody>
-                    <s:iterator value="usuarios">
+                    <s:iterator value="usuarioAlumno">
                         <tr>
                             <td class="text-justify align-middle"><s:property value="matricula"/></td>
-                            <td class="text-left align-middle" ><s:property value="nombre"/> <s:property value="apellidoPaterno"/> <s:property value="apellidoMaterno"/></td>
+                            <td class="text-left align-middle" ><s:property value="apellidoPaterno + ' ' + apellidoMaterno + ' ' + nombre  "/></td>
                             <td class="text-center align-middle"><s:property value="grupo"/></td>
                             <td class="text-left align-middle"><s:property value="carrera"/></td>                            
                             <td class="text-center align-middle">
@@ -178,7 +178,7 @@
                         {orderable: false, targets: 5},
                         {orderable: false, targets: 6}
                     ],
-                    order: [[0, 'asc']]
+                    order: [[1, 'asc']]
                 });
 
                 window.setTimeout(function () {

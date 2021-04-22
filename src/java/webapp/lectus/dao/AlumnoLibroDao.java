@@ -1,5 +1,6 @@
 package webapp.lectus.dao;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Filter;
@@ -28,9 +29,9 @@ public class AlumnoLibroDao {
         }
         return libro;
     }
-    
+
     public boolean findRegistro(int id) {
-        
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         //session.beginTransaction();
         String sql = " from alumnolibro u where u.idUsuario=:id";
@@ -41,40 +42,47 @@ public class AlumnoLibroDao {
             session.close();
             return true;
         }
-        session.close();        
+        session.close();
         return false;
     }
+
     public List<Libro> all(String estatus) throws HibernateException {
         List<Libro> lista = null;
-        List<Libro> listaLibros = null;
+        ArrayList<Libro> listaLibros = new ArrayList();
         Libro libro = new Libro();
-        int c=0;
-        try { 
-            iniciaOperacion(); 
-           // Activamos el filtro para mostrar sólo a los libros disponibles o sugeridos segun sea el caso	
+        long contador = 0;
+
+        try {
+            iniciaOperacion();
+            // Activamos el filtro para mostrar sólo a los libros disponibles o sugeridos segun sea el caso	
             Filter filtro = session.enableFilter("filtroLibro");
             filtro.setParameter("libroParam", estatus);
-            
-            lista = session.createQuery("from Libro").list(); 
-            System.out.println("lista" + c);
+            lista = session.createQuery("from Libro").list();
+
             Iterator<Libro> ite = lista.iterator();
-           while (ite.hasNext())
-            {
-                 libro = ite.next();
-                 System.out.println("objeto obtenido de lista" + libro);
-                if(libro.getNumeroMaximoAlumnos() == 0){
-                    System.out.println("objeto obtenido de lista ==0" + libro);
-                    lista.remove(libro);
+            while (ite.hasNext()) {
+                libro = ite.next();
+                System.out.println("objeto obtenido de lista" + libro);
+                String sentencia = "SELECT count(idLibro) FROM AlumnoLibro WHERE idLibro='" + libro.getIdLibro() + "'";
+                contador = (long) session.createQuery(sentencia).uniqueResult();
+                System.out.println("contador" + contador);
+                if (contador < libro.getNumeroMaximoAlumnos()) {
+                    Libro libroNuevo = new Libro();
+                    libroNuevo = libro;
+                    System.out.println("entre if" + libroNuevo);
+                    libro.setCupo(libro.getNumeroMaximoAlumnos() - contador);
+                    listaLibros.add(libro);
                 }
+
             }
-           
-        } finally { 
-            session.close(); 
-        }  
-         System.out.println("objeto obtenido de lista final" + lista);
-        return lista; 
+
+        } finally {
+            session.close();
+        }
+        System.out.println("objeto obtenido de lista final" + lista);
+        return listaLibros;
     }
-    
+
     public int seleccion(AlumnoLibro alumnoLibro) throws HibernateException {
         int id = 0;
         try {
@@ -89,22 +97,24 @@ public class AlumnoLibroDao {
         }
         return id;
     }
-    
-    public void numeroMaximoAlumnos (int idLibro) {
+
+    public long findSeleccion(int idUsuario, int idLibro) {
+        long numero=0;
         System.out.println("entro bien");
-        String sentencia = "update Libro set numeroMaximoAlumnos = numeroMaximoAlumnos-1 where idLibro='" + idLibro + "'";
+        String sentencia = "SELECT count(idAlumnoLibro) from AlumnoLibro where idUsuario = '" + idUsuario +"' and idLibro='" + idLibro +"'";
         try {
             iniciaOperacion();
             //session.beginTransaction();
-            session.createQuery(sentencia).executeUpdate();
-            
+            numero= (long) session.createQuery(sentencia).uniqueResult();
 
         } catch (Exception e) {
             System.out.println("error" + e);
-        }finally {
+        } finally {
             session.close();
         }
+        return numero;
     }
+
     private void iniciaOperacion() throws HibernateException {
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();

@@ -46,6 +46,7 @@ public class LibroAction extends ActionSupport {
     public String details() throws Exception {        
         LibroDao libroDao = new LibroDao();
         libro = libroDao.find(getId());
+      
         return SUCCESS;
     }
         

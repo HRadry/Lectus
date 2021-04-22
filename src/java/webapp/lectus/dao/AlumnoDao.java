@@ -31,10 +31,10 @@ public class AlumnoDao {
         }
         return id;
     }
-    public void update(Usuario usuario) throws HibernateException {
+    public void update(Alumno alumno) throws HibernateException {
         try {
             iniciaOperacion();
-            session.update(usuario);
+            session.update(alumno);
             concretaOperacion();
         } catch (HibernateException he) {
             manejaExcepcion(he);

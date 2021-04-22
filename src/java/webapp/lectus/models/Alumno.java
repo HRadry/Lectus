@@ -6,12 +6,12 @@ public class Alumno implements java.io.Serializable {
     private Integer idUsuario;
     private Integer idGrupo;
     private Integer matricula;
-    private Double telefono;
+    private String telefono;
 
     public Alumno() {
     }
 
-    public Alumno(Integer idAlumno, Integer idUsuario, Integer idGrupo, Integer matricula, Double telefono) {
+    public Alumno(Integer idAlumno, Integer idUsuario, Integer idGrupo, Integer matricula, String telefono) {
         this.idAlumno = idAlumno;
         this.idUsuario = idUsuario;
         this.idGrupo = idGrupo;
@@ -51,13 +51,12 @@ public class Alumno implements java.io.Serializable {
         this.matricula = matricula;
     }
 
-    public Double getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Double telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    
 }

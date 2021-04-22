@@ -15,8 +15,8 @@
         <property name="matricula" type="java.lang.Integer">
             <column name="matricula" length="45" not-null="true"/>
         </property>  
-        <property name="telefono" type="java.lang.Double">
-            <column name="telefono" length="45" not-null="true"/>
+        <property name="telefono" type="java.lang.String">
+            <column name="telefono" length="20" not-null="true"/>
         </property>   
     </class>    
 </hibernate-mapping>

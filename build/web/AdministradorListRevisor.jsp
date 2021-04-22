@@ -43,20 +43,21 @@
             <table id="example" class="table table-striped">
                 <thead>
                     <tr class="table-active">                        
-                        <th class="text-left align-middle">Nombre</th>                                                                     
+                        <th class="text-left align-middle">Nombre</th>     
+                        <th class="text-left align-middle">Correo</th>  
                         <th class="text-center align-middle">Detalles</th>
                         <th class="text-center align-middle">Editar</th>
                         <th class="text-center align-middle">Eliminar</th>
-                        <th class="text-center align-middle">Asignar libros</th>
+                        <th class="text-center align-middle">Asignar libro</th>
                         <th class="text-center align-middle">Asignar alumnos</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <s:iterator value="usuarios">
+                    <s:iterator value="usuarioRevisor">
                         <tr>
-                            <td class="text-left align-middle" ><s:property value="nombre"/> <s:property value="apellidoPaterno"/> <s:property value="apellidoMaterno"/></td>
-                            <!--<td class="text-left align-middle"><s:property value="correo"/></td>-->
+                            <td class="text-left align-middle" ><s:property value="apellidoPaterno + ' ' + apellidoMaterno + ' ' + nombre  "/></td>
+                            <td class="text-left align-middle"><s:property value="correo"/></td>
 
                             <td class="text-center align-middle">
                                 <s:url action="details" var="urlDetails">
@@ -79,23 +80,23 @@
                             <td class="text-center align-middle">                                
                                 <a class="btn btn-outline-secondary" href="javascript:asignarId('${idUsuario}', '${nombre}')" role="button" aria-pressed="true"> <img src="../svg/eliminar.svg" width="35" height="35"> </a>
                             </td>
-                            
+
                             <td class="text-center align-middle">
                                 <s:url action="edit" var="urlEdit">
                                     <s:param name="id">
                                         <s:property value="idUsuario"/>
                                     </s:param>
                                 </s:url>
-                                <a class="btn btn-outline-danger" role="button" href="${urlEdit}"> <img src="../svg/libros.svg" width="35" height="35"> </a>
+                                <a class="btn btn-outline-danger" role="button" href="/lectus/libro/asignarLibros"> <img src="../svg/libros.svg" width="35" height="35"> </a>
                             </td>
-                            
+
                             <td class="text-center align-middle">
                                 <s:url action="edit" var="urlEdit">
                                     <s:param name="id">
                                         <s:property value="idUsuario"/>
                                     </s:param>
                                 </s:url>
-                                <a class="btn btn-outline-dark" role="button" href="${urlEdit}"> <img src="../svg/alumno.svg" width="35" height="35"> </a>
+                                <a class="btn btn-outline-primary" role="button" href="${urlEdit}"> <img src="../svg/alumno.svg" width="35" height="35"> </a>
                             </td>
                         </tr>
                     </s:iterator>                   
@@ -103,11 +104,12 @@
 
                 <tfoot>
                     <tr class="table-active">                        
-                        <th class="text-left align-middle">Nombre</th>                                                                     
+                        <th class="text-left align-middle">Nombre</th>       
+                        <th class="text-left align-middle">Correo</th>  
                         <th class="text-center align-middle">Detalles</th>
                         <th class="text-center align-middle">Editar</th>
                         <th class="text-center align-middle">Eliminar</th>                        
-                        <th class="text-center align-middle">Asignar libros</th>
+                        <th class="text-center align-middle">Asignar libro</th>
                         <th class="text-center align-middle">Asignar alumnos</th>
                     </tr>
                 </tfoot>
@@ -146,12 +148,12 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>        
         <!-- ================================================== -->       
-        
+
         <!-- Bootstrap core Data Table JQuery -->    
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>    
         <!-- ================================================== -->
-        
+
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#example').DataTable({
@@ -190,7 +192,7 @@
                         {orderable: false, targets: 2},
                         {orderable: false, targets: 3},
                         {orderable: false, targets: 4},
-                        {orderable: false, targets: 5}                       
+                        {orderable: false, targets: 5}
                     ],
                     order: [[0, 'asc']]
                 });

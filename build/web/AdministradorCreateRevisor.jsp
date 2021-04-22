@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!doctype html>
 <html lang="es">
@@ -109,12 +110,12 @@
                                 </div>
                             </div>                                                                                                        
                         </div>
-
+                   
                         <div class="col-md-6">
                             <legend class="font-weight-normal">3.- Datos institucionales</legend>
                             <div class="form-group">
                                 <label for="numeroEmpleado" class="font-weight-bolder">Número de empleado</label>
-                                <input type="number" class="form-control form-control-lg" id="numeroEmpleado" name="usuario.numeroEmpleado" placeholder="1000000009" required>
+                                <input type="number" class="form-control form-control-lg" id="numeroEmpleado" name="revisor.numeroEmpleado" placeholder="1000000009" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -122,7 +123,7 @@
                             
                             <div class="form-group">
                                 <label for="cargo" class="font-weight-bolder">Cargo</label>
-                                <input type="text" class="form-control form-control-lg" id="cargo" name="usuario.cargo" placeholder="Jefe de carrera" required>
+                                <input type="text" class="form-control form-control-lg" id="cargo" name="revisor.cargo" placeholder="Jefe de carrera" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
@@ -132,12 +133,9 @@
                                 <label for="carrera" class="font-weight-bolder">Carrera</label>
                                 <select class="custom-select custom-select-lg" id="carrera" name="usuario.carrera" required>
                                     <option selected disabled value="">Seleccione...</option>       
-                                    <option>Ingeniería Forestal</option>
-                                    <option>Licenciatura en Biología</option>
-                                    <option>Licenciatura en Informática</option>
-                                    <option>Licenciatura en Ciencias Ambientales</option>
-                                    <option>Ingeniería en Tecnología de la Madera</option>
-                                    <option>Licenciatura en Administración Turística</option>
+                                    <c:forEach items="${carreras}" var="carreras">                                            
+                                        <option value="${carreras.getIdCarrera()}">${carreras.getNombre()}</option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -146,27 +144,11 @@
 
                             <div class="form-group">
                                 <label for="area" class="font-weight-bolder">Área</label>
-                                <select class="custom-select custom-select-lg" id="area" name="usuario.area" required>
+                                <select class="custom-select custom-select-lg" id="area" name="revisor.idArea" required>
                                     <option selected disabled value="">Seleccione...</option>                                                                                                                                                                                         
-                                    <option>Biblioteca</option>
-                                    <option>Centro de Idiomas</option>
-                                    <option>Construcción y Mantenimiento</option>
-                                    <option>Departameno de Redes</option>                                                                        
-                                    <option>División de Estudios de Postgrado</option>
-                                    <option>Instituto de Estudios Ambientales</option>
-                                    <option>Jefaturas</option>
-                                    <option>Recursos Humanos</option>
-                                    <option>Recursos Financieros</option>
-                                    <option>Recursos Materiales</option>
-                                    <option>Rectoría</option>
-                                    <option>Sala de Cómputo 1</option>
-                                    <option>Sala de Cómputo 2</option>
-                                    <option>Sala de Cómputo 3</option>
-                                    <option>Sala de Cómputo 4</option>
-                                    <option>Sala de Cómputo 5</option>
-                                    <option>Servicios Esolares</option>  
-                                    <option>Vice-Rectoría Académica</option>
-                                    <option>Vice-Rectoría Administrativa</option>
+                                    <c:forEach items="${areas}" var="areas">                                            
+                                        <option value="${areas.getIdArea()}">${areas.getEdificio()}</option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
@@ -176,12 +158,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="numeroCubo" class="font-weight-bolder">Número de cubo</label>
-                                    <input type="text" class="form-control form-control-lg" id="numeroCubo" name="usuario.numeroCubo" placeholder="13" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
+                                    <input type="text" class="form-control form-control-lg" id="numeroCubo" name="revisor.numeroCubo" placeholder="13" size="4" minlength="2" maxlength="4" onkeypress="return solonumeros(event)" onpaste="return false" required>
                                     <div class="invalid-feedback">
                                         Este campo es necesario 👆, por favor, acomplételo.
                                     </div>
                                 </div>
-
+                                <!--
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="extension" class="font-weight-bolder">Extensión del área</label>
@@ -191,15 +173,15 @@
                                         </div>
                                     </div>
                                 </div>                                                                
-                            </div>
-
+                            </div>-->
+                            <!--
                             <div class="form-group">
                                 <label for="telefono" class="font-weight-bolder">Teléfono del área</label>
                                 <input type="phone" class="form-control form-control-lg" id="telefono" name="usuario.telefono" placeholder="951-123-456-7" size="45" minlength="10" maxlength="45" required>
                                 <div class="invalid-feedback">
                                     Este campo es necesario 👆, por favor, acomplételo.
                                 </div>
-                            </div>                                                        
+                            </div>-->                                                        
 
                             <div class="text-center mt-4">
                                 <a href="/lectus/revisor/list" class="btn btn-lg btn-out-gray font-weight-normal my-2 mx-2">Cancelar</a>

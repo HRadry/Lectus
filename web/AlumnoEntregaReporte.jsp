@@ -49,7 +49,7 @@
                                         Fecha de entrega:
                                     </div>
                                     <div class="col-6 d-flex align-items-center">
-                                        <span class="card-text font-weight-normal text-break">Martes, 23 de Febrero del 2021, 23:00</span>
+                                        <span class="card-text font-weight-normal text-break">${fechaLimite}</span>
                                     </div>
                                 </div>
                             </li>

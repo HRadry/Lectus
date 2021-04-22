@@ -13,17 +13,16 @@ public class Area implements java.io.Serializable {
 
     private Integer idArea;
     private String edificio;
-    private Double telefono;
+    private String telefono;
 
     public Area() {
     }
 
-    public Area(Integer idArea, String edificio, Double telefono) {
+    public Area(Integer idArea, String edificio, String telefono) {
         this.idArea = idArea;
         this.edificio = edificio;
         this.telefono = telefono;
     }
-
 
     public Integer getIdArea() {
         return idArea;
@@ -41,13 +40,13 @@ public class Area implements java.io.Serializable {
         this.edificio = edificio;
     }
 
-    public Double getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Double telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    
+        
 }

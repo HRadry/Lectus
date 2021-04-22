@@ -49,7 +49,7 @@
                                         Nombre:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.nombre}.</span>
+                                        <span class="card-text font-weight-normal">${UsuarioTipoAlumno.nombre}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -59,7 +59,7 @@
                                         Apellido paterno:
                                     </div>
                                     <div class="col-6">
-                                        <span class="font-weight-normal">${usuario.apellidoPaterno}.</span>
+                                        <span class="font-weight-normal">${UsuarioTipoAlumno.apellidoPaterno}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -69,7 +69,7 @@
                                         Apellido materno:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.apellidoMaterno}.</span>
+                                        <span class="card-text font-weight-normal">${UsuarioTipoAlumno.apellidoMaterno}.</span>
                                     </div>
                                 </div>
                             </li> 
@@ -79,7 +79,7 @@
                                         Teléfono:
                                     </div>
                                     <div class="col-6">                                        
-                                        <a href="tel:" target="_blank" class="card-text"><span class="card-text font-weight-normal text-break"></span></a>                                    
+                                        <a href="tel:${UsuarioTipoAlumno.telefono}" target="_blank" class="card-text"><span class="card-text font-weight-normal text-break">${UsuarioTipoAlumno.telefono}.</span></a>                                    
                                     </div>
                                 </div>
                             </li>
@@ -98,7 +98,7 @@
                                         Matrícula:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.matricula}.</span>
+                                        <span class="card-text font-weight-normal">${UsuarioTipoAlumno.matricula}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -108,7 +108,7 @@
                                         Carrera:
                                     </div>
                                     <div class="col-6">
-                                        <span class="font-weight-normal text-break">${usuario.carrera}.</span>
+                                        <span class="font-weight-normal text-break">${UsuarioTipoAlumno.carrera}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -118,7 +118,7 @@
                                         Semestre:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.semestre}.</span>
+                                        <span class="card-text font-weight-normal">${UsuarioTipoAlumno.semestre}.</span>
                                     </div>
                                 </div>
                             </li> 
@@ -128,7 +128,7 @@
                                         Grupo:
                                     </div>
                                     <div class="col-6">
-                                        <span class="card-text font-weight-normal">${usuario.grupo}.</span>
+                                        <span class="card-text font-weight-normal">${UsuarioTipoAlumno.grupo}.</span>
                                     </div>
                                 </div>
                             </li>
@@ -147,7 +147,7 @@
                                         Correo:
                                     </div>
                                     <div class="col-6">
-                                        <a href="mailto:${usuario.correo}" target="_blank" class="card-text"><span class="card-text font-weight-normal text-break">${usuario.correo}</span></a>
+                                        <a href="mailto:${UsuarioTipoAlumno.correo}" target="_blank" class="card-text"><span class="card-text font-weight-normal text-break">${UsuarioTipoAlumno.correo}</span></a>
                                     </div>
                                 </div>
                             </li>
@@ -157,7 +157,7 @@
                                         Tipo de usuario:
                                     </div>
                                     <div class="col-6">
-                                        <span class="font-weight-normal">${usuario.tipoUsuario}.</span>                                        
+                                        <span class="font-weight-normal">${UsuarioTipoAlumno.tipoUsuario}.</span>                                        
                                     </div>
                                 </div>
                             </li>                            

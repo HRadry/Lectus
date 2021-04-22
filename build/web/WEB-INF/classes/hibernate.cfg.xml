@@ -49,11 +49,15 @@ Contributor(s):
     
     <mapping resource="webapp/lectus/models/Alumno.hbm.xml"/>
     <mapping resource="webapp/lectus/models/AlumnoLibro.hbm.xml"/>
+    <mapping resource="webapp/lectus/models/Area.hbm.xml"/>
     <mapping resource="webapp/lectus/models/Carrera.hbm.xml"/>
     <mapping resource="webapp/lectus/models/EntregaReporte.hbm.xml"/>
     <mapping resource="webapp/lectus/models/Grupo.hbm.xml"/>    
     <mapping resource="webapp/lectus/models/Libro.hbm.xml"/>
     <mapping resource="webapp/lectus/models/Parcial.hbm.xml"/>
-    <mapping resource="webapp/lectus/models/Usuario.hbm.xml"/>         
+    <mapping resource="webapp/lectus/models/Revisor.hbm.xml"/>
+    <mapping resource="webapp/lectus/models/Usuario.hbm.xml"/>
+    <mapping resource="webapp/lectus/models/UsuarioAlumno.hbm.xml"/> 
+    <mapping resource="webapp/lectus/models/UsuarioRevisor.hbm.xml"/>         
   </session-factory>
 </hibernate-configuration>

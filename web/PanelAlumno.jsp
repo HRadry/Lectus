@@ -69,7 +69,7 @@
                         <img class="mb-4" src="../svg/reporte.svg" alt="" width="140" height="140">
                         <h2>Reporte</h2>
                         <p class="mb-4">Envíe su reporte de lectura para ser calificado.</p>
-                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/entregaReporte/reporte" role="button"><span>Enviar reporte</span> <i data-feather="arrow-right"></i></a>                        
+                        <a class="button btn btn-lg btn-out-secondary" href="/lectus/alumno/entregaReporte" role="button"><span>Enviar reporte</span> <i data-feather="arrow-right"></i></a>                        
                     </div>
                 </div>
 
